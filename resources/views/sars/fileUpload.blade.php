@@ -59,7 +59,7 @@
         }
         </style>
             <div class="form-group">
-                <form action="{{route('show.excel')}}" method="get" enctype="multipart/form-data">
+                <form action="{{route('show.excel')}}" method="get">
                             <table class="table table-striped tables">
                                 <thead>
                                     <tr>
@@ -71,13 +71,14 @@
                                     @csrf
                                     @foreach($files as $file)
                                     <tr>
-                                        <td><input type="checkbox" name="files[]" value="{{ $file->id }}"></td>
+                                        <td><input type="checkbox" name="files[]" value="{{ $file->id }}" multiple></td>
                                         <td>{{ $file->name }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         <button type="submit" class="btn btn-success">Submit</button>
+                        <input type="text" name = "file">
                 </form>
             </div> 
             <br>

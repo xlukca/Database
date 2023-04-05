@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::controller(FileController::class)->group(function () {
     Route::get('/sars/file-upload', 'index');
     Route::post('/sars/file-upload', 'store')->name('file.store');
-    Route::get('/sars/file-upload', 'showExcel')->name('show.excel');
+    Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
     });
 
 /*
