@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SarsController;
 use App\Http\Controllers\FileController;
-
+use App\Http\Models\Sars;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +24,10 @@ Route::controller(FileController::class)->group(function () {
     Route::get('/sars/file-upload', 'index');
     Route::post('/sars/file-upload', 'store')->name('file.store');
     Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
+    Route::get('/sars/dataTable', 'table')->name('table.data');
     });
-
+   
+ 
 /*
 Route::controller(SarsController::class)->group(function () {
 

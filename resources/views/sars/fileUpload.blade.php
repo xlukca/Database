@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -78,7 +77,7 @@
                                 </tbody>
                             </table>
                         <button type="submit" class="btn btn-success">Submit</button>
-                        <input type="text" name = "file">
+                      <!--  <input type="text" name = "file"> -->
                 </form>
             </div> 
             <br>

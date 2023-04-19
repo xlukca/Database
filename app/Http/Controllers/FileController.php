@@ -70,7 +70,7 @@ class FileController extends Controller
             $items[] = 'people_recovered';
             $items[] = 'people_positive_past';
             $items[] = 'people_recovered_past';
-            $items[35] = 'sample_matrix';
+            $items[34] = 'sample_matrix';
             $items[] = 'sample_from_hour';
             $items[] = 'sample_from_day';
             $items[] = 'sample_from_month';
@@ -91,7 +91,7 @@ class FileController extends Controller
             $items[] = 'tss';
             $items[] = 'dry_weather_conditions';
             $items[] = 'last_rain_event';
-            $items[58] = 'associated_phenotype';
+            $items[56] = 'associated_phenotype';
             $items[] = 'genetic_marker';
             $items[] = 'date_of_sample_preparation';
             $items[] = 'storage_of_sample';
@@ -126,7 +126,7 @@ class FileController extends Controller
             $file = File::find($request['files'][0]);
             $path = base_path().'/public/uploads/'.$file->name;
            
-                $rows = SimpleExcelReader::create($path)->skip(8)->take(88)->noHeaderRow()->getRows();
+                $rows = SimpleExcelReader::create($path)->skip(7)->take(88)->noHeaderRow()->getRows();
                 $data = [];
                 foreach($rows as $key => $r) {
                  //   foreach($items as $key => $item) {
@@ -143,10 +143,13 @@ class FileController extends Controller
                 $data['noexport']='';
               // dd($data);
                 Sars::insert($data); 
+            return back()->with('success', 'The file was uploaded to database.');
                 // dd($data);
-            
-            // return view('sars.fileUpload', compact('files'));
-            
+        
             // Do something with the selected files
+        }
+        public function table() {
+            $sarsData = Sars::all();
+            return view('sars.dataTable')->with('sarsData', $sarsData);
         }
 }
