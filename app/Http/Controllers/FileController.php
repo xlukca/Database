@@ -148,8 +148,11 @@ class FileController extends Controller
         
             // Do something with the selected files
         }
-        public function table() {
-            $sarsData = Sars::all();
-            return view('sars.dataTable')->with('sarsData', $sarsData);
-        }
+
+        public function destroy(File $file)
+    {
+        File::find($file->id)->delete();
+
+        return back()->with('success', 'The file was deleted.');
+    }
 }

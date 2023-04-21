@@ -1,21 +1,6 @@
+@extends('layouts.app')
+@section('content')
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <title>Sars File Upload</title>
-    <style>
-        .container {
-            max-width: 800px;
-        }
-        dl, ol, ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -72,6 +57,11 @@
                                     <tr>
                                         <td><input type="checkbox" name="files[]" value="{{ $file->id }}" multiple></td>
                                         <td>{{ $file->name }}</td>
+                                        <td>
+                                            {!! Form::open(array('route' => ['file.delete', $file->id], 'method'=>'DELETE')) !!}
+                                            {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
+                                            {!! Form::close() !!}
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -85,3 +75,6 @@
             
     </body>
 </html>
+
+
+@endsection

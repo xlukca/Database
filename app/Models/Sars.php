@@ -9,7 +9,7 @@ class Sars extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sars_id',
+        'id',
         'type_of_data',
         'data_provider',
         'contact_person',

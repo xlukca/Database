@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SarsController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\UserController;
 use App\Http\Models\Sars;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,23 +18,22 @@ use App\Http\Models\Sars;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+// Route::get('/create-user', [UserController::class, 'create']);
 
 
 Route::controller(FileController::class)->group(function () {
-    Route::get('/sars/file-upload', 'index');
+    Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
     Route::post('/sars/file-upload', 'store')->name('file.store');
     Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
-    Route::get('/sars/dataTable', 'table')->name('table.data');
+    Route::get('/sars/file-upload/destroy', 'destroy')->name('file.delete');
     });
    
- 
-/*
-Route::controller(SarsController::class)->group(function () {
 
-})
-*/
+Route::resource('/sars/dataTable', SarsController::class);
+
 
 
 
