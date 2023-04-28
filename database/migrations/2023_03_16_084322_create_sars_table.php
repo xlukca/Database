@@ -91,9 +91,9 @@ return new class extends Migration
             $table->text('rna3');
             $table->text('pos_control_used');
             $table->text('replicates2');
-            $table->text('ct');
-            $table->text('gene1');
-            $table->text('gene2');
+            $table->text('ct')->nullable();
+            $table->text('gene1')->nullable();
+            $table->text('gene2')->nullable();
             $table->text('comment');
             $table->text('sars_save');
             $table->text('sars_source');

@@ -44,32 +44,33 @@ class SarsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sars $sarsData)
+    public function edit($id)
     {
-         return view('sars.editSars')->with('sarsData', Sars::find($sarsData->id));
+         return view('sars.editSars')->with('sarsData', Sars::find($id));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sars $sarsData)
+    public function update(Request $request, $id)
     {
         $rules = [
-            'sample_from_year'              => 'required|text',
-            'sample_from_month'             => 'required|text',
-            'sample_from_day'               => 'required|text',
-            'gene1'                         => 'required|text',
-            'gene2'                         => 'required|text',
-            'ct'                            => 'required|text',
-            'station_name'                  => 'required|text',
-            'population_served'             => 'required|text',
-            'people_positive'               => 'required|text',
-            'name_of_country'               => 'required|text',
+            'sample_from_year'              => 'required|string',
+            'sample_from_month'             => 'required|string',
+            'sample_from_day'               => 'required|string',
+            'gene1'                         => 'nullable|string',
+            'gene2'                         => 'nullable|string',
+            'ct'                            => 'nullable|string',
+            'station_name'                  => 'required|string',
+            'population_served'             => 'required|string',
+            'people_positive'               => 'required|string',
+            'name_of_country'               => 'required|string',
         ];
-
+      
+       // dd($request);
         $validated = $request->validate($rules);
-
-        $d = Sars::find($sarsData->id);
+        
+        $d = Sars::find($id);
         $d->sample_from_year                 = $request->sample_from_year;
         $d->sample_from_month                = $request->sample_from_month;
         $d->sample_from_day                  = $request->sample_from_day;
@@ -82,17 +83,17 @@ class SarsController extends Controller
         $d->name_of_country                  = $request->name_of_country;
         $d->save();
 
-        return redirect()->route('sars.dataTable');
+        return redirect()->route('dataTable.index')->with('success', 'The file was succesfully edited.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sars $sarsData)
+    public function destroy($id)
     {
-        Sars::find($sarsData->id)->delete();
+        Sars::find($id)->delete();
 
-        return redirect()->route('sars.dataTable');
+        return redirect()->route('dataTable.index')->with('success', 'The file was deleted.');;
     }
  
 }
