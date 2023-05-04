@@ -149,9 +149,9 @@ class FileController extends Controller
             // Do something with the selected files
         }
 
-        public function destroy(File $file)
+        public function destroy(File $id)
     {
-        File::find($file->id)->delete();
+        File::find($id)->delete();
 
         return back()->with('success', 'The file was deleted.');
     }

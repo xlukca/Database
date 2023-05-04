@@ -93,7 +93,7 @@ class SarsController extends Controller
     {
         Sars::find($id)->delete();
 
-        return redirect()->route('dataTable.index')->with('success', 'The file was deleted.');;
+        return redirect()->route('dataTable.index')->with('success', 'The file was deleted.');
     }
  
 }

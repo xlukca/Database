@@ -22,7 +22,7 @@
             </div>
           @endif
             <div class="custom-file">
-                <input type="file" name="files[]" class="custom-file-input" id="chooseFile">
+                <input type="file" name="files[]" class="custom-file-input" id="chooseFile" multiple>
                 <label class="custom-file-label" for="chooseFile"></label>
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
@@ -43,7 +43,7 @@
         }
         </style>
             <div class="form-group">
-                <form action="{{route('show.excel')}}" method="get">
+                 <form action="{{route('show.excel')}}" method="get"> 
                             <table class="table table-striped tables">
                                 <thead>
                                     <tr>

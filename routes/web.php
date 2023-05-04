@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SarsController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Models\Sars;
 
 /*
@@ -23,17 +24,19 @@ Route::get('/', function () {
 
 // Route::get('/create-user', [UserController::class, 'create']);
 
+Route::middleware(['auth'])->group(function () {
 
-Route::controller(FileController::class)->group(function () {
-    Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
-    Route::post('/sars/file-upload', 'store')->name('file.store');
-    Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
-    Route::get('/sars/file-upload/destroy', 'destroy')->name('file.delete');
+    Route::controller(FileController::class)->group(function () {
+        Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
+        Route::post('/sars/file-upload', 'store')->name('file.store');
+        Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
+        Route::delete('/sars/file-upload/destroy', 'destroy')->name('file.delete');
     });
    
+    Route::resource('/sars/dataTable', SarsController::class);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
 
-Route::resource('/sars/dataTable', SarsController::class);
-
-
+Auth::routes();
 
 
