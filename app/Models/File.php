@@ -11,4 +11,8 @@ class File extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function sars() {
+        return $this->hasOne(Sars::class);
+    }
 }

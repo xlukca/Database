@@ -99,4 +99,8 @@ class Sars extends Model
         'latitude_decimal_show',
         'noexport'
     ];
+
+    public function file() {
+        return $this->hasOne(File::class, 'id','file_id');
+    }
 }

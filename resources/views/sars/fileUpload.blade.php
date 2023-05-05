@@ -55,10 +55,14 @@
                                     @csrf
                                     @foreach($files as $file)
                                     <tr>
-                                        <td><input type="checkbox" name="files[]" value="{{ $file->id }}" multiple></td>
+                                        <td>
+                                            @if(!isset($file->sars->file_id))
+                                            <input type="checkbox" name="files[]" value="{{ $file->id }}" multiple>
+                                            @endif
+                                        </td>
                                         <td>{{ $file->name }}</td>
                                         <td>
-                                            {!! Form::open(array('route' => ['file.delete', $file->id], 'method'=>'DELETE')) !!}
+                                            {!! Form::open(array('route' => ['file-upload.destroy', $file->id], 'method'=>'DELETE')) !!}
                                             {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
                                             {!! Form::close() !!}
                                         </td>

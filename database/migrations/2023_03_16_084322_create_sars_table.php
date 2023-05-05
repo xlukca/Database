@@ -96,7 +96,7 @@ return new class extends Migration
             $table->text('gene2')->nullable();
             $table->text('comment');
             $table->text('sars_save');
-            $table->text('sars_source');
+            $table->foreignid('file_id')->references('id')->on('files');
             $table->text('sars_source_dir');
             $table->text('longitude_decimal_show');
             $table->text('latitude_decimal_show');

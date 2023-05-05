@@ -27,10 +27,11 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(FileController::class)->group(function () {
+        Route::delete('/sars/file-upload/{id}', 'destroy')->name('file-upload.destroy');
         Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
         Route::post('/sars/file-upload', 'store')->name('file.store');
         Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
-        Route::delete('/sars/file-upload/destroy', 'destroy')->name('file.delete');
+     //   Route::resource('/sars/file-upload', App\Http\Controllers\FileController::class);
     });
    
     Route::resource('/sars/dataTable', SarsController::class);

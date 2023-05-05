@@ -10,7 +10,9 @@ use Spatie\SimpleExcel\SimpleExcelReader;
 class FileController extends Controller
 {
     public function index() {
-            $files = File::all();
+            $files = File::with('sars')->get();
+           
+            //dd($files);
             return view('sars.fileUpload', compact('files'));
     }
     
@@ -123,7 +125,9 @@ class FileController extends Controller
             // Retrieve the selected files
             /*dd($request->file);*/
             $id_file = $request->file;
-            $file = File::find($request['files'][0]);
+            $files=$request['files'];
+            foreach ($files as $f) {
+            $file = File::find($f);
             $path = base_path().'/public/uploads/'.$file->name;
            
                 $rows = SimpleExcelReader::create($path)->skip(7)->take(88)->noHeaderRow()->getRows();
@@ -136,13 +140,14 @@ class FileController extends Controller
             //}
                 }
                 $data['sars_save']=1;
-                $data['sars_source']='';
+                $data['file_id']=$f;
                 $data['sars_source_dir']='';
                 $data['longitude_decimal_show']='';
                 $data['latitude_decimal_show']='';
                 $data['noexport']='';
               // dd($data);
                 Sars::insert($data); 
+            }
             return back()->with('success', 'The file was uploaded to database.');
                 // dd($data);
         
