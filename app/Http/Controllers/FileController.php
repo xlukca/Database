@@ -11,7 +11,6 @@ class FileController extends Controller
 {
     public function index() {
             $files = File::with('sars')->get();
-           
             //dd($files);
             return view('sars.fileUpload', compact('files'));
     }
@@ -125,7 +124,7 @@ class FileController extends Controller
             // Retrieve the selected files
             /*dd($request->file);*/
             $id_file = $request->file;
-            $files=$request['files'];
+            $files = $request['files'];
             foreach ($files as $f) {
             $file = File::find($f);
             $path = base_path().'/public/uploads/'.$file->name;
