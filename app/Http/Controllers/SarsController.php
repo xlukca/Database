@@ -5,15 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sars;
 use Spatie\SimpleExcel\SimpleExcelReader;
+use DataTables;
 
 class SarsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $sarsData = Sars::all();
+     if ($request->ajax()) {
+        
+        return Datables::of($sarsData)
+        ->addIndexColumn()
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+     }
         return view('sars.dataTable')->with('sarsData', $sarsData);
     }
 

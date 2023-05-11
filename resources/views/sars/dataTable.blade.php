@@ -10,10 +10,10 @@
         </style>
 
 <h1>Database - SARS-CoV-2</h1>
-
-<div class="form-group">
+    
+    <div class="form-group">
     <form action="{{ route('dataTable.index') }}" method="get">
-        <table class="table table-striped table-hover">
+        <table class="table table-bordered yajra-datatable">
             @csrf
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -40,6 +40,8 @@
                         <th>Population Served</th>
                         <th>No. of people SARS-CoV-2 POSITIVE</th>
                         <th>Country</th>
+                        <th>Action Edit</th>
+                        <th>Action Delete</th>
                         
                         </tr>
                     </thead>
@@ -68,6 +70,34 @@
                 </table>
         </form>
 </div> 
+
+<script type="text/javascript">
+  $(function () {
+      
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('dataTable.index') }}",
+        columns: [
+            {sarsData: 'id', name: 'id'},
+            {sarsData: 'sample_from_year', name: 'sample_from_year'},
+            {sarsData: 'gene1', name: 'gene1'},
+            {sarsData: 'gene2', name: 'gene2'},
+            {sarsData: 'ct', name: 'ct'},
+            {sarsData: 'station_name', name: 'station_name'},
+            {sarsData: 'population_served', name: 'population_served'},
+            {sarsData: 'people_positive', name: 'people_positive'},
+            {sarsData: 'name_of_country', name: 'name_of_country'},
+            {sarsData: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+        ]
+    });
+      
+  });
+</script>
 
 
 
