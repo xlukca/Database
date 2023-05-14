@@ -12,7 +12,7 @@ class SearchController extends Controller
 {
     $query = $request->input('query');
 
-    $results = SARS::where('sample_from_year', 'LIKE', '%' . $query . '%')
+    $results = SARS::where('name_of_country', 'LIKE', '%' . $query . '%')
                 ->orwhere('sample_matrix', 'LIKE', '%' . $query . '%')
                 ->orwhere('data_provider', 'LIKE', '%' . $query . '%')
                 ->orwhere('station_name', 'LIKE', '%' . $query . '%')
