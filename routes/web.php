@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('sars/search', [SearchController::class, 'index'])->name('search');
-Route::get('sars/searchShow')->name('searchShow');
+//Route::get('sars/searchShow')->name('searchShow');
 
 // Route::get('/create-user', [UserController::class, 'create']);
 
