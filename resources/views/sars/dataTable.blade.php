@@ -2,16 +2,11 @@
 @section('content')
 
 <style>th, td {text-align: center;}</style>
-        <style>
-        .form-group {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        </style>
+
 
 <h1>Database - SARS-CoV-2</h1>
-    
-    <div class="form-group">
+  
+<div class="form-group">
     <form action="{{ route('dataTable.index') }}" method="get">
         <table class="table table-bordered yajra-datatable">
             @csrf

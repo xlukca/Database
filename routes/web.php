@@ -5,6 +5,7 @@ use App\Http\Controllers\SarsController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Models\Sars;
 
 /*
@@ -22,6 +23,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('sars/search', [SearchController::class, 'index'])->name('search');
+Route::get('sars/searchShow')->name('searchShow');
+
 // Route::get('/create-user', [UserController::class, 'create']);
 
 Route::middleware(['auth'])->group(function () {
@@ -30,8 +34,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/sars/file-upload/{id}', 'destroy')->name('file-upload.destroy');
         Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
         Route::post('/sars/file-upload', 'store')->name('file.store');
-        Route::get('/sars/file-upload/excel', 'showExcel')->name('show.excel');
-     //   Route::resource('/sars/file-upload', App\Http\Controllers\FileController::class);
+        Route::post('/sars/file-upload/excel', 'showExcel')->name('file-upload.excel');
     });
    
     Route::resource('/sars/dataTable', SarsController::class);

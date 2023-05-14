@@ -48,9 +48,10 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+
             @guest
             @else
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span></a>
@@ -63,10 +64,12 @@
            
 
             <!-- Heading -->
+            @endguest
             <div class="sidebar-heading">
                 SARS
             </div>
-
+            @guest
+            @else
          
            
 
@@ -84,6 +87,11 @@
                     <span>Table data</span></a>
             </li>
             @endguest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('search') }}">
+                    <i class="fas fa-search"></i>
+                    <span>Search Data</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -111,7 +119,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+            <!--        <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -122,7 +130,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>        -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
