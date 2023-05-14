@@ -4,15 +4,16 @@
 <style>th, td {text-align: center;}</style>
 
 <h1>Database - SARS-CoV-2</h1>
-<h6>Search</h6>
-<br>
 
+<br>
+<div class="headline"><h3>Search criteria</h3></div> 
+<br>
 <form action="{{ route('search') }}" method="GET">
     
-        <div class="row"> 
-                <span>Country</span>
+       
+        <div class="col-md-2">
+            <div class="row">Country</div>
                 <div class="form-group">
-                
                     <label class="select select-multiple"></label>
                     <select name="query" multiple>
                     @foreach($results as $result)
@@ -20,10 +21,8 @@
                     @endforeach
                     </select>
                 </div>
-
-                <span>Sample Matrix</span>
+            <div class="row">Sample Matrix</div>
                 <div class="form-group">
-                    <label class="label"></label>
                     <label class="select select-multiple"></label>
                     <select name="query" multiple>
                     @foreach($results as $result)
@@ -31,18 +30,7 @@
                     @endforeach
                     </select>
                 </div>
-
-                <span>Data Provider</span>
-                <div class="form-group">
-                    <label class="select select-multiple"></label>
-                    <select name="query" multiple>
-                    @foreach($results as $result)
-                    <option>{{ $result->data_provider }}</option>
-                    @endforeach
-                    </select>
-                </div>
-
-                <span>Station Name</span>
+            <div class="row">Station name</div>  
                 <div class="form-group">
                     <label class="select select-multiple"></label>
                     <select name="query" multiple>
@@ -51,21 +39,31 @@
                     @endforeach
                     </select>
                 </div>
-
-                <span>Sample From Year</span>
+            <div class="row">Sample From Year</div>  
                 <div class="form-group">
                     <label class="select select-multiple"></label>
                     <select name="query" multiple>
                     @foreach($results as $result)
                     <option>{{ $result->sample_from_year }}</option>
                     @endforeach
+                    </select>  
+                 </div>
+            </div>
+
+        <div class="col-md-12">
+            <div class="row">Data Provider</div>  
+                 <div class="form-group">
+                    <label class="select select-multiple"></label>
+                    <select name="query" multiple>
+                    @foreach($results as $result)
+                    <option>{{ $result->data_provider }}</option>
+                    @endforeach
                     </select>
                 </div>
         </div>
-    
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-success">Search</button>
     </div>
     <div class="form-group">
     <table class="table table-bordered">
