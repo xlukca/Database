@@ -58,20 +58,25 @@
         </tbody>
     </table>
 
-    <form onsubmit="return handleData()" action="{{ route('file-upload.excel') }}" method="post" id="form2">
-        @csrf   
-        <button form="form2" type="submit" class="btn btn-success">Submit</button>
-    </form>
-
-    <div class="alert alert-danger" id="chk_option_error" style="visibility: hidden">
-        <strong>Please select at least one option.</strong>
+    <div class="row">
+        <div class="col-2">
+            <form onsubmit="return handleData()" action="{{ route('file-upload.excel') }}" method="post" id="form2">
+                @csrf   
+                <button form="form2" type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+        <div class="col-10">
+            <div class="alert alert-danger" id="chk_option_error" style="visibility: hidden">
+                <strong>Please select at least one option.</strong>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
     function handleData()
     {
-        var form_data = new FormData(document.querySelector("form"));
+        var form_data = new FormData(document.querySelector("#form2"));
         if(!form_data.has("files[]"))
         {
             document.getElementById("chk_option_error").style.visibility = "visible";
@@ -82,7 +87,6 @@
             document.getElementById("chk_option_error").style.visibility = "hidden";
         return true;
         }
-
     }
 </script>
 @endsection
