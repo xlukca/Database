@@ -246,7 +246,7 @@ class SarsController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    {
+    { 
         Sars::find($id)->delete();
 
         return redirect()->route('dataTable.index')->with('success', 'The file was deleted.');

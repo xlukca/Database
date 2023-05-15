@@ -18,8 +18,9 @@ class SearchController extends Controller
                 ->orwhere('station_name', 'LIKE', '%' . $query . '%')
                 ->orwhere('sample_from_year', 'LIKE', '%' . $query . '%')
                 ->get();
+    $countries = SARS::select('name_of_country')->distinct()->get();
 
-     return view('sars.searchSars', compact('results'));
+     return view('sars.searchSars', compact('results', 'countries'));
 }
 
 public function show(Request $request)

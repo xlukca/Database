@@ -7,7 +7,7 @@
 <h1>Database - SARS-CoV-2</h1>
   
 <div class="form-group">
-    <form action="{{ route('dataTable.index') }}" method="get">
+
         <table class="table table-bordered yajra-datatable">
             @csrf
                 @if ($message = Session::get('success'))
@@ -63,7 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
-        </form>
+     
 </div> 
 
 <script type="text/javascript">

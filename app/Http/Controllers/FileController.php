@@ -145,9 +145,10 @@ class FileController extends Controller
     }
 
     public function destroy($id) {
-        
-        $file = File::findOrFail($id)->first();
-        $file->sars->delete(); // Najskor je potrebne vymazat suvisiace zaznamy v Sars
+        $file = File::where('id', $id)->first();
+        //dd($file->sars);
+        if (isset($file->sars))
+            $file->sars->delete(); // Najskor je potrebne vymazat suvisiace zaznamy v Sars
         $file->delete(); // Az potom sa moze vymazt zaznam vo File
 
         return back()->with('success', 'The file was deleted.');
