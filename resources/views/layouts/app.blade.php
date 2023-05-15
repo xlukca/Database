@@ -313,11 +313,12 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
-                  
+                         <!-- 
                                 <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-user"></i>
                                     Profile
-                                </a>
+                                </a>                
+                        -->
                             <!--         <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-cogs"></i>
                                     Settings
