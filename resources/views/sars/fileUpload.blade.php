@@ -33,9 +33,9 @@
     <table class="table table-striped tables">
         <thead>
             <tr>
-                <th>Select</th>
+                <th><input type="checkbox" id="select-all"></th>
                 <th>File Name</th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -72,6 +72,15 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('select-all').addEventListener('change', function() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = this.checked;
+    }
+});
+</script>
 
 <script>
     function handleData()
