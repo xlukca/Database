@@ -13,7 +13,7 @@
     <div class="row mt-2 mb-4">
         <div class="col-md-2">
             <label for="query" class="form-label">Country</label>  
-            <select class="form-control" name="query" id="query" multiple>
+            <select class="form-control" name="name_of_country[]" id="query" multiple>
             @foreach($countries as $country)
             <option>{{ $country->name_of_country }}</option>
             @endforeach
@@ -22,7 +22,7 @@
 
         <div class="col-md-3">
             <label for="query" class="form-label">Sample Matrix</label>  
-            <select class="form-control" name="query" id="query" multiple>
+            <select class="form-control" name="sample_matrix[]" id="query" multiple>
             @foreach($matrixes as $matrix)
             <option>{{ $matrix->sample_matrix }}</option>
             @endforeach
@@ -31,7 +31,7 @@
       
         <div class="col-md-3">
             <label for="query" class="form-label">Station name</label>  
-            <select class="form-control" name="query" id="query" multiple>
+            <select class="form-control" name="station_name[]" id="query" multiple>
             @foreach($stations as $station)
             <option>{{ $station->station_name }}</option>
             @endforeach
@@ -40,7 +40,7 @@
          
         <div class="col-md-2">
             <label for="query" class="form-label">Sample From Year</label>  
-            <select class="form-control" name="query" id="query" multiple>
+            <select class="form-control" name="sample_from_year[]" id="query" multiple>
             @foreach($years as $year)
             <option>{{ $year->sample_from_year }}</option>
             @endforeach
@@ -51,7 +51,7 @@
    <div class="row">
         <div class="col-md-7">
             <label for="query" class="form-label">Data Provider</label>  
-            <select class="form-control" name="query" id="query" multiple>
+            <select class="form-control" name="data_provider[]" id="query" multiple>
             @foreach($providers as $provider)
             <option>{{ $provider->data_provider }}</option>
             @endforeach
