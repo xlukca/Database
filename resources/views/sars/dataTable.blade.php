@@ -8,9 +8,9 @@
   
 <div class="form-group">
 
-        <table class="table table-bordered yajra-datatable">
+        <table class="table table-striped table-hover" id = "dataTable">
             @csrf
-                @if ($message = Session::get('success'))
+            @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <strong>{{ $message }}</strong>
                 </div>
@@ -26,6 +26,7 @@
             @endif
                 <thead>
                     <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                         <th>ID</th>
                         <th>Sampling Date</th>
                         <th>Gene copy [number/mL of sample]</th>
@@ -44,6 +45,11 @@
                         @csrf
                         @foreach ($sarsData as $s)
                             <tr>
+                                <td>
+                                    @if(!isset($s->sars->file_id))
+                                    <input type="checkbox" name="files[]" value="{{ $s->id }}" form="form3" multiple>
+                                    @endif
+                                </td>
                                 <td>{{ $s->id }}</td>
                                 <td>{{ $s->sample_from_year }}-{{ $s->sample_from_month }}-{{ $s->sample_from_day }}</td>
                                 <td>{{ $s->gene1 }}</td>
@@ -63,38 +69,16 @@
                         @endforeach
                     </tbody>
                 </table>
-     
 </div> 
 
-<script type="text/javascript">
-  $(function () {
-      
-    var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('dataTable.index') }}",
-        columns: [
-            {sarsData: 'id', name: 'id'},
-            {sarsData: 'sample_from_year', name: 'sample_from_year'},
-            {sarsData: 'gene1', name: 'gene1'},
-            {sarsData: 'gene2', name: 'gene2'},
-            {sarsData: 'ct', name: 'ct'},
-            {sarsData: 'station_name', name: 'station_name'},
-            {sarsData: 'population_served', name: 'population_served'},
-            {sarsData: 'people_positive', name: 'people_positive'},
-            {sarsData: 'name_of_country', name: 'name_of_country'},
-            {sarsData: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
-        ]
+<script>
+    document.getElementById('select-all').addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = this.checked;
+        }
     });
-      
-  });
 </script>
-
-
 
 @endsection
 
