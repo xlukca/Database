@@ -15,17 +15,7 @@ class SarsController extends Controller
     public function index(Request $request)
     {
         $sarsData = Sars::all();
-     if ($request->ajax()) {
         
-        return Datables::of($sarsData)
-        ->addIndexColumn()
-        ->addColumn('action', function($row){
-            $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-            return $actionBtn;
-        })
-        ->rawColumns(['action'])
-        ->make(true);
-     }
         return view('sars.dataTable')->with('sarsData', $sarsData);
     }
 
@@ -239,7 +229,7 @@ class SarsController extends Controller
         $d->comment                               = $request->comment;
         $d->save();
 
-        return redirect()->route('dataTable.index')->with('success', 'The file was succesfully edited.');
+        return redirect()->route('dataTable.index')->with('success', 'The record was succesfully edited.');
     }
 
     /**
@@ -249,7 +239,7 @@ class SarsController extends Controller
     { 
         Sars::find($id)->delete();
 
-        return redirect()->route('dataTable.index')->with('success', 'The file was deleted.');
+        return redirect()->route('dataTable.index')->with('success', 'The record was deleted.');
     }
  
 }
