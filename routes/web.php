@@ -6,6 +6,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SusdataController;
 use App\Http\Models\Sars;
 
 /*
@@ -24,9 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('sars/search', [SearchController::class, 'index'])->name('search');
-Route::get('sars/searchShow', function () {
-    return view('sars.searchShowSars');
-});
+Route::get('sars/searchShow', function () { return view('sars.searchShowSars');});
 
 // Route::get('/create-user', [UserController::class, 'create']);
 
@@ -39,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/sars/file-upload/excel', 'showExcel')->name('file-upload.excel');
     });
    
+    Route::resource('/susdata/susdataTable', SusdataController::class);
     Route::resource('/sars/dataTable', SarsController::class);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
@@ -46,3 +46,9 @@ Route::middleware(['auth'])->group(function () {
 Auth::routes();
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/mapa', function () { return view('sars.mapa');});
