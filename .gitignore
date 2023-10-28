@@ -1,6 +1,8 @@
 /.phpunit.cache
 /node_modules
 /public/build
+/public/uploads
+/resources/views/admin/sars/mapa.blade.php
 /public/hot
 /public/storage
 /storage/*.key
