@@ -16,7 +16,7 @@ class SarsController extends Controller
     {
         $sarsData = Sars::all();
         
-        return view('sars.dataTable')->with('sarsData', $sarsData);
+        return view('admin.sars.dataTable')->with('sarsData', $sarsData);
     }
 
     /**
@@ -48,7 +48,7 @@ class SarsController extends Controller
      */
     public function edit($id)
     {
-         return view('sars.editSars')->with('sarsData', Sars::find($id));
+         return view('admin.sars.editSars')->with('sarsData', Sars::find($id));
     }
 
     /**
@@ -229,7 +229,7 @@ class SarsController extends Controller
         $d->comment                               = $request->comment;
         $d->save();
 
-        return redirect()->route('dataTable.index')->with('success', 'The record was succesfully edited.');
+        return redirect()->route('admin.dataTable.index')->with('success', 'The record was succesfully edited.');
     }
 
     /**
@@ -239,7 +239,7 @@ class SarsController extends Controller
     { 
         Sars::find($id)->delete();
 
-        return redirect()->route('dataTable.index')->with('success', 'The record was deleted.');
+        return redirect()->route('admin.dataTable.index')->with('success', 'The record was deleted.');
     }
  
 }

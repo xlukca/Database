@@ -15,7 +15,7 @@ class SusdataController extends Controller
         $susdata = Susdata::paginate(10);
         // $susdata = Susdata::paginate(93973);
         // $susdata->setConnection('mysql_second');
-        return view('susdata.susdataTable')->with('susdata', $susdata);
+        return view('admin.susdata.susdataTable')->with('susdata', $susdata);
     }
 
     /**
@@ -48,7 +48,7 @@ class SusdataController extends Controller
     public function edit($id)
     {
         // $sus_id->setConnection('mysql_second');
-        return view('susdata.editSusdata')->with('susdata', Susdata::find($id));
+        return view('admin.susdata.editSusdata')->with('susdata', Susdata::find($id));
     }
 
     /**
@@ -205,7 +205,7 @@ class SusdataController extends Controller
         $d->remark                                              = $request->remark; 
         $d->save();
 
-        return redirect()->route('susdataTable.index')->with('success', 'The record was succesfully edited.');
+        return redirect()->route('admin.susdataTable.index')->with('success', 'The record was succesfully edited.');
     }
 
     /**
@@ -215,6 +215,6 @@ class SusdataController extends Controller
     {
         Susdata::find($id)->delete();
        // $sus_id->setConnection('mysql_second');
-        return redirect()->route('susdataTable.index')->with('success', 'The record was deleted.');
+        return redirect()->route('admin.susdataTable.index')->with('success', 'The record was deleted.');
     }
 }

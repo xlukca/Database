@@ -54,7 +54,7 @@ class SearchController extends Controller
     $stations = SARS::select('station_name')->distinct()->get();
     $years = SARS::select('sample_from_year')->distinct()->get();
 
-     return view('sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
+     return view('user.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
 }
 
 }

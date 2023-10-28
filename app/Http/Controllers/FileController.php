@@ -11,7 +11,7 @@ class FileController extends Controller
 {
     public function index() {
             $files = File::with('sars')->get();
-            return view('sars.fileUpload', compact('files'));
+            return view('admin.sars.fileUpload', compact('files'));
     }
     
     public function store(Request $request) {

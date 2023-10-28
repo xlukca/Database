@@ -1,9 +1,9 @@
-@extends('layouts.app')
-
+@extends('user.layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class=" mt-5 col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Welcome') }}</div>
 
@@ -17,9 +17,9 @@
                     {{ __('You are logged in!') }}
 
                     <hr>
-                        <ul class="mt-3">
-                            <li>{{ Auth::user()->first_name }}&nbsp;{{ Auth::user()->last_name }}</li>
-                        </ul>
+                    <ul class="mt-3">
+                        <li>{!! Auth::user()->full_name !!}</li>
+                    </ul>
 
                     <hr>
                         <ul class="mt-3">

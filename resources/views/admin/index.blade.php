@@ -1,9 +1,9 @@
-@extends('user.layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class=" mt-5 col-md-8">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Welcome in database') }}</div>
             </div>
