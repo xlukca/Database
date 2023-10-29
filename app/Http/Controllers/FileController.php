@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\Sars;
 use Spatie\SimpleExcel\SimpleExcelReader;
+use Exception;
 
 class FileController extends Controller
 {
@@ -15,6 +16,8 @@ class FileController extends Controller
     }
     
     public function store(Request $request) {
+      
+    try {
         $request->validate([
             'files' => 'required',
             'files.*' => 'required|mimes:csv,txt,xlx,xls,pdf,xlsx|max:2048'
@@ -32,11 +35,18 @@ class FileController extends Controller
         foreach ($files as $key => $file) {
             File::create($file);
         }
-        return back()->with('success', 'The file was successfully uploaded.');
+        session()->flash('success', 'The file was successfully uploaded');
+        return redirect()->back();
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }   
     }
         
     public function showExcel(Request $request)
-    {       
+    {
+        
+    try {   
         $items[] = 'type_of_data';
         $items[] = 'data_provider';
         $items[] = 'contact_person';
@@ -141,16 +151,27 @@ class FileController extends Controller
 
             Sars::insert($data); 
         }
-        return back()->with('success', 'The file was uploaded to database.');
+        session()->flash('success', 'The file was uploaded to database');
+        return redirect()->back();
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }   
     }
 
     public function destroy($id) {
+    
+    try {
         $file = File::where('id', $id)->first();
         //dd($file->sars);
         if (isset($file->sars))
             $file->sars->delete(); // Najskor je potrebne vymazat suvisiace zaznamy v Sars
         $file->delete(); // Az potom sa moze vymazt zaznam vo File
-
-        return back()->with('success', 'The file was deleted.');
+        session()->flash('success', 'The file was deleted');
+        return redirect()->back();
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }   
     }
 }

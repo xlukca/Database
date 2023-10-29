@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Susdata;
 use Illuminate\Http\Request;
+use Exception;
 
 class SusdataController extends Controller
 {
@@ -59,74 +60,74 @@ class SusdataController extends Controller
         // $sus_id->setConnection('mysql_second');
         $rules = [
             'name'                                          => 'nullable|string',
-            'name_dashboard'                                => 'nullable|mediumText',
-            'name_chemspider'                               => 'nullable|mediumText',
-            'name_iupac'                                    => 'nullable|mediumText',
-            'synonyms_chemspider'                           => 'nullable|mediumText',
-            'reliability_synonyms_chemspider'               => 'nullable|mediumText',
-            'cas_rn'                                        => 'nullable|mediumText',
-            'cas_rn_dashboard'                              => 'nullable|mediumText',
-            'cas_rn_pubchem'                                => 'nullable|mediumText',
-            'cas_rn_cactus'                                 => 'nullable|mediumText',
-            'cas_rn_chemspider'                             => 'nullable|mediumText',
-            'reliability_cas_rn_chemspider'                 => 'nullable|mediumText',
-            'validation_level'                              => 'nullable|mediumText',
-            'smiles'                                        => 'nullable|mediumText',
-            'smiles_dashboard'                              => 'nullable|mediumText',
-            'stdinchi'                                      => 'nullable|mediumText',
-            'stdinchikey'                                   => 'nullable|mediumText',
-            'ms_ready_smiles'                               => 'nullable|mediumText',
-            'ms_ready_stdinchi'                             => 'nullable|mediumText',
-            'ms_ready_stdinchikey'                          => 'nullable|mediumText',
-            'source'                                        => 'nullable|mediumText',
-            'pubchem_cid'                                   => 'nullable|mediumText',
-            'chemspider_id'                                 => 'nullable|mediumText',
+            'name_dashboard'                                => 'nullable|string',
+            'name_chemspider'                               => 'nullable|string',
+            'name_iupac'                                    => 'nullable|string',
+            'synonyms_chemspider'                           => 'nullable|string',
+            'reliability_synonyms_chemspider'               => 'nullable|string',
+            'cas_rn'                                        => 'nullable|string',
+            'cas_rn_dashboard'                              => 'nullable|string',
+            'cas_rn_pubchem'                                => 'nullable|string',
+            'cas_rn_cactus'                                 => 'nullable|string',
+            'cas_rn_chemspider'                             => 'nullable|string',
+            'reliability_cas_rn_chemspider'                 => 'nullable|string',
+            'validation_level'                              => 'nullable|string',
+            'smiles'                                        => 'nullable|string',
+            'smiles_dashboard'                              => 'nullable|string',
+            'stdinchi'                                      => 'nullable|string',
+            'stdinchikey'                                   => 'nullable|string',
+            'ms_ready_smiles'                               => 'nullable|string',
+            'ms_ready_stdinchi'                             => 'nullable|string',
+            'ms_ready_stdinchikey'                          => 'nullable|string',
+            'source'                                        => 'nullable|string',
+            'pubchem_cid'                                   => 'nullable|string',
+            'chemspider_id'                                 => 'nullable|string',
             'dtxsid'                                        => 'nullable|string',
-            'molecular_formula'                             => 'nullable|mediumText',
-            'monoiso_mass'                                  => 'nullable|mediumText',
-            'mhplus'                                        => 'nullable|mediumText',
-            'mhminus'                                       => 'nullable|mediumText',
-            'pred_rti_positive_esi'                         => 'nullable|mediumText',
-            'uncertainty_rti_pos'                           => 'nullable|mediumText',
-            'pred_rti_negative_esi'                         => 'nullable|mediumText',
-            'uncertainty_rti_neg'                           => 'nullable|mediumText',
-            'tetrahymena_pyriformis_toxicity'               => 'nullable|mediumText',
-            'igc50_48_hr'                                   => 'nullable|mediumText',
-            'uncertainty_tetrahymena_pyriformis_toxicity'   => 'nullable|mediumText',
-            'daphnia_toxicity'                              => 'nullable|mediumText',
-            'lc50_48_hr'                                    => 'nullable|mediumText',
-            'uncertainty_daphnia_toxicity'                  => 'nullable|mediumText',
-            'algae_toxicity'                                => 'nullable|mediumText',
-            'ec50_72_hr'                                    => 'nullable|mediumText',
-            'uncertainty_algae_toxicity'                    => 'nullable|mediumText',
-            'pimephales_promelas_toxicity'                  => 'nullable|mediumText',
-            'lc50_96_hr'                                    => 'nullable|mediumText',
-            'uncertainty_pimephales_promelas_toxicity'      => 'nullable|mediumText',
-            'logkow_episuite'                               => 'nullable|mediumText',
-            'exp_logkow_episuite'                           => 'nullable|mediumText',
-            'chemspider_id_based_on_inchikey_19032018'      => 'nullable|mediumText',
-            'alogp_chemspider'                              => 'nullable|mediumText',
-            'xlogp_chemspider'                              => 'nullable|mediumText',
-            'lowest_p_pnec_qsar'                            => 'nullable|mediumText',
-            'species'                                       => 'nullable|mediumText',
-            'uncertainty'                                   => 'nullable|mediumText',
-            'exposurescore_water_kemi'                      => 'nullable|mediumText',
-            'hazscore_ecochronic_kemi'                      => 'nullable|mediumText',
-            'validationlevel_kemi'                          => 'nullable|mediumText',
-            'prob_of_gc'                                    => 'nullable|mediumText',
-            'prob_rplc'                                     => 'nullable|mediumText',
-            'pred_chromatography'                           => 'nullable|mediumText',
-            'prob_of_both_ionization_source'                => 'nullable|mediumText',
-            'prob_ei'                                       => 'nullable|mediumText',
-            'prob_esi'                                      => 'nullable|mediumText',
-            'pred_ionization_source'                        => 'nullable|mediumText',
-            'prob_both_esi_mode'                            => 'nullable|mediumText',
-            'prob_plus_esi'                                 => 'nullable|mediumText',
-            'prob_minus_esi'                                => 'nullable|mediumText',
-            'pred_esi_mode'                                 => 'nullable|mediumText',
-            'preferable_platform_by_decision_tree'          => 'nullable|mediumText',
-            'synonyms'                                      => 'nullable|text',
-            'remark'                                        => 'nullable|text',
+            'molecular_formula'                             => 'nullable|string',
+            'monoiso_mass'                                  => 'nullable|string',
+            'mhplus'                                        => 'nullable|string',
+            'mhminus'                                       => 'nullable|string',
+            'pred_rti_positive_esi'                         => 'nullable|string',
+            'uncertainty_rti_pos'                           => 'nullable|string',
+            'pred_rti_negative_esi'                         => 'nullable|string',
+            'uncertainty_rti_neg'                           => 'nullable|string',
+            'tetrahymena_pyriformis_toxicity'               => 'nullable|string',
+            'igc50_48_hr'                                   => 'nullable|string',
+            'uncertainty_tetrahymena_pyriformis_toxicity'   => 'nullable|string',
+            'daphnia_toxicity'                              => 'nullable|string',
+            'lc50_48_hr'                                    => 'nullable|string',
+            'uncertainty_daphnia_toxicity'                  => 'nullable|string',
+            'algae_toxicity'                                => 'nullable|string',
+            'ec50_72_hr'                                    => 'nullable|string',
+            'uncertainty_algae_toxicity'                    => 'nullable|string',
+            'pimephales_promelas_toxicity'                  => 'nullable|string',
+            'lc50_96_hr'                                    => 'nullable|string',
+            'uncertainty_pimephales_promelas_toxicity'      => 'nullable|string',
+            'logkow_episuite'                               => 'nullable|string',
+            'exp_logkow_episuite'                           => 'nullable|string',
+            'chemspider_id_based_on_inchikey_19032018'      => 'nullable|string',
+            'alogp_chemspider'                              => 'nullable|string',
+            'xlogp_chemspider'                              => 'nullable|string',
+            'lowest_p_pnec_qsar'                            => 'nullable|string',
+            'species'                                       => 'nullable|string',
+            'uncertainty'                                   => 'nullable|string',
+            'exposurescore_water_kemi'                      => 'nullable|string',
+            'hazscore_ecochronic_kemi'                      => 'nullable|string',
+            'validationlevel_kemi'                          => 'nullable|string',
+            'prob_of_gc'                                    => 'nullable|string',
+            'prob_rplc'                                     => 'nullable|string',
+            'pred_chromatography'                           => 'nullable|string',
+            'prob_of_both_ionization_source'                => 'nullable|string',
+            'prob_ei'                                       => 'nullable|string',
+            'prob_esi'                                      => 'nullable|string',
+            'pred_ionization_source'                        => 'nullable|string',
+            'prob_both_esi_mode'                            => 'nullable|string',
+            'prob_plus_esi'                                 => 'nullable|string',
+            'prob_minus_esi'                                => 'nullable|string',
+            'pred_esi_mode'                                 => 'nullable|string',
+            'preferable_platform_by_decision_tree'          => 'nullable|string',
+            'synonyms'                                      => 'nullable|string',
+            'remark'                                        => 'nullable|string',
         ];
       
        // dd($request);
@@ -165,7 +166,6 @@ class SusdataController extends Controller
         $d->pred_rti_positive_esi                               = $request->pred_rti_positive_esi;
         $d->uncertainty_rti_pos                                 = $request->uncertainty_rti_pos;
         $d->pred_rti_negative_esi                               = $request->pred_rti_negative_esi;
-        $d->pred_rti_negative_esi                               = $request->pred_rti_negative_esi;
         $d->tetrahymena_pyriformis_toxicity                     = $request->tetrahymena_pyriformis_toxicity;
         $d->igc50_48_hr                                         = $request->igc50_48_hr;
         $d->uncertainty_tetrahymena_pyriformis_toxicity         = $request->uncertainty_tetrahymena_pyriformis_toxicity;
@@ -203,9 +203,14 @@ class SusdataController extends Controller
         $d->preferable_platform_by_decision_tree                = $request->preferable_platform_by_decision_tree; 
         $d->synonyms                                            = $request->synonyms; 
         $d->remark                                              = $request->remark; 
+    try {
         $d->save();
-
-        return redirect()->route('admin.susdataTable.index')->with('success', 'The record was succesfully edited.');
+        session()->flash('success', 'The record was succesfully edited.');
+        return redirect()->route('susdataTable.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back()->withInput();
+    }
     }
 
     /**
@@ -213,8 +218,14 @@ class SusdataController extends Controller
      */
     public function destroy($id)
     {
+    try {
         Susdata::find($id)->delete();
        // $sus_id->setConnection('mysql_second');
-        return redirect()->route('admin.susdataTable.index')->with('success', 'The record was deleted.');
+        session()->flash('success', 'The record was deleted');
+        return redirect()->route('susdataTable.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }        
     }
 }

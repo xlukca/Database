@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 
 <div class="container">
@@ -7,6 +7,90 @@
         <div class="col-8">
             {{ Form::model($sarsData, ['route' => ['dataTable.update', $sarsData->id], 'method' => 'PUT']) }}
 
+            @include('_templates.form-text', ['field_name' => 'sample_from_year', 'field_name_text' => 'Sample from Year'])
+            @include('_templates.form-text', ['field_name' => 'sample_from_month', 'field_name_text' => 'Sample from Month'])
+            @include('_templates.form-text', ['field_name' => 'sample_from_day', 'field_name_text' => 'Sample from Day'])
+            @include('_templates.form-text', ['field_name' => 'gene1', 'field_name_text' => 'Gene copy [number/mL of sample]'])
+            @include('_templates.form-text', ['field_name' => 'gene2', 'field_name_text' => 'Gene copy [number/ng of RNA]'])
+            @include('_templates.form-text', ['field_name' => 'ct', 'field_name_text' => 'Ct #'])
+            @include('_templates.form-text', ['field_name' => 'station_name', 'field_name_text' => 'Sampling Site/Station'])
+            @include('_templates.form-text', ['field_name' => 'population_served', 'field_name_text' => 'Population Served'])
+            @include('_templates.form-text', ['field_name' => 'people_positive', 'field_name_text' => 'No. of people SARS-CoV-2 POSITIVE'])
+            @include('_templates.form-text', ['field_name' => 'name_of_country', 'field_name_text' => 'Country'])
+            @include('_templates.form-text', ['field_name' => 'type_of_data', 'field_name_text' => 'Type of data'])
+            @include('_templates.form-text', ['field_name' => 'data_provider', 'field_name_text' => 'Data provider'])
+            @include('_templates.form-text', ['field_name' => 'contact_person', 'field_name_text' => 'Contact person'])
+            @include('_templates.form-text', ['field_name' => 'address_of_contact', 'field_name_text' => 'Address of contact'])
+            @include('_templates.form-text', ['field_name' => 'email', 'field_name_text' => 'Email'])
+            @include('_templates.form-text', ['field_name' => 'laboratory', 'field_name_text' => 'Laboratory'])
+            @include('_templates.form-text', ['field_name' => 'name_of_city', 'field_name_text' => 'Name of city'])
+            @include('_templates.form-text', ['field_name' => 'national_code', 'field_name_text' => 'National code'])
+            @include('_templates.form-text', ['field_name' => 'relevant_ec_code_wise', 'field_name_text' => 'Relevant ec code wise'])
+            @include('_templates.form-text', ['field_name' => 'relevant_ec_code_other', 'field_name_text' => 'Relevant ec code other'])
+            @include('_templates.form-text', ['field_name' => 'other_code', 'field_name_text' => 'Other code'])
+            @include('_templates.form-text', ['field_name' => 'latitude', 'field_name_text' => 'Latitude'])
+            @include('_templates.form-text', ['field_name' => 'latitude_d', 'field_name_text' => 'Latitude d'])
+            @include('_templates.form-text', ['field_name' => 'latitude_m', 'field_name_text' => 'Latitude m'])
+            @include('_templates.form-text', ['field_name' => 'latitude_s', 'field_name_text' => 'Latitude s'])
+            @include('_templates.form-text', ['field_name' => 'latitude_decimal', 'field_name_text' => 'Latitude decimal'])
+            @include('_templates.form-text', ['field_name' => 'longitude', 'field_name_text' => 'Longitude'])
+            @include('_templates.form-text', ['field_name' => 'longitude_d', 'field_name_text' => 'Longitude d'])
+            @include('_templates.form-text', ['field_name' => 'longitude_m', 'field_name_text' => 'Longitude m'])
+            @include('_templates.form-text', ['field_name' => 'longitude_s', 'field_name_text' => 'Longitude s'])
+            @include('_templates.form-text', ['field_name' => 'longitude_decimal', 'field_name_text' => 'Longitude decimal'])
+            @include('_templates.form-text', ['field_name' => 'altitude', 'field_name_text' => 'Altitude'])
+            @include('_templates.form-text', ['field_name' => 'design_capacity', 'field_name_text' => 'Design capacity'])
+            @include('_templates.form-text', ['field_name' => 'catchment_size', 'field_name_text' => 'Catchment size'])
+            @include('_templates.form-text', ['field_name' => 'gdp', 'field_name_text' => 'Gdp'])
+            @include('_templates.form-text', ['field_name' => 'people_recovered', 'field_name_text' => 'People recovered'])
+            @include('_templates.form-text', ['field_name' => 'people_positive_past', 'field_name_text' => 'People positive past'])
+            @include('_templates.form-text', ['field_name' => 'people_recovered_past', 'field_name_text' => 'People recovered past'])
+            @include('_templates.form-text', ['field_name' => 'sample_matrix', 'field_name_text' => 'Sample matrix'])
+            @include('_templates.form-text', ['field_name' => 'sample_from_hour', 'field_name_text' => 'Sample from hour'])
+            @include('_templates.form-text', ['field_name' => 'sample_to_hour', 'field_name_text' => 'Sample to hour'])
+            @include('_templates.form-text', ['field_name' => 'sample_to_day', 'field_name_text' => 'Sample to day'])
+            @include('_templates.form-text', ['field_name' => 'sample_to_month', 'field_name_text' => 'Sample to month'])
+            @include('_templates.form-text', ['field_name' => 'sample_to_year', 'field_name_text' => 'Sample to year'])
+            @include('_templates.form-text', ['field_name' => 'type_of_sample', 'field_name_text' => 'Type of sample'])
+            @include('_templates.form-text', ['field_name' => 'type_of_composite_sample', 'field_name_text' => 'Type of composite sample'])
+            @include('_templates.form-text', ['field_name' => 'sample_interval', 'field_name_text' => 'Sample interval'])
+            @include('_templates.form-text', ['field_name' => 'flow_total', 'field_name_text' => 'Flow total'])
+            @include('_templates.form-text', ['field_name' => 'flow_minimum', 'field_name_text' => 'Flow minimum'])
+            @include('_templates.form-text', ['field_name' => 'flow_maximum', 'field_name_text' => 'Flow maximum'])
+            @include('_templates.form-text', ['field_name' => 'temperature', 'field_name_text' => 'Temperature'])
+            @include('_templates.form-text', ['field_name' => 'cod', 'field_name_text' => 'Cod'])
+            @include('_templates.form-text', ['field_name' => 'total_n_nh4_n', 'field_name_text' => 'Total n nh4 n'])
+            @include('_templates.form-text', ['field_name' => 'tss', 'field_name_text' => 'Tss'])
+            @include('_templates.form-text', ['field_name' => 'dry_weather_conditions', 'field_name_text' => 'Dry weather conditions'])
+            @include('_templates.form-text', ['field_name' => 'last_rain_event', 'field_name_text' => 'Last rain event'])
+            @include('_templates.form-text', ['field_name' => 'associated_phenotype', 'field_name_text' => 'Associated phenotype'])
+            @include('_templates.form-text', ['field_name' => 'genetic_marker', 'field_name_text' => 'Genetic marker'])
+            @include('_templates.form-text', ['field_name' => 'date_of_sample_preparation', 'field_name_text' => 'Date of sample preparation'])
+            @include('_templates.form-text', ['field_name' => 'storage_of_sample', 'field_name_text' => 'Storage of sample'])
+            @include('_templates.form-text', ['field_name' => 'volume_of_sample', 'field_name_text' => 'Volume of sample'])
+            @include('_templates.form-text', ['field_name' => 'internal_standard_used1', 'field_name_text' => 'Internal standard used1'])
+            @include('_templates.form-text', ['field_name' => 'method_used_for_sample_preparation', 'field_name_text' => 'Method used for sample preparation'])
+            @include('_templates.form-text', ['field_name' => 'date_of_rna_extraction', 'field_name_text' => 'Date of rna extraction'])
+            @include('_templates.form-text', ['field_name' => 'method_used_for_rna_extraction', 'field_name_text' => 'Method used for rna extraction'])
+            @include('_templates.form-text', ['field_name' => 'internal_standard_used2', 'field_name_text' => 'Internal standard used2'])
+            @include('_templates.form-text', ['field_name' => 'rna1', 'field_name_text' => 'RNA 1'])
+            @include('_templates.form-text', ['field_name' => 'rna2', 'field_name_text' => 'RNA 2'])
+            @include('_templates.form-text', ['field_name' => 'replicates1', 'field_name_text' => 'Replicates 1'])
+            @include('_templates.form-text', ['field_name' => 'analytical_method_type', 'field_name_text' => 'Analytical method type'])
+            @include('_templates.form-text', ['field_name' => 'analytical_method_type_other', 'field_name_text' => 'Analytical method type other'])
+            @include('_templates.form-text', ['field_name' => 'date_of_analysis', 'field_name_text' => 'Date of analysis'])
+            @include('_templates.form-text', ['field_name' => 'lod1', 'field_name_text' => 'Lod 1'])
+            @include('_templates.form-text', ['field_name' => 'lod2', 'field_name_text' => 'Lod 2'])
+            @include('_templates.form-text', ['field_name' => 'loq1', 'field_name_text' => 'Loq 1'])
+            @include('_templates.form-text', ['field_name' => 'loq2', 'field_name_text' => 'Loq 2'])
+            @include('_templates.form-text', ['field_name' => 'uncertainty_of_the_quantification', 'field_name_text' => 'Uncertainty of the quantification'])
+            @include('_templates.form-text', ['field_name' => 'efficiency', 'field_name_text' => 'Efficiency'])
+            @include('_templates.form-text', ['field_name' => 'rna3', 'field_name_text' => 'RNA 3'])
+            @include('_templates.form-text', ['field_name' => 'pos_control_used', 'field_name_text' => 'Pos control used'])
+            @include('_templates.form-text', ['field_name' => 'replicates2', 'field_name_text' => 'Replicates 2'])
+            @include('_templates.form-text', ['field_name' => 'comment', 'field_name_text' => 'Comment'])
+            
+{{-- 
             {{ Form::label('sample_from_year', 'Sample_from_year') }}
             {{ Form::text('sample_from_year', $sarsData->sample_from_year, array('class' => 'form-control mb-3')) }}
 
@@ -252,7 +336,7 @@
 
             {{ Form::label('comment', 'Comment') }}
             {{ Form::text('comment', $sarsData->comment, array('class' => 'form-control mb-3')) }}
-
+ --}}
             {{ Form::submit('Submit', array('class' => 'btn btn-sm btn-primary')) }}
 
             {{ Form::close() }}

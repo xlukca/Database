@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 
 <div class="container mt-5">
     <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
         <h3 class="text-center mb-5">Sars File Upload</h3>
         @csrf
-        @if ($message = Session::get('success'))
+        {{-- @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <strong>{{ $message }}</strong>
         </div>
@@ -18,7 +18,7 @@
                 @endforeach
             </ul>
         </div>
-        @endif
+        @endif --}}
         <div class="custom-file">
             <input type="file" name="files[]" class="custom-file-input" id="chooseFile" multiple>
             <label class="custom-file-label" for="chooseFile"></label>

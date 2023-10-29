@@ -360,7 +360,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                @include('admin.layouts.errors')
                 @yield('content')
 
                 </div>

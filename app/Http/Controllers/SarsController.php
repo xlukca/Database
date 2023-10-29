@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Sars;
 use Spatie\SimpleExcel\SimpleExcelReader;
 use DataTables;
+use Exception;
 
 class SarsController extends Controller
 {
@@ -227,9 +228,14 @@ class SarsController extends Controller
         $d->pos_control_used                      = $request->pos_control_used;
         $d->replicates2                           = $request->replicates2;
         $d->comment                               = $request->comment;
+    try {
         $d->save();
-
-        return redirect()->route('admin.dataTable.index')->with('success', 'The record was succesfully edited.');
+        session()->flash('success', 'The record was succesfully edited.');
+        return redirect()->route('dataTable.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back()->withInput();
+    }
     }
 
     /**
@@ -237,9 +243,15 @@ class SarsController extends Controller
      */
     public function destroy($id)
     { 
+    
+    try {
         Sars::find($id)->delete();
-
-        return redirect()->route('admin.dataTable.index')->with('success', 'The record was deleted.');
+        session()->flash('success', 'The record was deleted');
+        return redirect()->route('dataTable.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }        
     }
  
 }

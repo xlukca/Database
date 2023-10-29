@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 
 <style>th, td {text-align: center;}</style>
@@ -9,7 +9,7 @@
 <div class="form-group">
 
         <table class="table table-striped table-hover" id="dataTable">
-            @csrf
+            {{-- @csrf
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <strong>{{ $message }}</strong>
@@ -23,12 +23,12 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>CAS_RN</th>
+                        <th>CAS RN</th>
                         <th>StdInChIKey</th>
                         <th>DTXSID</th>
                         <th>Action Edit</th>
