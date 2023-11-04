@@ -46,8 +46,6 @@
 
             <!-- Nav Item - Dashboard -->
 
-            @guest
-            @else
             <li class="nav-item">
                 <a class="nav-link" href="/">
                     <i class="fas fa-home"></i>
@@ -58,18 +56,22 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-           
+            <div class="sidebar-heading">
+                USERS
+            </div>
+            
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/users">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Login Retention</span></a>
+            </li>
 
             <!-- Heading -->
-            @endguest
             <div class="sidebar-heading">
                 SARS
             </div>
-            @guest
-            @else
          
-           
-
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sars.fileUpload') }}">
@@ -83,15 +85,13 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Table data</span></a>
             </li>
-            @endguest
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('searchSars') }}">
                     <i class="fas fa-search"></i>
                     <span>Search Data</span></a>
             </li>
 
-            @guest
-            @else
             <div class="sidebar-heading">
                 SUBSTANCE
             </div>
@@ -101,7 +101,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Table data</span></a>
             </li>
-            @endguest
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -151,23 +151,6 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-
-                            <li class="nav-item active">
-                        @guest
-                                <a class="nav-link" href="/home">
-                                <i class="fas fa-sign-in-alt"></i>
-                                    <span>Login</span></a>
-                            </li>
-                            
-                            <li class="nav-item active">
-                             
-                                <a class="nav-link" href="{{ route('register') }}">
-                                <i class="fas fa-registered"></i>
-                                    <span>egister</span></a>
-                           
-                        @endguest  
-                            </li>
-
 
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -308,9 +291,6 @@
 
                         <!-- Nav Item - User Information -->
 
-                        @guest
-                       
-                        @else
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -350,7 +330,6 @@
                                     </form>  
 
                             </div>  
-                        @endguest
                         </li>
 
                     </ul>
@@ -440,5 +419,4 @@
         </script>
         <script src="{{ asset('admin/js/scripts.js') }}"></script>
 </body>
-
 </html>

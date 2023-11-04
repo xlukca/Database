@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SusdataController;
-use App\Http\Models\Sars;
+use App\Http\Controllers\LoginRetentionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin/susdata', SusdataController::class);
     Route::delete('/admin/susdata/force/{id}', [SusdataController::class, 'forceDestroy'])->name('susdata.forceDestroy');
     Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
+
+    // USERS
+    Route::resource('/admin/users', UserController::class);
+    Route::resource('/admin/retentions', LoginRetentionController::class);
 });

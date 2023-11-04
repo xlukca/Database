@@ -53,6 +53,10 @@ class User extends Authenticatable
     
     public function setLastNameAttribute($value){
         return $this->attributes['last_name'] = ucwords(strtolower($value));
-    }  
+    }
+    
+    public function retentions() {
+        return $this->hasMany(LoginRetention::class, 'user_id', 'id');
+    }
 
 }
