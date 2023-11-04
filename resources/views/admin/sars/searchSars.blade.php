@@ -8,7 +8,7 @@
 
 <div class="headline mt-3 mb-3"><h3>Search criteria</h3></div> 
 
-<form action="{{ route('search') }}" method="GET">
+<form action="{{ route('searchSars') }}" method="GET">
     
     <div class="row mt-2 mb-4">
         <div class="col-md-2">

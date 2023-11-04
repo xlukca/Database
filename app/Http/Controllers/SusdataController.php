@@ -13,10 +13,10 @@ class SusdataController extends Controller
      */
     public function index()
     {
-        $susdata = Susdata::paginate(10);
+        $susdata = Susdata::withTrashed()->paginate(10);
         // $susdata = Susdata::paginate(93973);
         // $susdata->setConnection('mysql_second');
-        return view('admin.susdata.susdataTable')->with('susdata', $susdata);
+        return view('admin.susdata.index')->with('susdata', $susdata);
     }
 
     /**
@@ -206,7 +206,7 @@ class SusdataController extends Controller
     try {
         $d->save();
         session()->flash('success', 'The record was succesfully edited.');
-        return redirect()->route('susdataTable.index');
+        return redirect()->route('susdata.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back()->withInput();
@@ -222,10 +222,34 @@ class SusdataController extends Controller
         Susdata::find($id)->delete();
        // $sus_id->setConnection('mysql_second');
         session()->flash('success', 'The record was deleted');
-        return redirect()->route('susdataTable.index');
+        return redirect()->route('susdata.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back();
     }        
     }
+
+    public function forceDestroy($id)
+{
+    try {
+        Susdata::withTrashed()->find($id)->forceDelete();
+        session()->flash('success', 'The record was permanently deleted');
+        return redirect()->route('susdata.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }
+}
+
+public function restore($id)
+{
+    try {
+        Susdata::withTrashed()->find($id)->restore();
+        session()->flash('success', 'The record restored');
+        return redirect()->route('susdata.index');
+    } catch (Exception $e) {
+        session()->flash('failure', $e->getMessage());
+        return redirect()->back();
+    }
+}
 }

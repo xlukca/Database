@@ -39,17 +39,26 @@
                     <tbody>
                         @csrf
                         @foreach ($susdata as $sus)
-                            <tr>
+                            <tr @if($sus->trashed())class="table-danger"@endif>
                                 <td>{{ $sus->id }}</td>
                                 <td>{{ $sus->name }}</td>
                                 <td>{{ $sus->cas_rn }}</td>
                                 <td>{{ $sus->stdinchikey }}</td>
                                 <td>{{ $sus->dtxsid }}</td>
-                                <td><a class="btn btn-info" href="{{ route('susdataTable.edit', $sus->id) }}">Edit</a></td>
+                                <td><a class="btn btn-info" href="{{ route('susdata.edit', $sus->id) }}">Edit</a></td>
                                 <td>
-                                    {!! Form::open(array('route' => ['susdataTable.destroy', $sus->id], 'method'=>'DELETE')) !!}
+                                    @if($sus->trashed())
+                                    {!! Form::open(array('route' => ['susdata.forceDestroy', $sus->id], 'method'=>'DELETE')) !!}
+                                    {!! Form::submit('Permanent Delete', array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("You are about to PERMANENTLY delete the record.")')) !!}
+                                    {!! Form::close() !!}
+                                    {!! Form::open(array('route' => ['susdata.restore', $sus->id], 'method'=>'POST')) !!}
+                                    {!! Form::submit('Restore', array('class' => 'btn btn-success btn-sm mt-1')) !!}
+                                    {!! Form::close() !!}
+                                    @else
+                                    {!! Form::open(array('route' => ['susdata.destroy', $sus->id], 'method'=>'DELETE')) !!}
                                     {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
                                     {!! Form::close() !!}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

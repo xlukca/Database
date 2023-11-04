@@ -5,7 +5,7 @@
     <h3 class="mb-5">Update of the Sars</h3>
     <div class="row">
         <div class="col-8">
-            {{ Form::model($sarsData, ['route' => ['dataTable.update', $sarsData->id], 'method' => 'PUT']) }}
+            {{ Form::model($sarsData, ['route' => ['sars.update', $sarsData->id], 'method' => 'PUT']) }}
 
             @include('_templates.form-text', ['field_name' => 'sample_from_year', 'field_name_text' => 'Sample from Year'])
             @include('_templates.form-text', ['field_name' => 'sample_from_month', 'field_name_text' => 'Sample from Month'])

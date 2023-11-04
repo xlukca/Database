@@ -11,7 +11,7 @@ use Exception;
 class FileController extends Controller
 {
     public function index() {
-            $files = File::with('sars')->get();
+            $files = File::with('sars')->withTrashed()->get();
             return view('admin.sars.fileUpload', compact('files'));
     }
     
@@ -174,4 +174,29 @@ class FileController extends Controller
         return redirect()->back();
     }   
     }
+
+    public function forceDestroy($id)
+    {
+        try {
+            File::withTrashed()->find($id)->forceDelete();
+            session()->flash('success', 'The file was permanently deleted');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+    
+    public function restore($id)
+    {
+        try {
+            File::withTrashed()->find($id)->restore();
+            session()->flash('success', 'The file restored');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+    
 }

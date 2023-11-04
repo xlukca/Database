@@ -15,9 +15,9 @@ class SarsController extends Controller
      */
     public function index(Request $request)
     {
-        $sarsData = Sars::all();
+        $sarsData = Sars::withTrashed()->get();
         
-        return view('admin.sars.dataTable')->with('sarsData', $sarsData);
+        return view('admin.sars.index')->with('sarsData', $sarsData);
     }
 
     /**
@@ -231,7 +231,7 @@ class SarsController extends Controller
     try {
         $d->save();
         session()->flash('success', 'The record was succesfully edited.');
-        return redirect()->route('dataTable.index');
+        return redirect()->route('sars.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back()->withInput();
@@ -247,11 +247,35 @@ class SarsController extends Controller
     try {
         Sars::find($id)->delete();
         session()->flash('success', 'The record was deleted');
-        return redirect()->route('dataTable.index');
+        return redirect()->route('sars.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back();
     }        
     }
- 
+
+    public function forceDestroy($id)
+    {
+        try {
+            Sars::withTrashed()->find($id)->forceDelete();
+            session()->flash('success', 'The record was permanently deleted');
+            return redirect()->route('sars.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+        public function restore($id)
+    {
+        try {
+            Sars::withTrashed()->find($id)->restore();
+            session()->flash('success', 'The record restored');
+            return redirect()->route('sars.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
 }

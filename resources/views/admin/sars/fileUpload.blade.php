@@ -41,7 +41,7 @@
         <tbody>
             @csrf
             @foreach($files as $file)
-            <tr>
+            <tr @if($file->trashed())class="table-danger"@endif>
                 <td>
                     @if(!isset($file->sars->file_id))
                     <input type="checkbox" name="files[]" value="{{ $file->id }}" form="form2" multiple>
@@ -49,9 +49,18 @@
                 </td>
                 <td>{{ $file->name }}</td>
                 <td>
+                    @if($file->trashed())
+                    {!! Form::open(array('route' => ['file-upload.forceDestroy', $file->id], 'method'=>'DELETE')) !!}
+                    {!! Form::submit('Permanent Delete', array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("You are about to PERMANENTLY delete the file.")')) !!}
+                    {!! Form::close() !!}
+                    {!! Form::open(array('route' => ['file-upload.restore', $file->id], 'method'=>'POST')) !!}
+                    {!! Form::submit('Restore', array('class' => 'btn btn-success btn-sm mt-1')) !!}
+                    {!! Form::close() !!}
+                    @else
                     {!! Form::open(array('route' => ['file-upload.destroy', $file->id], 'method'=>'DELETE')) !!}
                     {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
                     {!! Form::close() !!}
+                    @endif
                 </td>
             </tr>
             @endforeach

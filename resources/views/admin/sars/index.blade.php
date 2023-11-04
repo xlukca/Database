@@ -30,7 +30,7 @@
                     <tbody>
                         @csrf
                         @foreach ($sarsData as $s)
-                            <tr>
+                            <tr @if($s->trashed())class="table-danger"@endif>
                                 {{-- <td>
                                     @if(!isset($s->sars->file_id))
                                     <input type="checkbox" name="files[]" value="{{ $s->id }}" form="form3" multiple>
@@ -45,11 +45,20 @@
                                 <td>{{ $s->population_served }}</td>
                                 <td>{{ $s->people_positive }}</td>
                                 <td>{{ $s->name_of_country }}</td>
-                                <td><a class="btn btn-info" href="{{ route('dataTable.edit', $s->id) }}">Edit</a></td>
+                                <td><a class="btn btn-info" href="{{ route('sars.edit', $s->id) }}">Edit</a></td>
                                 <td>
-                                    {!! Form::open(array('route' => ['dataTable.destroy', $s->id], 'method'=>'DELETE')) !!}
-                                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
+                                    @if($s->trashed())
+                                    {!! Form::open(array('route' => ['sars.forceDestroy', $s->id], 'method'=>'DELETE')) !!}
+                                    {!! Form::submit('Permanent Delete', array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("You are about to PERMANENTLY delete the record.")')) !!}
                                     {!! Form::close() !!}
+                                    {!! Form::open(array('route' => ['sars.restore', $s->id], 'method'=>'POST')) !!}
+                                    {!! Form::submit('Restore', array('class' => 'btn btn-success btn-sm mt-1')) !!}
+                                    {!! Form::close() !!}
+                                    @else
+                                    {!! Form::open(array('route' => ['sars.destroy', $s->id], 'method'=>'DELETE')) !!}
+                                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the record.")')) !!}
+                                    {!! Form::close() !!}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

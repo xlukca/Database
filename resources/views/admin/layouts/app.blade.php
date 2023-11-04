@@ -79,13 +79,13 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/sars/dataTable">
+                <a class="nav-link" href="/admin/sars">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Table data</span></a>
             </li>
             @endguest
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('search') }}">
+                <a class="nav-link" href="{{ route('searchSars') }}">
                     <i class="fas fa-search"></i>
                     <span>Search Data</span></a>
             </li>
@@ -97,7 +97,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="/susdata/susdataTable">
+                <a class="nav-link" href="/admin/susdata">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Table data</span></a>
             </li>

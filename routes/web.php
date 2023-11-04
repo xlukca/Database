@@ -23,7 +23,9 @@ use App\Http\Models\Sars;
 Route::get('/', function () { return view('index');});
 
 // User
-Route::get('sars/search', [SearchController::class, 'index'])->name('search');
+
+    //SARS
+Route::get('user/sars/search', [SearchController::class, 'index'])->name('searchSars');
 
 // Admin
 Auth::routes();
@@ -32,14 +34,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/home', function () { return view('admin.index');});
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    // SARS
     Route::controller(FileController::class)->group(function () {
-        Route::delete('/sars/file-upload/{id}', 'destroy')->name('file-upload.destroy');
-        Route::get('/sars/file-upload', 'index')->name('sars.fileUpload');
-        Route::post('/sars/file-upload', 'store')->name('file.store');
-        Route::post('/sars/file-upload/excel', 'showExcel')->name('file-upload.excel');
+        Route::delete('admin/sars/file-upload/{id}', 'destroy')->name('file-upload.destroy');
+        Route::get('admin/sars/file-upload', 'index')->name('sars.fileUpload');
+        Route::post('admin/sars/file-upload', 'store')->name('file.store');
+        Route::post('admin/sars/file-upload/excel', 'showExcel')->name('file-upload.excel');
+        Route::delete('/admin/sars/file-upload/force/{id}', 'forceDestroy')->name('file-upload.forceDestroy');
+        Route::post('/admin/sars/file-upload/restore/{id}', 'restore')->name('file-upload.restore');
     });
-   
-    Route::resource('/sars/dataTable', SarsController::class);
-    Route::resource('/susdata/susdataTable', SusdataController::class);
-    // Route::get('/mapa', function () { return view('sars.mapa');});
+   // Route::get('/mapa', function () { return view('sars.mapa');});
+    Route::resource('admin/sars', SarsController::class);
+    Route::delete('/admin/sars/force/{id}', [SarsController::class, 'forceDestroy'])->name('sars.forceDestroy');
+    Route::post('/admin/sars/restore/{id}', [SarsController::class, 'restore'])->name('sars.restore');
+    
+    // SUSDATA
+    Route::resource('admin/susdata', SusdataController::class);
+    Route::delete('/admin/susdata/force/{id}', [SusdataController::class, 'forceDestroy'])->name('susdata.forceDestroy');
+    Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
 });
