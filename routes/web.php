@@ -25,7 +25,11 @@ Route::get('/', function () { return view('index');});
 // User
 
     //SARS
-Route::get('user/sars/search', [SearchController::class, 'index'])->name('searchSars');
+Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
+
+    //SUSDATA
+Route::get('user/susdata/search', [SusdataController::class, 'search'])->name('searchSusdata');
+
 
 // Admin
 Auth::routes();

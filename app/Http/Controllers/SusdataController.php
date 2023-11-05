@@ -230,26 +230,74 @@ class SusdataController extends Controller
     }
 
     public function forceDestroy($id)
-{
-    try {
-        Susdata::withTrashed()->find($id)->forceDelete();
-        session()->flash('success', 'The record was permanently deleted');
-        return redirect()->route('susdata.index');
-    } catch (Exception $e) {
-        session()->flash('failure', $e->getMessage());
-        return redirect()->back();
+    {
+        try {
+            Susdata::withTrashed()->find($id)->forceDelete();
+            session()->flash('success', 'The record was permanently deleted');
+            return redirect()->route('susdata.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
     }
-}
 
-public function restore($id)
-{
-    try {
-        Susdata::withTrashed()->find($id)->restore();
-        session()->flash('success', 'The record restored');
-        return redirect()->route('susdata.index');
-    } catch (Exception $e) {
-        session()->flash('failure', $e->getMessage());
-        return redirect()->back();
+    public function restore($id)
+    {
+        try {
+            Susdata::withTrashed()->find($id)->restore();
+            session()->flash('success', 'The record restored');
+            return redirect()->route('susdata.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back();
+        }
     }
-}
+
+    public function search(Request $request)
+    {
+        $id = $request->input('id') ?? array();
+        $name = $request->input('name') ?? array();
+        $cas_rn = $request->input('cas_rn') ?? array();
+        $stdinchikey = $request->input('stdinchikey') ?? array();
+        $dtxsid = $request->input('dtxsid') ?? array();
+
+    $sql = [];
+    if  ($id) { 
+        $value = implode("','", $id); 
+        $sql[] .= "id IN ('$value')";
+        }
+        if  ($name) { 
+            $value = implode("','", $name); 
+            $sql[] .= "name IN ('$value')";
+            }
+        if  ($cas_rn) { 
+            $value = implode("','", $cas_rn); 
+            $sql[] .= "cas_rn IN ('$value')";
+            }
+        if  ($stdinchikey) { 
+            $value = implode("','", $stdinchikey); 
+            $sql[] .= "stdinchikey IN ('$value')";
+            }
+        if  ($dtxsid) { 
+            $value = implode("','", $dtxsid); 
+            $sql[] .= "dtxsid IN ('$value')";
+            }
+        if($sql) {
+            $query = 'WHERE ' . implode(' AND ', $sql);
+        }
+        else {
+            $query = '';
+        }
+        $results = \DB::select("SELECT * FROM susdatas $query");        
+        
+        $id = Susdata::select('id')->distinct()->get();
+        $name = Susdata::select('name')->distinct()->get();
+        $cas_rn = Susdata::select('cas_rn')->distinct()->get();
+        $stdinchikey = Susdata::select('stdinchikey')->distinct()->get();
+        $dtxsid = Susdata::select('dtxsid')->distinct()->get();
+
+
+        return view('user.susdata.searchSusdata', compact('results', 'id', 'name', 'cas_rn', 'stdinchikey', 'dtxsid'));
+    }
+
 }

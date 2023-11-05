@@ -102,6 +102,12 @@
                     <span>Table data</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('searchSusdata') }}">
+                    <i class="fas fa-search"></i>
+                    <span>Search Data</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -35,12 +35,12 @@
                                     <li><a class="dropdown-item" href="{{ route('searchSars') }}">Search Data</a></li>
                                 </ul>
                             </li>
-                            {{-- <li class="nav-item dropdown">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SUSDATA</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                                     <li><a class="dropdown-item" href="{{ route('searchSusdata') }}">Search Data</a></li>
                                 </ul>
-                            </li> --}}
+                            </li>
                             <li class="nav-item nav-link">|</li>
                             
                         @guest
