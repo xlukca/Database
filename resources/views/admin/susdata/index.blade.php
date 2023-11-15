@@ -8,7 +8,7 @@
   
 <div class="form-group">
 
-        <table class="table table-striped table-hover" id="dataTable">
+        <table class="table table-bordered yajra-datatable">
             {{-- @csrf
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -31,13 +31,12 @@
                         <th>CAS RN</th>
                         <th>StdInChIKey</th>
                         <th>DTXSID</th>
-                        <th>Action Edit</th>
-                        <th>Action Delete</th>
+                        <th>Actions</th>
                         
                         </tr>
                     </thead>
                     <tbody>
-                        @csrf
+                        {{-- @csrf
                         @foreach ($susdata as $sus)
                             <tr @if($sus->trashed())class="table-danger"@endif>
                                 <td>{{ $sus->id }}</td>
@@ -61,12 +60,38 @@
                                     @endif
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
-                {{ $susdata->links() }}
+                {{-- {{ $susdata->links() }} --}}
 </div> 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+      
+      var table = $('.yajra-datatable').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "/admin/susdata",
+          columns: [
+              {data: 'id', name: 'id'},
+              {data: 'name', name: 'name'},
+              {data: 'cas_rn', name: 'cas_rn'},
+              {data: 'stdinchikey', name: 'stdinchikey'},
+              {data: 'dtxsid', name: 'dtxsid'},
+              {
+                  data: 'action', 
+                  name: 'action', 
+                  orderable: true, 
+                  searchable: true
+              },
+          ]
+      });
+    });
+  </script>
 
 @endsection
 

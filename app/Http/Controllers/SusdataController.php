@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Susdata;
 use Illuminate\Http\Request;
+use DataTables;
 use Exception;
 
 class SusdataController extends Controller
@@ -11,12 +12,23 @@ class SusdataController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $susdata = Susdata::withTrashed()->paginate(10);
-        // $susdata = Susdata::paginate(93973);
-        // $susdata->setConnection('mysql_second');
-        return view('admin.susdata.index')->with('susdata', $susdata);
+        // $susdata = Susdata::withTrashed()->paginate(10);
+
+        if ($request->ajax()) {
+            $data = Susdata::withTrashed()->select('*');
+            return Datatables::of($data)
+                ->addColumn('action', function($row){
+                    $editUrl = route('susdata.edit', $row->id);
+                    $actionBtn = '<a href="'.$editUrl.'" class="edit btn btn-info btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.susdata.index');
     }
 
     /**

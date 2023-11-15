@@ -118,7 +118,8 @@
         <!-- Core theme JS-->
         <script src="{{ asset('user/js/scripts.js') }}"></script>
 
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
+        <script src=https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js></script>
         <script>
             /*$(document).ready(function () {
                 $('#dataTable').DataTable();
@@ -129,6 +130,12 @@
             new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
                 });
+
+        //     new DataTable('#dataTable', {
+        //     ajax: 'scripts/server_processing.php',
+        //     processing: true,
+        //     serverSide: true
+        // });
         </script>
         <script src="{{ asset('user/js/scripts.js') }}"></script>
         

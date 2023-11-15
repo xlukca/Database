@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     
-    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     
 </head>
@@ -411,7 +411,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
+    <script src=https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js></script>
         <script>
             /*$(document).ready(function () {
                 $('#dataTable').DataTable();
@@ -422,6 +423,9 @@
             new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
                 });
+        
+ 
+        
         </script>
         <script src="{{ asset('admin/js/scripts.js') }}"></script>
 </body>
