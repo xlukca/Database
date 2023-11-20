@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SusdataController;
 use App\Http\Controllers\LoginRetentionController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ use App\Http\Controllers\LoginRetentionController;
 */
 
 Route::get('/', function () { return view('index');});
+
+// Language
+Route::get('language/{locale}', [LanguageController::class, 'language'])->name('language');
 
 // User
 
@@ -47,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/sars/file-upload/force/{id}', 'forceDestroy')->name('file-upload.forceDestroy');
         Route::post('/admin/sars/file-upload/restore/{id}', 'restore')->name('file-upload.restore');
     });
-   // Route::get('/mapa', function () { return view('sars.mapa');});
+    // Route::get('/mapa', function () { return view('admin.sars.mapa');});
     Route::resource('admin/sars', SarsController::class);
     Route::delete('/admin/sars/force/{id}', [SarsController::class, 'forceDestroy'])->name('sars.forceDestroy');
     Route::post('/admin/sars/restore/{id}', [SarsController::class, 'restore'])->name('sars.restore');

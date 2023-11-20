@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Database</title>
+        <title>{{ __('general.database') }}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -22,7 +22,7 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="/">Database</a>
+                    <a class="navbar-brand" href="/">{{ __('general.database') }}</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -42,6 +42,19 @@
                                 </ul>
                             </li>
                             <li class="nav-item nav-link">|</li>
+
+                            <!-- Language Links -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ __('general.language') }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a></li>
+                                    </ul>
+                                </li>
+
+                            <!-- Authentication Links -->
                             
                         @guest
                             @if (Route::has('login'))

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Database</title>
+    <title>{{ __('general.database') }}</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-database"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">DATABASE</div>
+                <div class="sidebar-brand-text mx-3">{{ __('general.database') }}</div>
             </a>
 
             <!-- Divider -->
@@ -135,7 +135,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-            <!--        <form
+                    {{-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -146,13 +146,13 @@
                                 </button>
                             </div>
                         </div>
-                    </form>        -->
+                    </form>         --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
+                        {{-- <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
@@ -177,13 +177,13 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                <!--        <li class="nav-item dropdown no-arrow mx-1">
+                           <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i> -->
+                                <i class="fas fa-bell fa-fw"></i> 
                                 <!-- Counter - Alerts -->
-                          <!--       <span class="badge badge-danger badge-counter">3+</span>
-                            </a> -->
+                                 <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -228,13 +228,13 @@
                         </li>
 
                         <!-- Nav Item - Messages -->
-                <!--        <li class="nav-item dropdown no-arrow mx-1">
+                            <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i> -->
+                                <i class="fas fa-envelope fa-fw"></i> 
                                 <!-- Counter - Messages -->
-                          <!--      <span class="badge badge-danger badge-counter">7</span>
-                            </a> -->
+                                  <span class="badge badge-danger badge-counter">7</span>
+                            </a> 
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
@@ -292,8 +292,23 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
+--}}
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Language Links -->
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600">{{ __('general.language') }}</span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+                                <a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a>           
+                                <a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a>                
+                            </div>  
+                        </li>
+                        
+                        <div class="topbar-divider d-none d-sm-block"></div> 
 
                         <!-- Nav Item - User Information -->
 
@@ -309,20 +324,20 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
-                         <!-- 
-                                <a class="dropdown-item menu-action text-gray-600" href="#">
+                          
+                                <a class="dropdown-item menu-action text-gray-600" href="{{ route('home') }}">
                                     <i class="fas fa-user"></i>
                                     Profile
                                 </a>                
-                        -->
-                            <!--         <a class="dropdown-item menu-action text-gray-600" href="#">
+                        
+                                 <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-cogs"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-list"></i>
                                     Activity Log
-                                </a>                 -->
+                                </a>                 
 
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item menu-action text-gray-600" href="{{ route('logout') }}"
