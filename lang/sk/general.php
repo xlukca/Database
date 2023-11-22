@@ -17,7 +17,7 @@ return [
     'substance' => 'ZLÚČENINY',
     'change_logs' => 'Záznamy zmien',
     'logout' => 'Odhlásiť sa',
-
+    'map' => 'Mapa',
 
     'users' => 'POUŽÍVATELIA',
     'user' => 'Používateľ',

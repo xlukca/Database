@@ -17,6 +17,7 @@ return [
     'substance' => 'SUBSTANCES',
     'change_logs' => 'Change logs',
     'logout' => 'Logout',
+    'map' => 'Map',
 
     'users' => 'USERS',
     'user' => 'User',

@@ -72,14 +72,19 @@
                 {{ __('general.sars') }}
             </div>
          
-            <!-- Nav Item - Charts -->
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sars.fileUpload') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>{{ __('general.file_upload') }}</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('sars.map') }}">
+                    <i class="fas fa-fw fa-map"></i>
+                    <span>{{ __('general.map') }}</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="/admin/sars">
                     <i class="fas fa-fw fa-table"></i>
@@ -91,7 +96,8 @@
                     <i class="fas fa-search"></i>
                     <span>{{ __('general.search_data') }}</span></a>
             </li>
-
+            
+            <!-- Heading -->
             <div class="sidebar-heading">
                 {{ __('general.substance') }}
             </div>

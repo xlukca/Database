@@ -328,4 +328,11 @@ class SarsController extends Controller
         return view('user.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
     }
 
+    public function map()
+    {
+        $sarsData = Sars::all();
+        
+        return view('admin.sars.map')->with('sarsData', $sarsData);
+    }
+
 }
