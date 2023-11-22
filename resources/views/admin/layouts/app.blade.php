@@ -49,7 +49,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">
                     <i class="fas fa-home"></i>
-                    <span>Home</span></a>
+                    <span>{{ __('general.home') }}</span></a>
             </li>
 
             <!-- Divider -->
@@ -57,55 +57,61 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                USERS
+                {{ __('general.users') }}
             </div>
             
             <!-- Nav Item - Users -->
             <li class="nav-item">
                 <a class="nav-link" href="/admin/users">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Login Retention</span></a>
+                    <span>{{ __('general.login_retention') }}</span></a>
             </li>
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                SARS
+                {{ __('general.sars') }}
             </div>
          
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sars.fileUpload') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>File Upload</span></a>
+                    <span>{{ __('general.file_upload') }}</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="/admin/sars">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Table data</span></a>
+                    <span>{{ __('general.table_data') }}</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('searchSars') }}">
                     <i class="fas fa-search"></i>
-                    <span>Search Data</span></a>
+                    <span>{{ __('general.search_data') }}</span></a>
             </li>
 
             <div class="sidebar-heading">
-                SUBSTANCE
+                {{ __('general.substance') }}
             </div>
 
             <li class="nav-item">
                 <a class="nav-link" href="/admin/susdata">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Table data</span></a>
+                    <span>{{ __('general.table_data') }}</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('susdata.changeLogs') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>{{ __('general.change_logs') }}</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('searchSusdata') }}">
                     <i class="fas fa-search"></i>
-                    <span>Search Data</span></a>
+                    <span>{{ __('general.search_data') }}</span></a>
             </li>
 
             <!-- Divider -->
@@ -344,7 +350,7 @@
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                                         <i class="fas fa-sign-out-alt"></i>
-                                        {{ __('Logout') }}
+                                        {{ __('general.logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -428,20 +434,25 @@
     <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
     {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
     <script src=https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js></script>
-        <script>
-            /*$(document).ready(function () {
+        
+            {{-- /*$(document).ready(function () {
                 $('#dataTable').DataTable();
             });*/
             /*let table = new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
-            });*/
+            });*/ --}}
+
+            <style>
+                #dataTable th, #dataTable td {
+                text-align: center;
+             }
+            </style>
+        <script>
             new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
                 });
-        
- 
-        
         </script>
+        
         <script src="{{ asset('admin/js/scripts.js') }}"></script>
 </body>
 </html>

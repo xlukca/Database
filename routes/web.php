@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     
     // SUSDATA
     Route::resource('admin/susdata', SusdataController::class);
+    Route::get('admin/sudata/changeLogs', [SusdataController::class, 'changeLogs'])->name('susdata.changeLogs');
     Route::delete('/admin/susdata/force/{id}', [SusdataController::class, 'forceDestroy'])->name('susdata.forceDestroy');
     Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
 

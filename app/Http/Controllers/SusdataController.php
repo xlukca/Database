@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Susdata;
+use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
 use DataTables;
 use Exception;
@@ -310,6 +311,13 @@ class SusdataController extends Controller
 
 
         return view('user.susdata.searchSusdata', compact('results', 'id', 'name', 'cas_rn', 'stdinchikey', 'dtxsid'));
+    }
+
+    public function changeLogs()
+    {
+        $changeSusdat = ChangeLogSusdat::all();
+        
+        return view('admin.susdata.changeLogs')->with('changeSusdat', $changeSusdat);
     }
 
 }
