@@ -8,5 +8,6 @@ return [
     'new_value' => 'New value',
     'user' => 'User',
     'editing_time' => 'Editing time',
+    'susdat_id' => 'Susdat id',
   
 ];

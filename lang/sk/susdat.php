@@ -8,5 +8,6 @@ return [
     'new_value' => 'Nová hodnota',
     'user' => 'Používateľ',
     'editing_time' => 'Čas editovania',
+    'susdat_id' => 'Susdat id',
   
 ];

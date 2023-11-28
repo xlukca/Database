@@ -37,11 +37,11 @@ crossorigin=""/>
         var markers = L.markerClusterGroup();
 
         @foreach ($sarsData as $s)
-            var marker = L.marker([{{ $s->latitude_decimal }}, {{ $s->longitude_decimal }}])
+            var marker = L.marker([{{ $s->longitude_decimal }}, {{ $s->latitude_decimal }}])
                 .bindPopup('Country: {{ $s->name_of_country }}' + '<br>Station name: {{ $s->station_name }}' + '<br>Date of Sample Preparation: {{ $s->date_of_sample_preparation }}');
             markers.addLayer(marker);
         @endforeach
-
+        
         // Pridat clusterovaciu skupinu na mapu
         map.addLayer(markers);
     </script>

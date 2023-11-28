@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>{{ __('ID') }}</th>
-                        <th>{{ __('susdat.susdat_name') }}</th>
+                        <th>{{ __('susdat.susdat_id') }}</th>
                         <th>{{ __('susdat.item') }}</th>
                         <th>{{ __('susdat.old_value') }}</th>
                         <th>{{ __('susdat.new_value') }}</th>
@@ -25,7 +25,7 @@
                         @foreach ($changeSusdat as $c)
                             <tr>
                                 <td>{{ $c->id }}</td>
-                                <td>{{ $c->susdatChangeLog->name }}</td>
+                                <td>{{ $c->susdat_id }}</td>
                                 <td>{{ $c->item }}</td>
                                 <td>{{ $c->old_value }}</td>
                                 <td>{{ $c->new_value }}</td>
