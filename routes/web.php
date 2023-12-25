@@ -39,8 +39,15 @@ Route::get('user/susdata/search', [SusdataController::class, 'search'])->name('s
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/admin/home', function () { return view('admin.index');});
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::middleware(['user_type'])->group(function () {  
+
+    // Positions
+    Route::delete('/positions/force/{id}', [App\Http\Controllers\PositionController::class, 'forceDestroy'])->name('positions.forceDestroy');
+    Route::post('/positions/restore/{id}', [App\Http\Controllers\PositionController::class, 'restore'])->name('positions.restore');
+    Route::resource('/positions', App\Http\Controllers\PositionController::class);
+
+    Route::get('/admin/home', function () { return view('admin.index');});
 
     // SARS
     Route::controller(FileController::class)->group(function () {
@@ -63,6 +70,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
 
     // USERS
+    Route::delete('/users/force/{id}', [App\Http\Controllers\UserController::class, 'forceDestroy'])->name('users.forceDestroy');
+    Route::post('/users/restore/{id}', [App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
     Route::resource('/admin/users', UserController::class);
-    Route::resource('/admin/retentions', LoginRetentionController::class);
+        
+        // Retentions
+        Route::get('admin/retentions/index', [LoginRetentionController::class, 'index'])->name('retentions.index');
+        Route::get('admin/retentions/show/{id}', [LoginRetentionController::class, 'show'])->name('retentions.show');
+
+    });
 });

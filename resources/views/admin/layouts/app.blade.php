@@ -64,6 +64,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin/users">
                     <i class="fas fa-fw fa-user"></i>
+                    <span>{{ __('general.users') }}</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('positions.index') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>{{ __('positions.list_of_positions') }}</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('retentions.index') }}">
+                    <i class="fas fa-fw fa-user"></i>
                     <span>{{ __('general.login_retention') }}</span></a>
             </li>
 

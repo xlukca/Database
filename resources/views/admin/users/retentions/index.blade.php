@@ -2,21 +2,31 @@
 @section('content')
 
 <div class="container">
-    <h3 class="mb-5">Login Information: {{$retentions[0]->user_id}}</h3>
+    <h3 class="mb-5">List of Users</h3>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>IP</th>
-                <th>Time</th>
-                <th>Agent</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number of logins</th>
+                <th>Login information</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($retentions as $r)
+            @foreach ($user_retentions as $u)
             <tr>
-                <td>{{ $r->login_ip }}</td>
-                <td>{{ $r->login_time }}</td>
-                <td>{{ $r->user_agent }}</td>
+                <td>{{ $u->id }}</td>
+                <td>{!! $u->full_name ?? '' !!}</td>
+                <td>{{ $u->email }}</td>
+                <td>{{ $u->retentions->count() }}</td>
+                <td>@if($u->retentions->count())
+                    <a href="{{ route('retentions.show', $u->id) }}" class="btn btn-primary">
+                        Login Information
+                    </a>
+                    @endif
                 </td>
             </tr>
             @endforeach

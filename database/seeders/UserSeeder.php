@@ -24,6 +24,12 @@ class UserSeeder extends Seeder
             'password'          => Hash::make('password'), 
             'remember_token'    => Str::random(10),
             'created_at'        => now(),
+            'street'            => fake()->streetName(),
+            'street_number'     => fake()->buildingNumber(),
+            'city'              => fake()->city(),
+            'postcode'          => fake()->randomNumber(5),
+            'position_id'       => 1, //fake()->numberBetween(1, 3),
+            'is_admin'          => 1, 
         ]);
         User::factory()->count(20)->create();
     }

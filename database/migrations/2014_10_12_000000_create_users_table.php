@@ -16,8 +16,15 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(false);
+            $table->foreignId('position_id')->references('id')->on('positions');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('postcode'); 
+            $table->string('city'); 
+            $table->string('street_number'); 
+            $table->string('street'); 
+            $table->softDeletes();   
             $table->rememberToken();
             $table->timestamps();
         });
