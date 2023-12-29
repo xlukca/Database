@@ -320,4 +320,21 @@ class SusdataController extends Controller
         return view('admin.susdata.changeLogs')->with('changeSusdat', $changeSusdat);
     }
 
+    public function userIndex()
+    {
+        // $susdata = Susdata::paginate(10);
+        
+        // return view('user.susdata.index')->with('susdata',  $susdata);
+        return view('user.susdata.index');
+    }
+
+    public function userGetIndex(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Susdata::select('*');
+            return Datatables::of($data)
+                ->make(true);
+        }
+    }
+
 }
