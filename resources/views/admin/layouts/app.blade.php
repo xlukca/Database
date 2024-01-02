@@ -126,11 +126,11 @@
                     <span>{{ __('general.change_logs') }}</span></a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('searchSusdata') }}">
                     <i class="fas fa-search"></i>
                     <span>{{ __('general.search_data') }}</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
