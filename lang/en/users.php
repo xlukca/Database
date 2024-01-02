@@ -7,6 +7,7 @@ return [
     'last_name' => 'Last Name',
     'email' => 'Email',
     'street' => 'Street',
+    'city' => 'City',
     'street_number' => 'Street Number',
     'postcode' => 'Postcode',
     'position' => 'Position',

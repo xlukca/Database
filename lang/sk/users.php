@@ -7,6 +7,7 @@ return [
     'last_name' => 'Priezvisko',
     'email' => 'Email',
     'street' => 'Ulica',
+    'city' => 'Mesto',
     'street_number' => 'Číslo ulice',
     'postcode' => 'Poštové smerovacie číslo',
     'position' => 'Pozícia',
