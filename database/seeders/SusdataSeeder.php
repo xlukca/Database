@@ -7,6 +7,9 @@ use Illuminate\Database\Seeder;
 
 use Spatie\SimpleExcel\SimpleExcelReader;
 use App\Models\Susdata;
+use Illuminate\Support\Facades\DB;
+use Exception;
+use Illuminate\Support\LazyCollection;
 
 class SusdataSeeder extends Seeder
 {
@@ -16,11 +19,13 @@ class SusdataSeeder extends Seeder
     public function run(): void
     {
         $path = base_path() . '/database/seeders/seeds/susdat.csv';
-        $rows = SimpleExcelReader::create($path)->getRows();
-        $data = [];
-
-        foreach($rows as $row) {
-            $data = [
+        LazyCollection::make(function () use ($path) {
+            yield from SimpleExcelReader::create($path)->getRows();
+        })->chunk(50)->each(function ($chunk) {
+            $data = [];
+        
+            foreach ($chunk as $row) {
+                $data[] = [
                 'id' => $row['sus_id'],
                 'name' => $row['sus_name'],
                 'name_dashboard' => $row['Name Dashboard'],
@@ -92,7 +97,19 @@ class SusdataSeeder extends Seeder
                 'synonyms' => $row['sus_synonyms'],
                 'remark' => $row['sus_remark'],
             ];
-            Susdata::insert($data);
         }
+            // Susdata::insert($data);
+            DB::beginTransaction();
+
+            try {
+                Susdata::insert($data);
+                DB::commit();
+            } catch (\Exception $e) {
+                // V prípade chyby rollback
+                DB::rollback();
+                // Ďalšie spracovanie chyby alebo logovanie
+            }
+        });
     }
 }
+
