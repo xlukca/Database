@@ -3,7 +3,7 @@
 
 
 
-<h1>{{ __('susdat.database - SARS-CoV-2') }}</h1>
+<h1>Database - Substance</h1>
 
 <div class="form-group">
 
@@ -30,7 +30,7 @@
                                 <td>{{ $c->old_value }}</td>
                                 <td>{{ $c->new_value }}</td>
                                 <td>{!! $c->userChangeLog->full_name !!}</td>
-                                <td>{{ $c->updated_at }}</td>
+                                <td>{{ $c->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>

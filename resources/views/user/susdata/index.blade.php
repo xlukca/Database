@@ -8,6 +8,7 @@
 
         {{-- <table class="table table-striped table-hover" id = "dataTable"> --}}
             <table class="table table-striped yajra-datatable">
+            {{-- <table class="table table-striped"> --}}
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -26,10 +27,10 @@
                             <td>{{ $s->stdinchikey }}</td>
                             <td>{{ $s->dtxsid }}</td>
                         </tr>
-                        @endforeach --}}
+                        @endforeach  --}}
                     </tbody>
                 </table>
-                {{-- {{ $susdata->links() }} --}}
+                 {{-- {{ $susdata->links() }} --}}
 </div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
