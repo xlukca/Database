@@ -3,8 +3,8 @@ export const options = {
   scenarios: {
     per_vu_scenario: {
       executor: "per-vu-iterations",
-      vus: 1,
-      iterations: 1,
+      vus: 10,
+      iterations: 100,
     },
   },
 };
@@ -15,7 +15,7 @@ export const options = {
 //     contacts: {
 //       executor: 'constant-vus',
 //       vus: 1,
-//       duration: '2m',
+//       duration: '5m',
 //     },
 //   },
 // };
