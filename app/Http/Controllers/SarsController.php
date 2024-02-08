@@ -281,49 +281,46 @@ class SarsController extends Controller
 
     public function search(Request $request)
     {
-        $name_of_country = $request->input('name_of_country') ?? array();
-        $sample_matrix = $request->input('sample_matrix') ?? array();
-        $station_name = $request->input('station_name') ?? array();
-        $sample_from_year = $request->input('sample_from_year') ?? array();
-        $data_provider = $request->input('data_provider') ?? array();
-    // dd($query1);
-    // $query1 = [2020];
-    $sql = [];
-    if  ($name_of_country) { 
-        $value = implode("','", $name_of_country); 
-        $sql[] .= "name_of_country IN ('$value')";
-        }
-        if  ($sample_matrix) { 
-            $value = implode("','", $sample_matrix); 
-            $sql[] .= "sample_matrix IN ('$value')";
-            }
-        if  ($station_name) { 
-            $value = implode("','", $station_name); 
-            $sql[] .= "station_name IN ('$value')";
-            }
-        if  ($sample_from_year) { 
-            $value = implode("','", $sample_from_year); 
-            $sql[] .= "sample_from_year IN ('$value')";
-            }
-        if  ($data_provider) { 
-            $value = implode("','", $data_provider); 
-            $sql[] .= "data_provider IN ('$value')";
-            }
-        if($sql) {
-            $query = 'WHERE ' . implode(' AND ', $sql);
-        }
-        else {
-            $query = '';
-        }
-        $results = \DB::select("SELECT * FROM sars $query");
-                    
-        //->orwhere('sample_from_year', 'IN', '(' . implode(',',$query1) . ')')          
-                    
-        $countries = SARS::select('name_of_country')->distinct()->get();
-        $matrixes = SARS::select('sample_matrix')->distinct()->get();
-        $providers = SARS::select('data_provider')->distinct()->get();
-        $stations = SARS::select('station_name')->distinct()->get();
-        $years = SARS::select('sample_from_year')->distinct()->get();
+        $name_of_country = $request->input('name_of_country'); 
+        $sample_matrix = $request->input('sample_matrix'); 
+        $station_name = $request->input('station_name'); 
+        $sample_from_year = $request->input('sample_from_year');
+        $data_provider = $request->input('data_provider');
+    
+        // dd($query1);
+    $query = Sars::query();
+
+    if ($name_of_country) {
+        $query->where('name_of_country', $name_of_country);
+    }
+
+    if ($sample_matrix) {
+        $query->where('sample_matrix', $sample_matrix);
+    }
+
+    if ($station_name) {
+        $query->where('station_name', $station_name);
+    }
+
+    if ($sample_from_year) {
+        $query->where('sample_from_year', $sample_from_year);
+    }
+
+    if ($data_provider) {
+        $query->where('data_provider', $data_provider);
+    }
+
+        $results = $query->orderBy('sample_from_year', 'asc')
+                        ->orderBy('name_of_country', 'asc')
+                        ->orderBy('station_name', 'asc')
+                        ->orderBy('data_provider', 'asc')
+                        ->get();
+                      
+        $countries = SARS::select('name_of_country')->orderBy('name_of_country', 'asc')->distinct()->get();
+        $matrixes = SARS::select('sample_matrix')->orderBy('sample_matrix', 'asc')->distinct()->get();
+        $providers = SARS::select('data_provider')->orderBy('data_provider', 'asc')->distinct()->get();
+        $stations = SARS::select('station_name')->orderBy('station_name', 'asc')->distinct()->get();
+        $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'asc')->distinct()->get();
 
         return view('user.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
     }

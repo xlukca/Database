@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Susdata;
 use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use DataTables;
 use Exception;
 
@@ -268,46 +269,46 @@ class SusdataController extends Controller
 
     public function search(Request $request)
     {
-        $id = $request->input('id') ?? array();
-        $name = $request->input('name') ?? array();
-        $cas_rn = $request->input('cas_rn') ?? array();
-        $stdinchikey = $request->input('stdinchikey') ?? array();
-        $dtxsid = $request->input('dtxsid') ?? array();
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $cas_rn = $request->input('cas_rn');
+        $stdinchikey = $request->input('stdinchikey');
+        $dtxsid = $request->input('dtxsid');
 
-    $sql = [];
-    if  ($id) { 
-        $value = implode("','", $id); 
-        $sql[] .= "id IN ('$value')";
+        $query = Susdata::query();
+
+        if ($id) {
+            $query->where('id', $id);
         }
-        if  ($name) { 
-            $value = implode("','", $name); 
-            $sql[] .= "name IN ('$value')";
-            }
-        if  ($cas_rn) { 
-            $value = implode("','", $cas_rn); 
-            $sql[] .= "cas_rn IN ('$value')";
-            }
-        if  ($stdinchikey) { 
-            $value = implode("','", $stdinchikey); 
-            $sql[] .= "stdinchikey IN ('$value')";
-            }
-        if  ($dtxsid) { 
-            $value = implode("','", $dtxsid); 
-            $sql[] .= "dtxsid IN ('$value')";
-            }
-        if($sql) {
-            $query = 'WHERE ' . implode(' AND ', $sql);
+    
+        if ($name) {
+            $query->where('name', $name);
         }
-        else {
-            $query = '';
+    
+        if ($cas_rn) {
+            $query->where('cas_rn', $cas_rn);
         }
-        $results = \DB::select("SELECT * FROM susdatas $query");        
+    
+        if ($stdinchikey) {
+            $query->where('stdinchikey', $stdinchikey);
+        }
+    
+        if ($dtxsid) {
+            $query->where('dtxsid', $dtxsid);
+        }
+    
+            $results = $query->orderBy('id', 'asc')
+                            ->orderBy('name', 'asc')
+                            ->orderBy('cas_rn', 'asc')
+                            ->orderBy('stdinchikey', 'asc')
+                            ->orderBy('dtxsid', 'asc')
+                            ->get();      
         
-        $id = Susdata::select('id')->distinct()->get();
-        $name = Susdata::select('name')->distinct()->get();
-        $cas_rn = Susdata::select('cas_rn')->distinct()->get();
-        $stdinchikey = Susdata::select('stdinchikey')->distinct()->get();
-        $dtxsid = Susdata::select('dtxsid')->distinct()->get();
+        $id = Susdata::select('id')->orderBy('id', 'asc')->distinct()->get();
+        $name = Susdata::select('name')->orderBy('name', 'asc')->distinct()->get();
+        $cas_rn = Susdata::select('cas_rn')->orderBy('cas_rn', 'asc')->distinct()->get();
+        $stdinchikey = Susdata::select('stdinchikey')->orderBy('stdinchikey', 'asc')->distinct()->get();
+        $dtxsid = Susdata::select('dtxsid')->orderBy('dtxsid', 'asc')->distinct()->get();
 
 
         return view('user.susdata.searchSusdata', compact('results', 'id', 'name', 'cas_rn', 'stdinchikey', 'dtxsid'));
@@ -330,8 +331,11 @@ class SusdataController extends Controller
 
     public function userGetIndex(Request $request)
     {
+        // dd($request->ajax());
         if ($request->ajax()) {
             $data = Susdata::select('*');
+            // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
+            // dd($data);
             return Datatables::of($data)
                 ->make(true);
         }

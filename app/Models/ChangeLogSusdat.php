@@ -15,7 +15,7 @@ class ChangeLogSusdat extends Model
         'old_value', 
         'new_value', 
         'user_id',
-        'updated_at',
+        'created_at',
     ];
 
     public function userChangeLog() {
