@@ -21,6 +21,10 @@ use App\Http\Controllers\LanguageController;
 |
 */
 
+Route::get('/info', function () {
+    phpinfo();
+});
+
 Route::get('/', function () { return view('index');});
 
 // Language
@@ -32,7 +36,7 @@ Route::get('language/{locale}', [LanguageController::class, 'language'])->name('
 Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
 
     //SUSDATA
-Route::get('user/susdata/search', [SusdataController::class, 'search'])->name('searchSusdata');
+// Route::get('user/susdata/search', [SusdataController::class, 'search'])->name('searchSusdata');
 Route::get('user/susdata/index', [SusdataController::class, 'userIndex'])->name('userIndexSusdata');
 Route::get('user/susdata/list', [SusdataController::class, 'userGetIndex'])->name('listSusdata');
 
