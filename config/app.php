@@ -211,6 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Redis' => Illuminate\Support\Facades\Redis::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
