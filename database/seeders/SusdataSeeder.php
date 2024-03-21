@@ -99,11 +99,11 @@ class SusdataSeeder extends Seeder
             ];
         }
             // Susdata::insert($data);
-            DB::beginTransaction();
+           // DB::beginTransaction();     SQL databases
 
             try {
                 Susdata::insert($data);
-                DB::commit();
+            //    DB::commit();
             } catch (\Exception $e) {
                 // V prípade chyby rollback
                 DB::rollback();
