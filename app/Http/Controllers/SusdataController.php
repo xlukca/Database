@@ -6,7 +6,8 @@ use App\Models\Susdata;
 use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+// use DataTables;
 use Exception;
 
 class SusdataController extends Controller
@@ -329,16 +330,26 @@ class SusdataController extends Controller
         return view('user.susdata.index');
     }
 
-    public function userGetIndex(Request $request)
+    // public function userGetIndex(Request $request)
+    // {
+    //     // dd($request->ajax());
+    //     if ($request->ajax()) {
+    //         $data = Susdata::select('*');
+    //         // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
+    //         // dd($data);
+    //         return Datatables::of($data)
+    //             ->make(true);
+    //     }
+    // }                SQL databases
+
+        public function userGetIndex(Request $request)
     {
-        // dd($request->ajax());
-        if ($request->ajax()) {
             $data = Susdata::select('*');
-            // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
-            // dd($data);
-            return Datatables::of($data)
-                ->make(true);
-        }
-    }
+            // $data = DB::collection('susdatas');
+            return DataTables::make($data)->toJson();
+    }                
+    // MongoDB
+
+
 
 }

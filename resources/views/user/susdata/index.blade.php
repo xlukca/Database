@@ -12,14 +12,14 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        {{-- <th>Name</th>
                         <th>CAS RN</th>
                         <th>StdInChIKey</th>
-                        <th>DTXSID</th>
+                        <th>DTXSID</th> --}}
                     </tr>
                     </thead>
-                    <tbody>
-                        {{-- @foreach ($susdata as $s)
+                    {{-- <tbody>
+                        @foreach ($susdata as $s)
                         <tr>
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->name }}</td>
@@ -27,8 +27,8 @@
                             <td>{{ $s->stdinchikey }}</td>
                             <td>{{ $s->dtxsid }}</td>
                         </tr>
-                        @endforeach  --}}
-                    </tbody>
+                        @endforeach 
+                    </tbody> --}}
                 </table>
                  {{-- {{ $susdata->links() }} --}}
 </div> 
@@ -46,11 +46,11 @@
           searchable: true,
           ajax: "{{ route('listSusdata') }}",
           columns: [
-              {data: 'id', name: 'id'},
-              {data: 'name', name: 'name'},
-              {data: 'cas_rn', name: 'cas_rn'},
-              {data: 'stdinchikey', name: 'stdinchikey'},
-              {data: 'dtxsid', name: 'dtxsid'},
+              {data: 'sus_id', name: 'id'},
+            //   {data: 'name', name: 'name'},
+            //   {data: 'cas_rn', name: 'cas_rn'},
+            //   {data: 'stdinchikey', name: 'stdinchikey'},
+            //   {data: 'dtxsid', name: 'dtxsid'},
           ]
       });
     });
