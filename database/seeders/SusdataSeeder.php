@@ -18,7 +18,7 @@ class SusdataSeeder extends Seeder
      */
     public function run(): void
     {
-        $path = base_path() . '/database/seeders/seeds/susdatX.csv';
+        $path = base_path() . '/database/seeders/seeds/susdat.csv';
         LazyCollection::make(function () use ($path) {
             yield from SimpleExcelReader::create($path)->getRows();
         })->chunk(50)->each(function ($chunk) {
@@ -26,7 +26,7 @@ class SusdataSeeder extends Seeder
         
             foreach ($chunk as $row) {
                 $data[] = [
-                'id' => $row['sus_id'],
+                'sus_id' => $row['sus_id'],
                 'name' => $row['sus_name'],
                 'name_dashboard' => $row['Name Dashboard'],
                 'name_chemspider' => $row['Name ChemSpider'],

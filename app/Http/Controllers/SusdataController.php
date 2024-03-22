@@ -324,10 +324,10 @@ class SusdataController extends Controller
 
     public function userIndex()
     {
-        // $susdata = Susdata::paginate(10);
+        $susdata = Susdata::paginate(10);
         
-        // return view('user.susdata.index')->with('susdata',  $susdata);
-        return view('user.susdata.index');
+        return view('user.susdata.index')->with('susdata',  $susdata);
+        // return view('user.susdata.index');
     }
 
     // public function userGetIndex(Request $request)
