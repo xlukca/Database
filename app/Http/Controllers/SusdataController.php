@@ -324,7 +324,16 @@ class SusdataController extends Controller
 
     public function userIndex()
     {
-        $susdata = Susdata::paginate(10);
+      
+        // $susdata = Susdata::paginate(10);
+        $susdata = cache('susdata');
+      
+        if (!$susdata) {
+            // Data not found in cache, retrieve and cache it
+            $susdata = Susdata::paginate(10);
+            cache(['susdata' => $susdata], 60); // Cache for 60 seconds
+        }
+
         
         return view('user.susdata.index')->with('susdata',  $susdata);
         // return view('user.susdata.index');
