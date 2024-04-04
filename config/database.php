@@ -15,8 +15,8 @@ return [
     |
     */
 
-    // 'default' => env('DB_CONNECTION', 'mysql'),
-    'default' => env('DB_CONNECTION', 'redis'),
+    'default' => env('DB_CONNECTION', 'mysql'),
+    // 'default' => env('DB_CONNECTION', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,13 +150,13 @@ return [
         ],
 
         'default' => [
-            'url' => 'tcp://127.0.0.1:6379?database=0',
+            'url' => 'tcp://127.0.0.1:6379?database=1',
             'scheme' => 'tcp',
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', 6379),
-            'database' => env('REDIS_DB', '0'),
+            'database' => env('REDIS_DB', '1'),
         ],
 
         'cache' => [

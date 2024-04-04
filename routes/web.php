@@ -25,6 +25,8 @@ Route::get('/info', function () {
     phpinfo();
 });
 
+Route::get('/redis', [LoginRetentionController::class, 'redis']);
+
 Route::get('/', function () { return view('index');});
 
 // Language
