@@ -38,7 +38,12 @@ class RedisMigrator extends Command
 
         // Vložte záznamy do Redis
         foreach ($records as $record) {
-        $client->hmset($record->id, get_object_vars($record));
+            // dd($record);
+        // $client->hmset($record->id, get_object_vars($record));
+        $jsonData = json_encode($record);
+        $path = ".";
+        // dd($jsonData);
+        $client->jsonset($record->id, $path, $jsonData);
         }
 
         $this->info('Table ' . $tableName . ' has been migrated to Redis.');
