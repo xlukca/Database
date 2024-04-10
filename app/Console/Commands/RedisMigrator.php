@@ -33,18 +33,14 @@ class RedisMigrator extends Command
 
         $client = new Client();
 
-        // Získajte záznamy z tabuľky
-        $records = DB::table($tableName)->get();
-
-        // Vložte záznamy do Redis
-        foreach ($records as $record) {
-            // dd($record);
-        // $client->hmset($record->id, get_object_vars($record));
-        $jsonData = json_encode($record);
-        $path = ".";
-        // dd($jsonData);
-        $client->jsonset($record->id, $path, $jsonData);
-        }
+        // Získajte záznamy z tabuľky po menších blokoch s implicitným usporiadaním podľa primárneho kľúča
+        DB::table($tableName)->orderBy('id')->chunk(300, function ($records) use ($client) {
+            foreach ($records as $record) {
+                $jsonData = json_encode($record);
+                $path = ".";
+                $client->jsonset($record->id, $path, $jsonData);
+            }
+        });
 
         $this->info('Table ' . $tableName . ' has been migrated to Redis.');
     }
