@@ -7,6 +7,7 @@ use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Cache;
 // use DataTables;
 use Exception;
 
@@ -324,18 +325,27 @@ class SusdataController extends Controller
 
     public function userIndex()
     {
-      
-        // $susdata = Susdata::paginate(10);
-        $susdata = cache('susdata');
-      
-        if (!$susdata) {
-            // Data not found in cache, retrieve and cache it
-            $susdata = Susdata::paginate(10);
-            cache(['susdata' => $susdata], 60); // Cache for 60 seconds
-        }
+        // $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+        // $cacheKey = 'susdat_page_' . $page;
 
-        
+        // $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
+        //     return Susdata::orderBy('id', 'asc')->paginate(10);
+        // });
+
+        // return view('user.susdata.index')->with('susdata',  $susdata);
+
+        $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+        $cacheKey = 'susdat_page_' . $page;
+
+        $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
+            // Získať dáta pre danú stránku
+            $perPage = 10;
+            $offset = ($page - 1) * $perPage;
+            return Susdata::orderBy('id', 'asc')->skip($offset)->take($perPage)->paginate(10);
+        });
+
         return view('user.susdata.index')->with('susdata',  $susdata);
+
         // return view('user.susdata.index');
     }
 
