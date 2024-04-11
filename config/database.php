@@ -150,13 +150,13 @@ return [
         ],
 
         'default' => [
-            'url' => 'tcp://127.0.0.1:6379?database=1',
+            'url' => 'tcp://127.0.0.1:6379?database=0',
             'scheme' => 'tcp',
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', 6379),
-            'database' => env('REDIS_DB', '1'),
+            'database' => env('REDIS_DB', '0'),
         ],
 
         'cache' => [
@@ -165,7 +165,7 @@ return [
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_CACHE_DB', '1'),
+            'database' => env('REDIS_CACHE_DB', '0'),
         ],
 
     ],

@@ -7,8 +7,8 @@
 <div class="mx-3 mt-3 mb-5">
 
         {{-- <table class="table table-striped table-hover" id = "dataTable"> --}}
-            <table class="table table-striped yajra-datatable">
-            {{-- <table class="table table-striped"> --}}
+            {{-- <table class="table table-striped yajra-datatable"> --}}
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -19,7 +19,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($susdata as $s)
+                        @foreach ($susdata as $s)
                         <tr>
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->name }}</td>
@@ -27,10 +27,10 @@
                             <td>{{ $s->stdinchikey }}</td>
                             <td>{{ $s->dtxsid }}</td>
                         </tr>
-                        @endforeach  --}}
+                        @endforeach 
                     </tbody>
                 </table>
-                 {{-- {{ $susdata->links() }} --}}
+                 {{ $susdata->links() }}
 </div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  

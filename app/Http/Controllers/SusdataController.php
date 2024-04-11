@@ -6,6 +6,9 @@ use App\Models\Susdata;
 use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
+use Predis\Client;
 use DataTables;
 use Exception;
 
@@ -323,10 +326,31 @@ class SusdataController extends Controller
 
     public function userIndex()
     {
+        // $client = new Client();
+        // $redisdata = $client->keys('*'); 
+        // dd($redisdata);
+        // $susdat = json_decode($redisdata, true);
+        //  dd($susdat);
+        // $susdata = Susdata::paginate(10);
+        // dd($susdata);
+    
+        // return view('user.susdata.index')->with('susdata',  $susdata);
+
+        $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+        $cacheKey = 'susdat_page_' . $page;
+
+        $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
+            return Susdata::orderBy('id', 'asc')->paginate(10);
+        });
+
+        
+        return view('user.susdata.index')->with('susdata',  $susdata);
+        
+        
         // $susdata = Susdata::paginate(10);
         
         // return view('user.susdata.index')->with('susdata',  $susdata);
-        return view('user.susdata.index');
+        // return view('user.susdata.index');      yajraDatatable
     }
 
     public function userGetIndex(Request $request)
