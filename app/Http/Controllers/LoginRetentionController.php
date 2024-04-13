@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LoginRetention;
 use App\Models\User;
-use Illuminate\Support\Facades\Redis;
 
 class LoginRetentionController extends Controller
 {
@@ -21,10 +20,5 @@ class LoginRetentionController extends Controller
         $retentions = LoginRetention::where('user_id', $id)->orderBy('login_time', 'desc')->get();
 
         return view('admin.users.retentions.show')->with('retentions', $retentions);
-    }
-
-    public function redis()
-    {
-        Redis::get('1', 'id');
     }
 }

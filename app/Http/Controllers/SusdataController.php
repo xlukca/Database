@@ -336,7 +336,7 @@ class SusdataController extends Controller
     
         // return view('user.susdata.index')->with('susdata',  $susdata);
 
-        $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+        $page = request()->query('page', 1); // Získa aktuálnu stránku z requestu
         $cacheKey = 'susdat_page_' . $page;
 
         $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
