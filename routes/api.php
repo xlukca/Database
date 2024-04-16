@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\SusdataController;
+use App\Http\Controllers\Api\SarsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+# SUSDAT API
+Route::get('/susdats', [SusdataController::class, 'index']);
+Route::get('/susdats/{name}/', [SusdataController::class, 'show']);
+
+# SARS API
+Route::get('/sars', [SarsController::class, 'index']);
+Route::get('/sars/{name}', [SarsController::class, 'show']);
