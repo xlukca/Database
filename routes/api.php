@@ -47,4 +47,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
 
 // SARS API
-        Route::get('/sars/{id}', [SarsController::class, 'show']);
+        
+    // // id
+    //     Route::get('/sars/id/{id}/json', [SarsController::class, 'showJSONid']);
+    Route::get('/sars/id/{id}/xml', [SarsController::class, 'showXMLid']);
+
+    // ct
+    //     Route::get('/sars/ct/{ct}/json', [SarsController::class, 'showJSONct']);
+        Route::get('/sars/ct/{ct}/xml', [SarsController::class, 'showXMLct']);
+
+    // station_name
+    //     Route::get('/sars/station/{station_name}/json', [SarsController::class, 'showJSONstation']);
+        Route::get('/sars/station_name/{station_name}/xml', [SarsController::class, 'showXMLstation']);
+
+    // name_of_country
+    //     Route::get('/sars/country/{name_of_country}/json', [SarsController::class, 'showJSONcountry']);
+        Route::get('/sars/name_of_country/{name_of_country}/xml', [SarsController::class, 'showXMLcountry']);
+
+
+    Route::get('/sars/{field}/{values}/json', [SarsController::class, 'showJSON']);
+    // Route::get('/sars/{field}/{values}/xml', [SarsController::class, 'showXML']);
