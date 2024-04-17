@@ -32,6 +32,9 @@ Route::get('language/{locale}', [LanguageController::class, 'language'])->name('
 
 // User
 
+    //API
+Route::get('user/api', function () { return view('user.api');})->name('api');
+
     //SARS
 Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
 
