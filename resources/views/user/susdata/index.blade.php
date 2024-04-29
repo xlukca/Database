@@ -7,8 +7,8 @@
 <div class="mx-3 mt-3 mb-5">
 
         {{-- <table class="table table-striped table-hover" id = "dataTable"> --}}
-            <table class="table table-striped yajra-datatable">
-            {{-- <table class="table table-striped"> --}}
+            {{-- <table class="table table-striped yajra-datatable"> --}}
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -19,7 +19,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($susdata as $s)
+                        @foreach ($susdata as $s)
                         <tr>
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->name }}</td>
@@ -27,13 +27,13 @@
                             <td>{{ $s->stdinchikey }}</td>
                             <td>{{ $s->dtxsid }}</td>
                         </tr>
-                        @endforeach  --}}
+                        @endforeach 
                     </tbody>
                 </table>
-                 {{-- {{ $susdata->links() }} --}}
+                 {{ $susdata->links() }}
 </div> 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
 <script type="text/javascript">
@@ -46,7 +46,7 @@
           searchable: true,
           ajax: "{{ route('listSusdata') }}",
           columns: [
-              {data: 'id', name: 'id'},
+              {data: 'sus_id', name: 'id'},
               {data: 'name', name: 'name'},
               {data: 'cas_rn', name: 'cas_rn'},
               {data: 'stdinchikey', name: 'stdinchikey'},
@@ -54,7 +54,7 @@
           ]
       });
     });
-  </script>
+  </script> --}}
 
 @endsection
 
