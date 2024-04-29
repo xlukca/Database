@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b51dab679b3cab0a5e64277c289a435",
-    "content-hash": "300ac730f070ab42e69b063ad40230df",
+
+    "content-hash": "c97b906acad4b61f5b15b8a530a8530f",
+
     "packages": [
         {
             "name": "brick/math",
@@ -2184,23 +2185,24 @@
         },
         {
             "name": "mongodb/mongodb",
-            "version": "1.17.0",
+
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "9d9c917cf7ff275ed6bd63c596efeb6e49fd0e53"
+                "reference": "d421c418ef56a96f3dfa6b2828f936df6848ccf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/9d9c917cf7ff275ed6bd63c596efeb6e49fd0e53",
-                "reference": "9d9c917cf7ff275ed6bd63c596efeb6e49fd0e53",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/d421c418ef56a96f3dfa6b2828f936df6848ccf9",
+                "reference": "d421c418ef56a96f3dfa6b2828f936df6848ccf9",
                 "shasum": ""
             },
             "require": {
+                "composer-runtime-api": "^2.0",
                 "ext-hash": "*",
                 "ext-json": "*",
-                "ext-mongodb": "^1.17.0",
-                "jean85/pretty-package-versions": "^2.0.1",
+                "ext-mongodb": "^1.18.0",
                 "php": "^7.4 || ^8.0",
                 "psr/log": "^1.1.4|^2|^3",
                 "symfony/polyfill-php80": "^1.27",
@@ -2208,7 +2210,7 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "^12.0",
-                "rector/rector": "^0.18",
+                "rector/rector": "^0.19",
                 "squizlabs/php_codesniffer": "^3.7",
                 "symfony/phpunit-bridge": "^5.2",
                 "vimeo/psalm": "^5.13"
@@ -2216,7 +2218,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17.x-dev"
+                    "dev-master": "1.18.x-dev"
                 }
             },
             "autoload": {
@@ -2255,9 +2257,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mongodb/mongo-php-library/issues",
-                "source": "https://github.com/mongodb/mongo-php-library/tree/1.17.0"
+                "source": "https://github.com/mongodb/mongo-php-library/tree/1.18.0"
             },
-            "time": "2023-11-15T09:21:50+00:00"
+            "time": "2024-03-27T17:04:50+00:00"
         },
         {
             "name": "monolog/monolog",
