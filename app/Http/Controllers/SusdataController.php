@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Cache;
 use Predis\Client;
 use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Cache;
+// use DataTables;
+
 use Exception;
 
 class SusdataController extends Controller
@@ -351,18 +355,52 @@ class SusdataController extends Controller
         
         // return view('user.susdata.index')->with('susdata',  $susdata);
         // return view('user.susdata.index');      yajraDatatable
+
+        // $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+        // $cacheKey = 'susdat_page_' . $page;
+
+        // $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
+        //     return Susdata::orderBy('id', 'asc')->paginate(10);
+        // });
+
+        // return view('user.susdata.index')->with('susdata',  $susdata);
+
+//         $page = request()->query('page', 1); // Získajte aktuálnu stránku z requestu, ak nie je uvedená, použite prvú stránku
+//         $cacheKey = 'susdat_page_' . $page;
+
+//         $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
+//             // Získať dáta pre danú stránku
+//             $perPage = 10;
+//             $offset = ($page - 1) * $perPage;
+//             return Susdata::orderBy('id', 'asc')->skip($offset)->take($perPage)->paginate(10);
+//         });
+
+//         return view('user.susdata.index')->with('susdata',  $susdata);
+
+        // return view('user.susdata.index');
+
     }
 
-    public function userGetIndex(Request $request)
+    // public function userGetIndex(Request $request)
+    // {
+    //     // dd($request->ajax());
+    //     if ($request->ajax()) {
+    //         $data = Susdata::select('*');
+    //         // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
+    //         // dd($data);
+    //         return Datatables::of($data)
+    //             ->make(true);
+    //     }
+    // }                SQL databases
+
+        public function userGetIndex(Request $request)
     {
-        // dd($request->ajax());
-        if ($request->ajax()) {
             $data = Susdata::select('*');
-            // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
-            // dd($data);
-            return Datatables::of($data)
-                ->make(true);
-        }
-    }
+            // $data = DB::collection('susdatas');
+            return DataTables::make($data)->toJson();
+    }                
+    // MongoDB
+
+
 
 }

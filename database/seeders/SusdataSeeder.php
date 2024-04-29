@@ -26,7 +26,7 @@ class SusdataSeeder extends Seeder
         
             foreach ($chunk as $row) {
                 $data[] = [
-                'id' => $row['sus_id'],
+                'sus_id' => $row['sus_id'],
                 'name' => $row['sus_name'],
                 'name_dashboard' => $row['Name Dashboard'],
                 'name_chemspider' => $row['Name ChemSpider'],
@@ -99,11 +99,11 @@ class SusdataSeeder extends Seeder
             ];
         }
             // Susdata::insert($data);
-            DB::beginTransaction();
+           // DB::beginTransaction();     SQL databases
 
             try {
                 Susdata::insert($data);
-                DB::commit();
+            //    DB::commit();
             } catch (\Exception $e) {
                 // V prípade chyby rollback
                 DB::rollback();
