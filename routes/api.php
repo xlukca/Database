@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     // // cas_rn_dashboard
     //     Route::get('/susdat/cas_rn_dashboard/{cas_rn_dashboard}/JSON', [SusdataController::class, 'showJSONcasrn']);
-        Route::get('/susdat/cas_rn_dashboard/{cas_rn_dashboard}/XML', [SusdataController::class, 'showXMLcasrn']);
+        Route::get('/susdat/cas_rn/{cas_rn}/XML', [SusdataController::class, 'showXMLcasrn']);
 
     // // stdinchikey
     //     Route::get('/susdat/stdinchikey/{stdinchikey}/JSON', [SusdataController::class, 'showJSONinchikey']);

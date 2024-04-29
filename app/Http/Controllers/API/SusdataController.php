@@ -180,15 +180,19 @@ class SusdataController extends Controller
     public function showXMLcasrn($casrn)
     {
         // Rozdelenie zadaných mien na pole
-        $casrnArray = explode(',', $casrn);
+        $casrnArray1 = explode(',', $casrn);
 
+        $casrnArray = [];
+        foreach ($casrnArray1 as $v)
+        $casrnArray[] = 'CAS_RN: ' . $v;
+    
         // Vytvorenie objektu SimpleXMLElement
         $xml = new \SimpleXMLElement('<database/>');
 
         // Pridanie jednotlivých záznamov ako elementy do XML
         foreach ($casrnArray as $casrn) {
             // Získanie všetkých záznamov s daným menom
-            $foundRecords = Susdata::where('cas_rn_dashboard', $casrn)->get();
+            $foundRecords = Susdata::where('cas_rn', $casrn)->get();
 
             // Kontrola, či sa našli nejaké záznamy s daným menom
             if ($foundRecords->isEmpty()) {
@@ -200,12 +204,12 @@ class SusdataController extends Controller
                 foreach ($foundRecords as $record) {
                     // Vytvorenie elementu s názvom "susdata" pre každý záznam
                     $susdataElement = $xml->addChild('susdata');
-                    $susdataElement->addAttribute('cas_rn_dashboard', $record->cas_rn_dashboard);
+                    $susdataElement->addAttribute('cas_rn', $record->cas_rn);
 
                     // Pridanie atribútov ako elementy do XML pre každý záznam
                     foreach ($record->getAttributes() as $key => $value) {
                         // Preskočenie pridania atribútu "name", keďže sme ho pridali ako atribút elementu
-                        if ($key !== 'cas_rn_dashboard') {
+                        if ($key !== 'cas_rn') {
                             $susdataElement->addChild($key, $value);
                         }
                     }
@@ -357,7 +361,17 @@ class SusdataController extends Controller
 
     public function showJSON(Request $request, $field, $values)
     {
-        $valuesArray = explode(',', $values);
+        if ($field == 'cas_rn') 
+        {
+            $valuesArray1 = explode(',', $values);
+            $valuesArray = [];
+            foreach ($valuesArray1 as $v)
+            $valuesArray[] = 'CAS_RN: ' . $v;
+        }
+        else
+        {
+            $valuesArray = explode(',', $values);
+        }
         $response = [];
 
         foreach ($valuesArray as $value) {

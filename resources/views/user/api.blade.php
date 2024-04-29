@@ -57,8 +57,8 @@
 <ul class="mx-3 cca-api-anchor">
     <li><a href="http://127.0.0.1:8000/api/susdat/id/4,5,6/JSON" target="_blank">http://127.0.0.1:8000/api/susdat/id/4,5,6/JSON</a></li>
     <li><a href="http://127.0.0.1:8000/api/susdat/name/Sulfachloropyridazine/XML" target="_blank">http://127.0.0.1:8000/api/susdat/name/Sulfachloropyridazine/XML</a></li>
-    <li><a href="http://127.0.0.1:8000/api/susdat/cas_rn_dashboard/80-32-0/JSON" target="_blank">http://127.0.0.1:8000/api/susdat/cas_rn_dashboard/80-32-0/JSON</a></li>
-    <li><a href="http://127.0.0.1:8000/api/susdat/stdinchikey/80-32-0/JSON" target="_blank">http://127.0.0.1:8000/api/susdat/stdinchikey/XOXHILFPRYWFOD-UHFFFAOYSA-N/JSON</a></li>
+    <li><a href="http://127.0.0.1:8000/api/susdat/cas_rn/80-32-0/JSON" target="_blank">http://127.0.0.1:8000/api/susdat/cas_rn/80-32-0/JSON</a></li>
+    <li><a href="http://127.0.0.1:8000/api/susdat/stdinchikey/XOXHILFPRYWFOD-UHFFFAOYSA-N/JSON" target="_blank">http://127.0.0.1:8000/api/susdat/stdinchikey/XOXHILFPRYWFOD-UHFFFAOYSA-N/JSON</a></li>
     <li><a href="http://127.0.0.1:8000/api/susdat/dtxsid/DTXSID9045265/XML" target="_blank">http://127.0.0.1:8000/api/susdat/dtxsid/DTXSID9045265/XML</a></li>
     </ul>
 
