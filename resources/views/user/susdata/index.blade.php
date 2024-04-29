@@ -33,7 +33,7 @@
                  {{ $susdata->links() }}
 </div> 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
 <script type="text/javascript">
@@ -46,7 +46,7 @@
           searchable: true,
           ajax: "{{ route('listSusdata') }}",
           columns: [
-              {data: 'id', name: 'id'},
+              {data: 'sus_id', name: 'id'},
               {data: 'name', name: 'name'},
               {data: 'cas_rn', name: 'cas_rn'},
               {data: 'stdinchikey', name: 'stdinchikey'},
@@ -54,7 +54,7 @@
           ]
       });
     });
-  </script>
+  </script> --}}
 
 @endsection
 
