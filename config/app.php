@@ -196,7 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // Jenssegers\Mongodb\MongodbServiceProvider::class,
-        MongoDB\Laravel\MongoDBServiceProvider::class,
+        // MongoDB\Laravel\MongoDBServiceProvider::class,
     ],
 
     /*
