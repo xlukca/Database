@@ -11,7 +11,7 @@ class Susdata extends Model
 {
     use HasFactory;
     use SoftDeletes;
-   // protected $connection = 'mysql_second';
+    
   
     protected $fillable = [
         'id', 
