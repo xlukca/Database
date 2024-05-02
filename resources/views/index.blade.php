@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="mt-5 col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('general.welcome in database') }}</div>
+                    <div class="card-header">Welcome in database system</div>
                 </div>
             </div>
         </div>

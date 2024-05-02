@@ -135,6 +135,17 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                API
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('api') }}">
+                    <i class="fas fa-search"></i>
+                    <span>SARS and SUBSTANCES</span></a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -321,7 +332,7 @@
 
                         <!-- Language Links -->
 
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600">{{ __('general.language') }}</span>
@@ -331,7 +342,7 @@
                                 <a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a>           
                                 <a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a>                
                             </div>  
-                        </li>
+                        </li> --}}
                         
                         <div class="topbar-divider d-none d-sm-block"></div> 
 
@@ -355,14 +366,14 @@
                                     Profile
                                 </a>                
                         
-                                 <a class="dropdown-item menu-action text-gray-600" href="#">
+                                 {{-- <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-cogs"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-list"></i>
                                     Activity Log
-                                </a>                 
+                                </a>                  --}}
 
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item menu-action text-gray-600" href="{{ route('logout') }}"

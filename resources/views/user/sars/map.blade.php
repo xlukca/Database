@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 @section('content')
 
 <head>
@@ -20,10 +20,10 @@ crossorigin=""/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
 </head>
 
-<h3>Map: Data of SARS-CoV-2</h3>
+<h3 class="mx-3 mt-3 mb-3">Map: Data of SARS-CoV-2</h3>
 
 <body>
-    <div id="map" style="height: 600px;"></div>
+    <div class="mx-3" id="map" style="height: 600px;"></div>
 
     <script>
         var map = L.map('map').setView([20, 10], 3);

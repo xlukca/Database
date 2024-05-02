@@ -28,12 +28,9 @@ Route::get('/info', function () {
 Route::get('/', function () { return view('index');});
 
 // Language
-Route::get('language/{locale}', [LanguageController::class, 'language'])->name('language');
+// Route::get('language/{locale}', [LanguageController::class, 'language'])->name('language');
 
 // User
-
-    //API
-Route::get('user/api', function () { return view('user.api');})->name('api');
 
     //SARS
 Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
@@ -78,13 +75,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
 
     // USERS
-    Route::delete('/users/force/{id}', [App\Http\Controllers\UserController::class, 'forceDestroy'])->name('users.forceDestroy');
-    Route::post('/users/restore/{id}', [App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
+    Route::delete('/users/force/{id}', [UserController::class, 'forceDestroy'])->name('users.forceDestroy');
+    Route::post('/users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
     Route::resource('/admin/users', UserController::class);
         
         // Retentions
         Route::get('admin/retentions/index', [LoginRetentionController::class, 'index'])->name('retentions.index');
         Route::get('admin/retentions/show/{id}', [LoginRetentionController::class, 'show'])->name('retentions.show');
-
     });
+    // SARS MAP    
+    Route::get('/user/sars/map', [SarsController::class, 'map'])->name('sars.map');
+
+    //API
+    Route::get('user/api', function () { return view('user.api');})->name('api');
 });

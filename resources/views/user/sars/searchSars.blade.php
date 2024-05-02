@@ -67,9 +67,8 @@
 </form>
 
 <div class="mx-3 mb-5">
-    <table class="table table-striped" id = "dataTable">
-
     @if(count($results) > 0)
+    <table class="table table-striped" id = "dataTable">
         <thead>
         <tr>
             <th>ID</th>
