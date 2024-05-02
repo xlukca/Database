@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PositionSeeder::class,
-            // UserSeeder::class,
-            // LoginRetentionSeeder::class,
+            UserSeeder::class,
+            LoginRetentionSeeder::class,
             SusdataSeeder::class,
         ]);
     }
