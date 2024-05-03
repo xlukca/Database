@@ -21,21 +21,43 @@ class SusdataController extends Controller
      */
     public function index(Request $request)
     {
-        // $susdata = Susdata::withTrashed()->paginate(10);
+    //     // $susdata = Susdata::withTrashed()->paginate(10);
 
-        if ($request->ajax()) {
-            $data = Susdata::withTrashed()->orderBy('id', 'asc')->select('*');
-            return Datatables::of($data)
-                ->addColumn('action', function($row){
-                    $editUrl = route('susdata.edit', $row->id);
-                    $actionBtn = '<a href="'.$editUrl.'" class="edit btn btn-info btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+    if ($request->ajax()) {
+        $data = Susdata::withTrashed()->orderBy('id', 'asc')->select('*');
+        return DataTables::of($data)
+            ->addColumn('action', function($row){
+                $editUrl = route('susdata.edit', $row->id);
+                $deleteUrl = route('susdata.destroy', $row->id);
+                $restoreUrl = route('susdata.restore', $row->id);
+                $forceDeleteUrl = route('susdata.forceDestroy', $row->id);
 
-        return view('admin.susdata.index');
+                if ($row->trashed()) {
+                    $actionBtn = '<form action="'.$restoreUrl.'" method="post" style="display:inline;">
+                                        '.csrf_field().'
+                                        <button type="submit" class="btn btn-success btn-sm">Restore</button>
+                                    </form>';
+                    $actionBtn .= '<form action="'.$forceDeleteUrl.'" method="post" style="display:inline;">
+                                        '.csrf_field().'
+                                        '.method_field('DELETE').'
+                                        <button type="submit" class="btn btn-danger btn-sm">Permanent Delete</button>
+                                    </form>';
+                } else {
+                    $actionBtn = '<a href="'.$editUrl.'" class="edit btn btn-info btn-sm">Edit</a>';
+                    $actionBtn .= '<form action="'.$deleteUrl.'" method="post" style="display:inline;">
+                                        '.csrf_field().'
+                                        '.method_field('DELETE').'
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this record?\')">Delete</button>
+                                    </form>';
+                }
+
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+
+    return view('admin.susdata.index');
     }
 
     /**
@@ -240,12 +262,12 @@ class SusdataController extends Controller
     try {
         Susdata::find($id)->delete();
        // $sus_id->setConnection('mysql_second');
-        session()->flash('success', 'The record was deleted');
+        session()->flash('success', 'The record was temporarily deleted');
         return redirect()->route('susdata.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back();
-    }        
+    }     
     }
 
     public function forceDestroy($id)
@@ -264,7 +286,7 @@ class SusdataController extends Controller
     {
         try {
             Susdata::withTrashed()->find($id)->restore();
-            session()->flash('success', 'The record restored');
+            session()->flash('success', 'The record was restored');
             return redirect()->route('susdata.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
