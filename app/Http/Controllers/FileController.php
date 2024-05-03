@@ -191,7 +191,7 @@ class FileController extends Controller
     {
         try {
             File::withTrashed()->find($id)->restore();
-            session()->flash('success', 'The file restored');
+            session()->flash('success', 'The file was restored');
             return redirect()->back();
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());

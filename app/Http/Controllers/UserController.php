@@ -117,7 +117,7 @@ class UserController extends Controller
 
         try {
             $d->save();
-            session()->flash('success', __('users.updated'));
+            session()->flash('success', 'User was successfully updated.');
             return redirect()->route('users.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -132,7 +132,7 @@ class UserController extends Controller
     {
         try {
             User::find($id)->delete();
-            session()->flash('success', __('users.deleted'));
+            session()->flash('success', 'User was temporarily deleted.');
             return redirect()->route('users.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -144,7 +144,7 @@ class UserController extends Controller
     {
         try {
             User::withTrashed()->find($id)->forceDelete();
-            session()->flash('success', __('users.permanently_deleted'));
+            session()->flash('success', 'User was permanently deleted.');
             return redirect()->route('users.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -156,7 +156,7 @@ class UserController extends Controller
     {
         try {
             User::withTrashed()->find($id)->restore();
-            session()->flash('success', __('users.restored'));
+            session()->flash('success', 'User was successfully restored.');
             return redirect()->route('users.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());

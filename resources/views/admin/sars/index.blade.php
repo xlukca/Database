@@ -22,8 +22,8 @@
                         <th>Population Served</th>
                         <th>No. of people SARS-CoV-2 POSITIVE</th>
                         <th>Country</th>
-                        <th>Action Edit</th>
-                        <th>Action Delete</th>
+                        <th>Action</th>
+                        <th>Action</th>
                         
                         </tr>
                     </thead>
@@ -45,7 +45,7 @@
                                 <td>{{ $s->population_served }}</td>
                                 <td>{{ $s->people_positive }}</td>
                                 <td>{{ $s->name_of_country }}</td>
-                                <td><a class="btn btn-info" href="{{ route('sars.edit', $s->id) }}">Edit</a></td>
+                                <td>@if(!$s->trashed())<a class="btn btn-info" href="{{ route('sars.edit', $s->id) }}">Edit</a>@endif</td>
                                 <td>
                                     @if($s->trashed())
                                     {!! Form::open(array('route' => ['sars.forceDestroy', $s->id], 'method'=>'DELETE')) !!}

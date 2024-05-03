@@ -41,7 +41,7 @@ class PositionController extends Controller
             $d = Position::create([
                 'name'  => $request['name'],
             ]);
-            session()->flash('success', __('positions.created'));
+            session()->flash('success', 'Position was created successfully');
             return redirect()->route('positions.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -82,7 +82,7 @@ class PositionController extends Controller
 
         try {
             $d->save();
-            session()->flash('success', __('positions.updated'));
+            session()->flash('success', 'Position updated successfully');
             return redirect()->route('positions.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -97,7 +97,7 @@ class PositionController extends Controller
     {
         try {
             $position->delete();
-            session()->flash('success', __('positions.deleted'));
+            session()->flash('success', 'Position was temporarily deleted');
             return redirect()->route('positions.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -109,7 +109,7 @@ class PositionController extends Controller
     {
         try {
             Position::withTrashed()->find($id)->forceDelete();
-            session()->flash('success', __('positions.permanently_deleted'));
+            session()->flash('success', 'Position was permanently deleted');
             return redirect()->route('positions.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
@@ -121,7 +121,7 @@ class PositionController extends Controller
     {
         try {
             Position::withTrashed()->find($id)->restore();
-            session()->flash('success', __('positions.restored'));
+            session()->flash('success', 'Position was restored successfully');
             return redirect()->route('positions.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());

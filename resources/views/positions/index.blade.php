@@ -18,15 +18,15 @@
             <tr @if($d->trashed())class="table-danger"@endif>
                 <td>{{ $d->id }}</td>
                 <td>{{ $d->name }}</td>
-                <td><a class="btn btn-info" href="{{ route('positions.edit', $d->id) }}">{{ __('general.edit') }}</a></td>
+                <td>@if(!$d->trashed())<a class="btn btn-info" href="{{ route('positions.edit', $d->id) }}">{{ __('general.edit') }}</a>@endif</td>
                 <td>
                     @if(!$d->trashed())
                     {!! Form::open(array('route' => ['positions.destroy', $d->id], 'method'=>'DELETE')) !!}
-                    {!! Form::submit(__('general.delete'), array('class' => 'btn btn-danger', 'onclick' => 'return confirm("' . __('positions.confirm_delete') . '")')) !!}
+                    {!! Form::submit(__('general.delete'), array('class' => 'btn btn-danger', 'onclick' => 'return confirm("' . 'Do you want to temporarily delete the position?' . '")')) !!}
                     {!! Form::close() !!}
                     @else
                     {!! Form::open(array('route' => ['positions.forceDestroy', $d->id], 'method'=>'DELETE')) !!}
-                    {!! Form::submit(__('general.permanent_delete'), array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("' . __('positions.confirm_permanently_delete') . '")')) !!}
+                    {!! Form::submit(__('general.permanent_delete'), array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("' . 'Do you want to permanently delete the position?' . '")')) !!}
                     {!! Form::close() !!}
                     {!! Form::open(array('route' => ['positions.restore', $d->id], 'method'=>'POST')) !!}
                     {!! Form::submit(__('general.restore'), array('class' => 'btn btn-success btn-sm mt-1')) !!}

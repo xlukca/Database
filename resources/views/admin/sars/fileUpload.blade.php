@@ -3,7 +3,7 @@
 
 <div class="container mt-5">
     <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
-        <h3 class="text-center mb-5">Sars File Upload</h3>
+        <h3 class="text-center mb-5">SARS-CoV-2 File Upload</h3>
         @csrf
         {{-- @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -42,11 +42,15 @@
             @csrf
             @foreach($files as $file)
             <tr @if($file->trashed())class="table-danger"@endif>
-                <td>
-                    @if(!isset($file->sars->file_id))
-                    <input type="checkbox" name="files[]" value="{{ $file->id }}" form="form2" multiple>
-                    @endif
-                </td>
+                @if($file->trashed())
+                    <td></td>    
+                @else
+                    <td>
+                        @if(!isset($file->sars->file_id))
+                            <input type="checkbox" name="files[]" value="{{ $file->id }}" form="form2" multiple>
+                        @endif
+                    </td> 
+                @endif
                 <td>{{ $file->name }}</td>
                 <td>
                     @if($file->trashed())
