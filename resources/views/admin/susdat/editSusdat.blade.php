@@ -5,10 +5,10 @@
     <h3 class="mb-5">Update of the Substance Data</h3>
     <div class="row">
         <div class="col-8">
-            {{ Form::model($susdata, ['route' => ['susdata.update', $susdata->id], 'method' => 'PUT']) }}
+            {{ Form::model($susdat, ['route' => ['susdat.update', $susdat->id], 'method' => 'PUT']) }}
 
             {{-- {{ Form::label('name', 'Name') }}
-            {{ Form::text('name', $susdata->name, array('class' => 'form-control mb-3')) }} --}}
+            {{ Form::text('name', $susdat->name, array('class' => 'form-control mb-3')) }} --}}
 
             @include('_templates.form-text', ['field_name' => 'name', 'field_name_text' => 'Name'])
             @include('_templates.form-text', ['field_name' => 'name_dashboard', 'field_name_text' => 'Name dashboard'])

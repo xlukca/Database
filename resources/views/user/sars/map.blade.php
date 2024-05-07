@@ -33,7 +33,7 @@ crossorigin=""/>
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // Clusterovacia skupina
+        // Cluster group
         var markers = L.markerClusterGroup();
 
         @foreach ($sarsData as $s)
@@ -42,7 +42,6 @@ crossorigin=""/>
             markers.addLayer(marker);
         @endforeach
         
-        // Pridat clusterovaciu skupinu na mapu
         map.addLayer(markers);
     </script>
 </body>

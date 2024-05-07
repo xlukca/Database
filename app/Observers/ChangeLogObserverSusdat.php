@@ -2,11 +2,11 @@
 
 namespace App\Observers;
 use App\Models\ChangeLogSusdat;
-use App\Models\Susdata;
+use App\Models\Susdat;
 
 class ChangeLogObserverSusdat
 {
-    public function updating(Susdata $model)
+    public function updating(Susdat $model)
     {
         // Zaznamenávanie zmien
 

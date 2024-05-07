@@ -99,7 +99,7 @@
     </tbody>
 </table>
 @else
-    <p>No results found</p>
+    <ul>No results found</ul>
 @endif
 
 

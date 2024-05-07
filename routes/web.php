@@ -6,7 +6,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SusdataController;
+use App\Http\Controllers\SusdatController;
 use App\Http\Controllers\LoginRetentionController;
 // use App\Http\Controllers\LanguageController;
 
@@ -35,10 +35,10 @@ Route::get('/', function () { return view('index');});
     //SARS
 Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
 
-    //SUSDATA
-// Route::get('user/susdata/search', [SusdataController::class, 'search'])->name('searchSusdata');
-Route::get('user/susdata/index', [SusdataController::class, 'userIndex'])->name('userIndexSusdata');
-Route::get('user/susdata/list', [SusdataController::class, 'userGetIndex'])->name('listSusdata');
+    //SUSDAT
+// Route::get('user/susdat/search', [SusdatController::class, 'search'])->name('searchSusdat');
+Route::get('user/susdat/index', [SusdatController::class, 'userIndex'])->name('userIndexSusdat');
+Route::get('user/susdat/list', [SusdatController::class, 'userGetIndex'])->name('listSusdat');
 
 // Admin
 Auth::routes();
@@ -68,11 +68,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/sars/force/{id}', [SarsController::class, 'forceDestroy'])->name('sars.forceDestroy');
     Route::post('/admin/sars/restore/{id}', [SarsController::class, 'restore'])->name('sars.restore');
     
-    // SUSDATA
-    Route::resource('admin/susdata', SusdataController::class);
-    Route::get('admin/sudata/changeLogs', [SusdataController::class, 'changeLogs'])->name('susdata.changeLogs');
-    Route::delete('/admin/susdata/force/{id}', [SusdataController::class, 'forceDestroy'])->name('susdata.forceDestroy');
-    Route::post('/admin/susdata/restore/{id}', [SusdataController::class, 'restore'])->name('susdata.restore');
+    // SUSDAT
+    Route::resource('admin/susdat', SusdatController::class);
+    Route::get('admin/sudata/changeLogs', [SusdatController::class, 'changeLogs'])->name('susdat.changeLogs');
+    Route::delete('/admin/susdat/force/{id}', [SusdatController::class, 'forceDestroy'])->name('susdat.forceDestroy');
+    Route::post('/admin/susdat/restore/{id}', [SusdatController::class, 'restore'])->name('susdat.restore');
 
     // USERS
     Route::delete('/users/force/{id}', [UserController::class, 'forceDestroy'])->name('users.forceDestroy');

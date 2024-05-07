@@ -19,7 +19,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($susdata as $s)
+                        @foreach ($susdat as $s)
                         <tr>
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->name }}</td>
@@ -30,7 +30,7 @@
                         @endforeach 
                     </tbody>
                 </table>
-                 {{ $susdata->links() }}
+                 {{ $susdat->links() }}
 </div> 
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
@@ -44,7 +44,7 @@
           serverSide: true,
           orderable: true, 
           searchable: true,
-          ajax: "{{ route('listSusdata') }}",
+          ajax: "{{ route('listSusdat') }}",
           columns: [
               {data: 'sus_id', name: 'id'},
               {data: 'name', name: 'name'},

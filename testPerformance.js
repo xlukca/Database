@@ -22,6 +22,6 @@ export const options = {
 
 export default function () {
   const randomPage = Math.floor(Math.random() * 400125) + 1;
-  const url = `http://127.0.0.1:8000/user/susdata/index?page=${randomPage}`;
+  const url = `http://127.0.0.1:8000/user/susdat/index?page=${randomPage}`;
   http.get(url);
    }

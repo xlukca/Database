@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('susdatas', function (Blueprint $table) {
+        Schema::create('susdats', function (Blueprint $table) {
             $table->id();
             $table->mediumText('name')->nullable();
             $table->mediumText('name_dashboard')->nullable();
@@ -91,6 +91,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('susdatas');
+        Schema::dropIfExists('susdats');
     }
 };

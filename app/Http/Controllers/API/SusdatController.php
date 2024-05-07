@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Models\Susdata;
+use App\Models\Susdat;
 use App\Http\Controllers\Controller;
 use Exception;
 
-class SusdataController extends Controller
+class SusdatController extends Controller
 {
     // public function showJSONid($id)
     // {
@@ -20,7 +20,7 @@ class SusdataController extends Controller
     //        // Pre každé zadané id
     //        foreach ($idArray as $id) {
     //            // Získanie záznamu podľa id
-    //            $foundRecord = Susdata::where('id', $id)->get();
+    //            $foundRecord = Susdat::where('id', $id)->get();
 
     //            // Ak bol záznam nájdený, pridáme ho do $response
     //            if (!$foundRecord->isEmpty()) {
@@ -49,7 +49,7 @@ class SusdataController extends Controller
        // Pridanie jednotlivých záznamov ako elementy do XML
        foreach ($idArray as $id) {
            // Získanie všetkých záznamov s daným id
-           $foundRecords = Susdata::where('id', $id)->get();
+           $foundRecords = Susdat::where('id', $id)->get();
 
            // Kontrola, či sa našli nejaké záznamy s daným id
            if ($foundRecords->isEmpty()) {
@@ -59,15 +59,15 @@ class SusdataController extends Controller
            } else {
                // Ak sa našli záznamy, pridáme ich do XML
                foreach ($foundRecords as $record) {
-                   // Vytvorenie elementu s názvom "susdata" pre každý záznam
-                   $susdataElement = $xml->addChild('susdata');
-                   $susdataElement->addAttribute('id', $record->id);
+                   // Vytvorenie elementu s názvom "susdat" pre každý záznam
+                   $susdatElement = $xml->addChild('susdat');
+                   $susdatElement->addAttribute('id', $record->id);
 
                    // Pridanie atribútov ako elementy do XML pre každý záznam
                    foreach ($record->getAttributes() as $key => $value) {
                        // Preskočenie pridania atribútu "id", keďže sme ho pridali ako atribút elementu
                        if ($key !== 'id') {
-                           $susdataElement->addChild($key, $value);
+                           $susdatElement->addChild($key, $value);
                        }
                    }
                }
@@ -89,7 +89,7 @@ class SusdataController extends Controller
     //         // Pre každé zadané meno
     //         foreach ($namesArray as $name) {
     //             // Získanie záznamu podľa mena
-    //             $foundRecord = Susdata::where('name', $name)->get();
+    //             $foundRecord = Susdat::where('name', $name)->get();
 
     //             // Ak bol záznam nájdený, pridáme ho do $response
     //             if (!$foundRecord->isEmpty()) {
@@ -119,7 +119,7 @@ class SusdataController extends Controller
         // Pridanie jednotlivých záznamov ako elementy do XML
         foreach ($namesArray as $name) {
             // Získanie všetkých záznamov s daným menom
-            $foundRecords = Susdata::where('name', $name)->get();
+            $foundRecords = Susdat::where('name', $name)->get();
 
             // Kontrola, či sa našli nejaké záznamy s daným menom
             if ($foundRecords->isEmpty()) {
@@ -129,15 +129,15 @@ class SusdataController extends Controller
             } else {
                 // Ak sa našli záznamy, pridáme ich do XML
                 foreach ($foundRecords as $record) {
-                    // Vytvorenie elementu s názvom "susdata" pre každý záznam
-                    $susdataElement = $xml->addChild('susdata');
-                    $susdataElement->addAttribute('name', $record->name);
+                    // Vytvorenie elementu s názvom "susdat" pre každý záznam
+                    $susdatElement = $xml->addChild('susdat');
+                    $susdatElement->addAttribute('name', $record->name);
 
                     // Pridanie atribútov ako elementy do XML pre každý záznam
                     foreach ($record->getAttributes() as $key => $value) {
                         // Preskočenie pridania atribútu "name", keďže sme ho pridali ako atribút elementu
                         if ($key !== 'name') {
-                            $susdataElement->addChild($key, $value);
+                            $susdatElement->addChild($key, $value);
                         }
                     }
                 }
@@ -159,7 +159,7 @@ class SusdataController extends Controller
     //     // Pre každé zadané meno
     //     foreach ($casrnArray as $casrn) {
     //         // Získanie záznamu podľa mena
-    //         $foundRecord = Susdata::where('cas_rn_dashboard', $casrn)->get();
+    //         $foundRecord = Susdat::where('cas_rn_dashboard', $casrn)->get();
 
     //         // Ak bol záznam nájdený, pridáme ho do $response
     //         if (!$foundRecord->isEmpty()) {
@@ -192,7 +192,7 @@ class SusdataController extends Controller
         // Pridanie jednotlivých záznamov ako elementy do XML
         foreach ($casrnArray as $casrn) {
             // Získanie všetkých záznamov s daným menom
-            $foundRecords = Susdata::where('cas_rn', $casrn)->get();
+            $foundRecords = Susdat::where('cas_rn', $casrn)->get();
 
             // Kontrola, či sa našli nejaké záznamy s daným menom
             if ($foundRecords->isEmpty()) {
@@ -202,15 +202,15 @@ class SusdataController extends Controller
             } else {
                 // Ak sa našli záznamy, pridáme ich do XML
                 foreach ($foundRecords as $record) {
-                    // Vytvorenie elementu s názvom "susdata" pre každý záznam
-                    $susdataElement = $xml->addChild('susdata');
-                    $susdataElement->addAttribute('cas_rn', $record->cas_rn);
+                    // Vytvorenie elementu s názvom "susdat" pre každý záznam
+                    $susdatElement = $xml->addChild('susdat');
+                    $susdatElement->addAttribute('cas_rn', $record->cas_rn);
 
                     // Pridanie atribútov ako elementy do XML pre každý záznam
                     foreach ($record->getAttributes() as $key => $value) {
                         // Preskočenie pridania atribútu "name", keďže sme ho pridali ako atribút elementu
                         if ($key !== 'cas_rn') {
-                            $susdataElement->addChild($key, $value);
+                            $susdatElement->addChild($key, $value);
                         }
                     }
                 }
@@ -232,7 +232,7 @@ class SusdataController extends Controller
     //     // Pre každé zadané meno
     //     foreach ($stdinchikeyArray as $stdinchikey) {
     //         // Získanie záznamu podľa mena
-    //         $foundRecord = Susdata::where('stdinchikey', $stdinchikey)->get();
+    //         $foundRecord = Susdat::where('stdinchikey', $stdinchikey)->get();
 
     //         // Ak bol záznam nájdený, pridáme ho do $response
     //         if (!$foundRecord->isEmpty()) {
@@ -261,7 +261,7 @@ class SusdataController extends Controller
         // Pridanie jednotlivých záznamov ako elementy do XML
         foreach ($stdinchikeyArray as $stdinchikey) {
             // Získanie všetkých záznamov s daným menom
-            $foundRecords = Susdata::where('stdinchikey', $stdinchikey)->get();
+            $foundRecords = Susdat::where('stdinchikey', $stdinchikey)->get();
 
             // Kontrola, či sa našli nejaké záznamy s daným menom
             if ($foundRecords->isEmpty()) {
@@ -271,15 +271,15 @@ class SusdataController extends Controller
             } else {
                 // Ak sa našli záznamy, pridáme ich do XML
                 foreach ($foundRecords as $record) {
-                    // Vytvorenie elementu s názvom "susdata" pre každý záznam
-                    $susdataElement = $xml->addChild('susdata');
-                    $susdataElement->addAttribute('stdinchikey', $record->stdinchikey);
+                    // Vytvorenie elementu s názvom "susdat" pre každý záznam
+                    $susdatElement = $xml->addChild('susdat');
+                    $susdatElement->addAttribute('stdinchikey', $record->stdinchikey);
 
                     // Pridanie atribútov ako elementy do XML pre každý záznam
                     foreach ($record->getAttributes() as $key => $value) {
                         // Preskočenie pridania atribútu "name", keďže sme ho pridali ako atribút elementu
                         if ($key !== 'stdinchikey') {
-                            $susdataElement->addChild($key, $value);
+                            $susdatElement->addChild($key, $value);
                         }
                     }
                 }
@@ -301,7 +301,7 @@ class SusdataController extends Controller
     //      // Pre každé zadané meno
     //      foreach ($dtxsidArray as $dtxsid) {
     //          // Získanie záznamu podľa mena
-    //          $foundRecord = Susdata::where('dtxsid', $dtxsid)->get();
+    //          $foundRecord = Susdat::where('dtxsid', $dtxsid)->get();
  
     //          // Ak bol záznam nájdený, pridáme ho do $response
     //          if (!$foundRecord->isEmpty()) {
@@ -330,7 +330,7 @@ class SusdataController extends Controller
         // Pridanie jednotlivých záznamov ako elementy do XML
         foreach ($dtxsidArray as $dtxsid) {
             // Získanie všetkých záznamov s daným menom
-            $foundRecords = Susdata::where('dtxsid', $dtxsid)->get();
+            $foundRecords = Susdat::where('dtxsid', $dtxsid)->get();
 
             // Kontrola, či sa našli nejaké záznamy s daným menom
             if ($foundRecords->isEmpty()) {
@@ -340,15 +340,15 @@ class SusdataController extends Controller
             } else {
                 // Ak sa našli záznamy, pridáme ich do XML
                 foreach ($foundRecords as $record) {
-                    // Vytvorenie elementu s názvom "susdata" pre každý záznam
-                    $susdataElement = $xml->addChild('susdata');
-                    $susdataElement->addAttribute('dtxsid', $record->dtxsid);
+                    // Vytvorenie elementu s názvom "susdat" pre každý záznam
+                    $susdatElement = $xml->addChild('susdat');
+                    $susdatElement->addAttribute('dtxsid', $record->dtxsid);
 
                     // Pridanie atribútov ako elementy do XML pre každý záznam
                     foreach ($record->getAttributes() as $key => $value) {
                         // Preskočenie pridania atribútu "name", keďže sme ho pridali ako atribút elementu
                         if ($key !== 'dtxsid') {
-                            $susdataElement->addChild($key, $value);
+                            $susdatElement->addChild($key, $value);
                         }
                     }
                 }
@@ -375,7 +375,7 @@ class SusdataController extends Controller
         $response = [];
 
         foreach ($valuesArray as $value) {
-            $records = Susdata::where($field, $value)->get();
+            $records = Susdat::where($field, $value)->get();
             $response[] = $this->formatResponse($records, $value);
         }
 

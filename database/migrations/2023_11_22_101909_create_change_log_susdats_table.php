@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('change_log_susdats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('susdat_id')->references('id')->on('susdatas');;
+            $table->foreignId('susdat_id')->references('id')->on('susdats');;
             $table->string('item');
             $table->text('old_value')->nullable();
             $table->text('new_value')->nullable();

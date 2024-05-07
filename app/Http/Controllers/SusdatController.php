@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Susdata;
+use App\Models\Susdat;
 use App\Models\ChangeLogSusdat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,23 +14,23 @@ use Yajra\DataTables\Facades\DataTables;
 
 use Exception;
 
-class SusdataController extends Controller
+class SusdatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-    //     // $susdata = Susdata::withTrashed()->paginate(10);
+    //     // $susdat = Susdat::withTrashed()->paginate(10);
 
     if ($request->ajax()) {
-        $data = Susdata::withTrashed()->orderBy('id', 'asc')->select('*');
+        $data = Susdat::withTrashed()->orderBy('id', 'asc')->select('*');
         return DataTables::of($data)
             ->addColumn('action', function($row){
-                $editUrl = route('susdata.edit', $row->id);
-                $deleteUrl = route('susdata.destroy', $row->id);
-                $restoreUrl = route('susdata.restore', $row->id);
-                $forceDeleteUrl = route('susdata.forceDestroy', $row->id);
+                $editUrl = route('susdat.edit', $row->id);
+                $deleteUrl = route('susdat.destroy', $row->id);
+                $restoreUrl = route('susdat.restore', $row->id);
+                $forceDeleteUrl = route('susdat.forceDestroy', $row->id);
 
                 if ($row->trashed()) {
                     $actionBtn = '<form action="'.$restoreUrl.'" method="post" style="display:inline;">
@@ -57,7 +57,7 @@ class SusdataController extends Controller
             ->make(true);
     }
 
-    return view('admin.susdata.index');
+    return view('admin.susdat.index');
     }
 
     /**
@@ -79,7 +79,7 @@ class SusdataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Susdata $susdata)
+    public function show(Susdat $susdat)
     {
         //
     }
@@ -90,7 +90,7 @@ class SusdataController extends Controller
     public function edit($id)
     {
         // $sus_id->setConnection('mysql_second');
-        return view('admin.susdata.editSusdata')->with('susdata', Susdata::find($id));
+        return view('admin.susdat.editSusdat')->with('susdat', Susdat::find($id));
     }
 
     /**
@@ -174,7 +174,7 @@ class SusdataController extends Controller
        // dd($request);
         $validated = $request->validate($rules);
         
-        $d = Susdata::find($id);
+        $d = Susdat::find($id);
        // $sus_id->setConnection('mysql_second');
         $d->name                                                = $request->name;
         $d->name_dashboard                                      = $request->name_dashboard;
@@ -247,7 +247,7 @@ class SusdataController extends Controller
     try {
         $d->save();
         session()->flash('success', 'The record was succesfully edited.');
-        return redirect()->route('susdata.index');
+        return redirect()->route('susdat.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back()->withInput();
@@ -260,10 +260,10 @@ class SusdataController extends Controller
     public function destroy($id)
     {
     try {
-        Susdata::find($id)->delete();
+        Susdat::find($id)->delete();
        // $sus_id->setConnection('mysql_second');
         session()->flash('success', 'The record was temporarily deleted');
-        return redirect()->route('susdata.index');
+        return redirect()->route('susdat.index');
     } catch (Exception $e) {
         session()->flash('failure', $e->getMessage());
         return redirect()->back();
@@ -273,9 +273,9 @@ class SusdataController extends Controller
     public function forceDestroy($id)
     {
         try {
-            Susdata::withTrashed()->find($id)->forceDelete();
+            Susdat::withTrashed()->find($id)->forceDelete();
             session()->flash('success', 'The record was permanently deleted');
-            return redirect()->route('susdata.index');
+            return redirect()->route('susdat.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
             return redirect()->back();
@@ -285,9 +285,9 @@ class SusdataController extends Controller
     public function restore($id)
     {
         try {
-            Susdata::withTrashed()->find($id)->restore();
+            Susdat::withTrashed()->find($id)->restore();
             session()->flash('success', 'The record was restored');
-            return redirect()->route('susdata.index');
+            return redirect()->route('susdat.index');
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());
             return redirect()->back();
@@ -302,7 +302,7 @@ class SusdataController extends Controller
         $stdinchikey = $request->input('stdinchikey');
         $dtxsid = $request->input('dtxsid');
 
-        $query = Susdata::query();
+        $query = Susdat::query();
 
         if ($id) {
             $query->where('id', $id);
@@ -331,21 +331,21 @@ class SusdataController extends Controller
                             ->orderBy('dtxsid', 'asc')
                             ->get();      
         
-        $id = Susdata::select('id')->orderBy('id', 'asc')->distinct()->get();
-        $name = Susdata::select('name')->orderBy('name', 'asc')->distinct()->get();
-        $cas_rn = Susdata::select('cas_rn')->orderBy('cas_rn', 'asc')->distinct()->get();
-        $stdinchikey = Susdata::select('stdinchikey')->orderBy('stdinchikey', 'asc')->distinct()->get();
-        $dtxsid = Susdata::select('dtxsid')->orderBy('dtxsid', 'asc')->distinct()->get();
+        $id = Susdat::select('id')->orderBy('id', 'asc')->distinct()->get();
+        $name = Susdat::select('name')->orderBy('name', 'asc')->distinct()->get();
+        $cas_rn = Susdat::select('cas_rn')->orderBy('cas_rn', 'asc')->distinct()->get();
+        $stdinchikey = Susdat::select('stdinchikey')->orderBy('stdinchikey', 'asc')->distinct()->get();
+        $dtxsid = Susdat::select('dtxsid')->orderBy('dtxsid', 'asc')->distinct()->get();
 
 
-        return view('user.susdata.searchSusdata', compact('results', 'id', 'name', 'cas_rn', 'stdinchikey', 'dtxsid'));
+        return view('user.susdat.searchSusdat', compact('results', 'id', 'name', 'cas_rn', 'stdinchikey', 'dtxsid'));
     }
 
     public function changeLogs()
     {
         $changeSusdat = ChangeLogSusdat::all();
         
-        return view('admin.susdata.changeLogs')->with('changeSusdat', $changeSusdat);
+        return view('admin.susdat.changeLogs')->with('changeSusdat', $changeSusdat);
     }
 
     public function userIndex()
@@ -355,28 +355,28 @@ class SusdataController extends Controller
         // dd($redisdata);
         // $susdat = json_decode($redisdata, true);
         //  dd($susdat);
-        // $susdata = Susdata::paginate(10);
-        // dd($susdata);
+        // $susdat = Susdat::paginate(10);
+        // dd($susdat);
     
-        // return view('user.susdata.index')->with('susdata',  $susdata);
+        // return view('user.susdat.index')->with('susdat',  $susdat);
     // }    redis load data
 
     // CACHE DATA
     //     $page = request()->query('page', 1); // Získa aktuálnu stránku z requestu
     //     $cacheKey = 'susdat_page_' . $page;
 
-    //     $susdata = Cache::rememberForever($cacheKey, function () use ($page) {
-    //         return Susdata::orderBy('id', 'asc')->paginate(10);
+    //     $susdat = Cache::rememberForever($cacheKey, function () use ($page) {
+    //         return Susdat::orderBy('id', 'asc')->paginate(10);
     //     });
 
         
-    //     return view('user.susdata.index')->with('susdata',  $susdata);
+    //     return view('user.susdat.index')->with('susdat',  $susdat);
     // }
         
-        $susdata = Susdata::orderBy('id', 'asc')->paginate(10); // order by id(primarny kluc) ascending pomohlo zrychlit nacitavanie zaznamov
+        $susdat = Susdat::paginate(10); // order by id(primarny kluc) ascending pomohlo zrychlit nacitavanie zaznamov
         
-        return view('user.susdata.index')->with('susdata',  $susdata);
-        // return view('user.susdata.index');     // yajraDatatable
+        return view('user.susdat.index')->with('susdat',  $susdat);
+        // return view('user.susdat.index');     // yajraDatatable
 
     }
 
@@ -384,9 +384,9 @@ class SusdataController extends Controller
     // {
     //     // dd($request->ajax());
     //     if ($request->ajax()) {
-    //         // $data = Susdata::select('*');
-    //         $data = Susdata::all();
-    //         // $data = DB::select('SELECT * FROM susdatas WHERE id < 100000');
+    //         // $data = Susdat::select('*');
+    //         $data = Susdat::all();
+    //         // $data = DB::select('SELECT * FROM susdats WHERE id < 100000');
     //         // dd($data);
     //         return Datatables::of($data)
     //             ->make(true);
@@ -395,8 +395,8 @@ class SusdataController extends Controller
 
     //     public function userGetIndex(Request $request)
     // {
-    //         $data = Susdata::select('*');
-    //         // $data = DB::collection('susdatas');
+    //         $data = Susdat::select('*');
+    //         // $data = DB::collection('susdats');
     //         return DataTables::make($data)->toJson();
     // }                
     // MongoDB

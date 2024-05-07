@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\SusdataController;
+use App\Http\Controllers\Api\SusdatController;
 use App\Http\Controllers\Api\SarsController;
 
 /*
@@ -23,27 +23,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // SUSDAT API
 
     // // id
-    //     Route::get('/susdat/id/{id}/JSON', [SusdataController::class, 'showJSONid']);
-        Route::get('/susdat/id/{id}/XML', [SusdataController::class, 'showXMLid']);
+    //     Route::get('/susdat/id/{id}/JSON', [SusdatController::class, 'showJSONid']);
+        Route::get('/susdat/id/{id}/XML', [SusdatController::class, 'showXMLid']);
 
     // // name
-    //     Route::get('/susdat/name/{names}/JSON', [SusdataController::class, 'showJSONname']);
-        Route::get('/susdat/name/{name}/XML', [SusdataController::class, 'showXMLname']);
+    //     Route::get('/susdat/name/{names}/JSON', [SusdatController::class, 'showJSONname']);
+        Route::get('/susdat/name/{name}/XML', [SusdatController::class, 'showXMLname']);
 
     // // cas_rn_dashboard
-    //     Route::get('/susdat/cas_rn_dashboard/{cas_rn_dashboard}/JSON', [SusdataController::class, 'showJSONcasrn']);
-        Route::get('/susdat/cas_rn/{cas_rn}/XML', [SusdataController::class, 'showXMLcasrn']);
+    //     Route::get('/susdat/cas_rn_dashboard/{cas_rn_dashboard}/JSON', [SusdatController::class, 'showJSONcasrn']);
+        Route::get('/susdat/cas_rn/{cas_rn}/XML', [SusdatController::class, 'showXMLcasrn']);
 
     // // stdinchikey
-    //     Route::get('/susdat/stdinchikey/{stdinchikey}/JSON', [SusdataController::class, 'showJSONinchikey']);
-        Route::get('/susdat/stdinchikey/{stdinchikey}/XML', [SusdataController::class, 'showXMLinchikey']);
+    //     Route::get('/susdat/stdinchikey/{stdinchikey}/JSON', [SusdatController::class, 'showJSONinchikey']);
+        Route::get('/susdat/stdinchikey/{stdinchikey}/XML', [SusdatController::class, 'showXMLinchikey']);
 
     // // dtxsid
-    //     Route::get('/susdat/dtxsid/{dtxsid}/JSON', [SusdataController::class, 'showJSONdtxsid']);
-        Route::get('/susdat/dtxsid/{dtxsid}/XML', [SusdataController::class, 'showXMLdtxsid']);
+    //     Route::get('/susdat/dtxsid/{dtxsid}/JSON', [SusdatController::class, 'showJSONdtxsid']);
+        Route::get('/susdat/dtxsid/{dtxsid}/XML', [SusdatController::class, 'showXMLdtxsid']);
 
-    Route::get('/susdat/{field}/{values}/JSON', [SusdataController::class, 'showJSON']);
-    // Route::get('/susdat/{field}/{values}/XML', [SusdataController::class, 'showXML']);
+    Route::get('/susdat/{field}/{values}/JSON', [SusdatController::class, 'showJSON']);
+    // Route::get('/susdat/{field}/{values}/XML', [SusdatController::class, 'showXML']);
     
 
 // SARS API

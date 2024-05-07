@@ -71,7 +71,6 @@
     <table class="table table-striped" id = "dataTable">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Sampling Date</th>
             <th>Gene copy [number/mL of sample]</th>
             <th>Gene copy [number/ng of RNA]</th>
@@ -85,7 +84,6 @@
         <tbody>
             @foreach($results as $result)
             <tr>
-                <td>{{ $result->id }}</td>
                 <td>{{ $result->sample_from_year }}-{{ $result->sample_from_month }}-{{ $result->sample_from_day }}</td>
                 <td>{{ $result->gene1 }}</td>
                 <td>{{ $result->gene2 }}</td>

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             UserSeeder::class,
             LoginRetentionSeeder::class,
-            SusdataSeeder::class,
+            SusdatSeeder::class,
         ]);
     }
 }

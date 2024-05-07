@@ -116,19 +116,19 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="/admin/susdata">
+                <a class="nav-link" href="/admin/susdat">
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ __('general.table_data') }}</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('susdata.changeLogs') }}">
+                <a class="nav-link" href="{{ route('susdat.changeLogs') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ __('general.change_logs') }}</span></a>
             </li>
 
             {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('searchSusdata') }}">
+                <a class="nav-link" href="{{ route('searchSusdat') }}">
                     <i class="fas fa-search"></i>
                     <span>{{ __('general.search_data') }}</span></a>
             </li> --}}

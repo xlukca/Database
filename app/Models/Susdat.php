@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 // use MongoDB\Laravel\Eloquent\Model;
 
-class Susdata extends Model
+class Susdat extends Model
 {
     use HasFactory;
     use SoftDeletes;

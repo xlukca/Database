@@ -6,12 +6,12 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use Spatie\SimpleExcel\SimpleExcelReader;
-use App\Models\Susdata;
+use App\Models\Susdat;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\LazyCollection;
 
-class SusdataSeeder extends Seeder
+class SusdatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -98,11 +98,11 @@ class SusdataSeeder extends Seeder
                 'remark' => $row['sus_remark'],
             ];
          }
-        //     Susdata::insert($data);
+        //     Susdat::insert($data);
            DB::beginTransaction();   //  SQL databases
 
             try {
-                Susdata::insert($data);
+                Susdat::insert($data);
                 DB::commit();
             } catch (\Exception $e) {
                 // V prípade chyby rollback
