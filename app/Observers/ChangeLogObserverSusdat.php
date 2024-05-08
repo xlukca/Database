@@ -8,7 +8,7 @@ class ChangeLogObserverSusdat
 {
     public function updating(Susdat $model)
     {
-        // Zaznamenávanie zmien
+        // Record the change
 
         $oldAttributes = $model->getOriginal();
         $newAttributes = $model->getAttributes();
@@ -20,7 +20,7 @@ class ChangeLogObserverSusdat
         
                 ChangeLogSusdat::create([
                     'susdat_id' => $model->id,
-                    'item' => $key, // Stĺpec, ktorý sa zmenil
+                    'item' => $key, 
                     'old_value' => $oldValue,
                     'new_value' => $newValue,
                     'user_id' => auth()->id(),

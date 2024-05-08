@@ -11,13 +11,13 @@
             @csrf
                 <thead>
                     <tr>
-                        <th>{{ __('ID') }}</th>
-                        <th>{{ __('susdat.susdat_id') }}</th>
-                        <th>{{ __('susdat.item') }}</th>
-                        <th>{{ __('susdat.old_value') }}</th>
-                        <th>{{ __('susdat.new_value') }}</th>
-                        <th>{{ __('susdat.user') }}</th>
-                        <th>{{ __('susdat.editing_time') }}</th>
+                        <th>ID</th>
+                        <th>Susdat id</th>
+                        <th>Item</th>
+                        <th>Old value</th>
+                        <th>New value</th>
+                        <th>User</th>
+                        <th>Editing time</th>
                         </tr>
                     </thead>
                     <tbody>
