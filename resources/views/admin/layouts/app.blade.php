@@ -93,7 +93,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('sars.map') }}">
+                <a class="nav-link" href="{{ route('sarsMapAdmin') }}">
                     <i class="fas fa-fw fa-map"></i>
                     <span>{{ __('general.map') }}</span></a>
             </li>
@@ -142,7 +142,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('api') }}">
+                <a class="nav-link" href="{{ route('apiAdmin') }}">
                     <i class="fas fa-search"></i>
                     <span>SARS and SUBSTANCES</span></a>
             </li>

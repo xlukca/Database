@@ -27,9 +27,6 @@ Route::get('/info', function () {
 
 Route::get('/', function () { return view('index');});
 
-// Language
-// Route::get('language/{locale}', [LanguageController::class, 'language'])->name('language');
-
 // User
 
     //SARS
@@ -45,6 +42,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('admin/api', function () { return view('admin.api');})->name('apiAdmin');
     Route::middleware(['user_type'])->group(function () {  
 
     // Positions
@@ -63,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/sars/file-upload/force/{id}', 'forceDestroy')->name('file-upload.forceDestroy');
         Route::post('/admin/sars/file-upload/restore/{id}', 'restore')->name('file-upload.restore');
     });
-    Route::get('/admin/sars/map', [SarsController::class, 'map'])->name('sars.map');
+    Route::get('/admin/sars/map', [SarsController::class, 'mapAdmin'])->name('sarsMapAdmin');
     Route::resource('admin/sars', SarsController::class);
     Route::delete('/admin/sars/force/{id}', [SarsController::class, 'forceDestroy'])->name('sars.forceDestroy');
     Route::post('/admin/sars/restore/{id}', [SarsController::class, 'restore'])->name('sars.restore');

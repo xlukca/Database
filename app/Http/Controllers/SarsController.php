@@ -328,4 +328,11 @@ class SarsController extends Controller
         return view('user.sars.map')->with('sarsData', $sarsData);
     }
 
+    public function mapAdmin()
+    {
+        $sarsData = Sars::all();
+        
+        return view('admin.sars.map')->with('sarsData', $sarsData);
+    }
+
 }
