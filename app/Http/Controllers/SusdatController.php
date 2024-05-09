@@ -24,7 +24,7 @@ class SusdatController extends Controller
     //     // $susdat = Susdat::withTrashed()->paginate(10);
 
     if ($request->ajax()) {
-        $data = Susdat::withTrashed()->orderBy('id', 'asc')->select('*');
+        $data = Susdat::withTrashed()->select('*');
         return DataTables::of($data)
             ->addColumn('action', function($row){
                 $editUrl = route('susdat.edit', $row->id);

@@ -33,7 +33,7 @@
                     <td>e.g. <span style="color: brown">Sulfachloropyridazine</span></td>
                 </tr>
                 <tr>
-                    <th style="color: blue">cas_rn_dashboard</th>
+                    <th style="color: blue">cas_rn</th>
                     <td>Chemical Abstracts Service Registry Number</td>
                     <td>e.g. <span style="color: brown">80-32-0</span></td>
                 </tr>

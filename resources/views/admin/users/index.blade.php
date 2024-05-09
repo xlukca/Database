@@ -40,14 +40,14 @@
             <td>
                 @if(!$d->trashed())
                 {!! Form::open(array('route' => ['users.destroy', $d->id], 'method'=>'DELETE')) !!}
-                {!! Form::submit(__('general.delete'), array('class' => 'btn btn-danger', 'onclick' => 'return confirm("' . 'Do you want to temporarily delete the position?' . '")')) !!}
+                {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("' . 'Do you want to temporarily delete the position?' . '")')) !!}
                 {!! Form::close() !!}
                 @else
                 {!! Form::open(array('route' => ['users.forceDestroy', $d->id], 'method'=>'DELETE')) !!}
-                {!! Form::submit(__('general.permanent_delete'), array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("' . 'Do you want to permanently delete the position?' . '")')) !!}
+                {!! Form::submit('Permanent Delete', array('class' => 'btn btn-danger btn-sm', 'onclick' => 'return confirm("' . 'Do you want to permanently delete the position?' . '")')) !!}
                 {!! Form::close() !!}
                 {!! Form::open(array('route' => ['users.restore', $d->id], 'method'=>'POST')) !!}
-                {!! Form::submit(__('general.restore'), array('class' => 'btn btn-success btn-sm mt-1')) !!}
+                {!! Form::submit('Restore', array('class' => 'btn btn-success btn-sm mt-1')) !!}
                 {!! Form::close() !!}
                 @endif
             </td>

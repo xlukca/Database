@@ -42,7 +42,6 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('admin/api', function () { return view('admin.api');})->name('apiAdmin');
     Route::middleware(['user_type'])->group(function () {  
 
     // Positions
@@ -71,6 +70,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/sudata/changeLogs', [SusdatController::class, 'changeLogs'])->name('susdat.changeLogs');
     Route::delete('/admin/susdat/force/{id}', [SusdatController::class, 'forceDestroy'])->name('susdat.forceDestroy');
     Route::post('/admin/susdat/restore/{id}', [SusdatController::class, 'restore'])->name('susdat.restore');
+
+    // API ADMIN
+    Route::get('admin/api', function () { return view('admin.api');})->name('apiAdmin');
 
     // USERS
     Route::delete('/users/force/{id}', [UserController::class, 'forceDestroy'])->name('users.forceDestroy');

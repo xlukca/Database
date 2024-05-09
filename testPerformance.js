@@ -4,7 +4,7 @@ export const options = {
     per_vu_scenario: {
       executor: "per-vu-iterations",
       vus: 1,
-      iterations: 100,
+      iterations: 50,
     },
   },
 };
@@ -21,7 +21,8 @@ export const options = {
 // };
 
 export default function () {
-  const randomPage = Math.floor(Math.random() * 400125) + 1;
-  const url = `http://127.0.0.1:8000/user/susdat/index?page=${randomPage}`;
+  // const randomPage = Math.floor(Math.random() * 400125) + 1;
+  // const url = `http://127.0.0.1:8000/user/susdat/index?page=${randomPage}`;
+  const url = `http://127.0.0.1:8000/api/susdat/cas_rn/102-65-8/XML`;
   http.get(url);
    }

@@ -9,34 +9,6 @@ use Exception;
 
 class SusdatController extends Controller
 {
-    // public function showJSONid($id)
-    // {
-    //        // Rozdelenie zadaných mien na pole
-    //        $idArray = explode(',', $id);
-
-    //        // Vytvorenie asociatívneho poľa pre JSON
-    //     //    $response = [];
-
-    //        // Pre každé zadané id
-    //        foreach ($idArray as $id) {
-    //            // Získanie záznamu podľa id
-    //            $foundRecord = Susdat::where('id', $id)->get();
-
-    //            // Ak bol záznam nájdený, pridáme ho do $response
-    //            if (!$foundRecord->isEmpty()) {
-    //                $response[] = $foundRecord;
-    //            } else {
-    //                // Ak záznam nebol nájdený, pridáme chybové hlásenie
-    //                $response[] = [
-    //                    'id' => $id,
-    //                    'error' => 'Record not found in the database'
-    //                ];
-    //            }
-    //        }
-
-    //        // Vrátenie odpovede vo formáte JSON
-    //        return response()->json($response, 200);
-    // }
 
     public function showXMLid($id)
     {
@@ -78,36 +50,6 @@ class SusdatController extends Controller
        return response($xml->asXML(), 200)->header('Content-Type', 'application/xml');
     }
 
-    // public function showJSONname($names)
-    // {
-    //         // Rozdelenie zadaných mien na pole
-    //         $namesArray = explode(',', $names);
-
-    //         // Vytvorenie asociatívneho poľa pre JSON
-    //         $response = [];
-
-    //         // Pre každé zadané meno
-    //         foreach ($namesArray as $name) {
-    //             // Získanie záznamu podľa mena
-    //             $foundRecord = Susdat::where('name', $name)->get();
-
-    //             // Ak bol záznam nájdený, pridáme ho do $response
-    //             if (!$foundRecord->isEmpty()) {
-    //                 $response[] = $foundRecord;
-    //             } else {
-    //                 // Ak záznam nebol nájdený, pridáme chybové hlásenie
-    //                 $response[] = [
-    //                     'name' => $name,
-    //                     'error' => 'Record not found in the database'
-    //                 ];
-    //             }
-    //         }
-
-    //         // Vrátenie odpovede vo formáte JSON
-    //         return response()->json($response, 200);
-
-    // }
-
     public function showXMLname($name)
     {
         // Rozdelenie zadaných mien na pole
@@ -147,35 +89,6 @@ class SusdatController extends Controller
         // Vrátenie odpovede vo formáte XML
         return response($xml->asXML(), 200)->header('Content-Type', 'application/xml');
     }
-
-    // public function showJSONcasrn($casrn)
-    // {
-    //     // Rozdelenie zadaných mien na pole
-    //     $casrnArray = explode(',', $casrn);
-
-    //     // Vytvorenie asociatívneho poľa pre JSON
-    //     $response = [];
-
-    //     // Pre každé zadané meno
-    //     foreach ($casrnArray as $casrn) {
-    //         // Získanie záznamu podľa mena
-    //         $foundRecord = Susdat::where('cas_rn_dashboard', $casrn)->get();
-
-    //         // Ak bol záznam nájdený, pridáme ho do $response
-    //         if (!$foundRecord->isEmpty()) {
-    //             $response[] = $foundRecord;
-    //         } else {
-    //             // Ak záznam nebol nájdený, pridáme chybové hlásenie
-    //             $response[] = [
-    //                 'cas_rn_dashboard' => $casrn,
-    //                 'error' => 'Record not found in the database'
-    //             ];
-    //         }
-    //     }
-
-    //     // Vrátenie odpovede vo formáte JSON
-    //     return response()->json($response, 200);
-    // }
 
     public function showXMLcasrn($casrn)
     {
@@ -221,35 +134,6 @@ class SusdatController extends Controller
         return response($xml->asXML(), 200)->header('Content-Type', 'application/xml');
     }
 
-    // public function showJSONinchikey($stdinchikey)
-    // {
-    //     // Rozdelenie zadaných mien na pole
-    //     $stdinchikeyArray = explode(',', $stdinchikey);
-
-    //     // Vytvorenie asociatívneho poľa pre JSON
-    //     $response = [];
-
-    //     // Pre každé zadané meno
-    //     foreach ($stdinchikeyArray as $stdinchikey) {
-    //         // Získanie záznamu podľa mena
-    //         $foundRecord = Susdat::where('stdinchikey', $stdinchikey)->get();
-
-    //         // Ak bol záznam nájdený, pridáme ho do $response
-    //         if (!$foundRecord->isEmpty()) {
-    //             $response[] = $foundRecord;
-    //         } else {
-    //             // Ak záznam nebol nájdený, pridáme chybové hlásenie
-    //             $response[] = [
-    //                 'stdinchikey' => $stdinchikey,
-    //                 'error' => 'Record not found in the database'
-    //             ];
-    //         }
-    //     }
-
-    //     // Vrátenie odpovede vo formáte JSON
-    //     return response()->json($response, 200);
-    // }
-
     public function showXMLinchikey($stdinchikey)
     {
         // Rozdelenie zadaných mien na pole
@@ -289,35 +173,6 @@ class SusdatController extends Controller
         // Vrátenie odpovede vo formáte XML
         return response($xml->asXML(), 200)->header('Content-Type', 'application/xml');
     }
-
-    // public function showJSONdtxsid($dtxsid)
-    // {
-    //      // Rozdelenie zadaných mien na pole
-    //      $dtxsidArray = explode(',', $dtxsid);
-
-    //      // Vytvorenie asociatívneho poľa pre JSON
-    //      $response = [];
- 
-    //      // Pre každé zadané meno
-    //      foreach ($dtxsidArray as $dtxsid) {
-    //          // Získanie záznamu podľa mena
-    //          $foundRecord = Susdat::where('dtxsid', $dtxsid)->get();
- 
-    //          // Ak bol záznam nájdený, pridáme ho do $response
-    //          if (!$foundRecord->isEmpty()) {
-    //              $response[] = $foundRecord;
-    //          } else {
-    //              // Ak záznam nebol nájdený, pridáme chybové hlásenie
-    //              $response[] = [
-    //                  'dtxsid' => $dtxsid,
-    //                  'error' => 'Record not found in the database'
-    //              ];
-    //          }
-    //      }
- 
-    //      // Vrátenie odpovede vo formáte JSON
-    //      return response()->json($response, 200);
-    // }
 
     public function showXMLdtxsid($dtxsid)
     {

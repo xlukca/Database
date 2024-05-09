@@ -56,7 +56,7 @@
                                     {!! Form::close() !!}
                                     @else
                                     {!! Form::open(array('route' => ['sars.destroy', $s->id], 'method'=>'DELETE')) !!}
-                                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the record.")')) !!}
+                                    {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the record.")')) !!}
                                     {!! Form::close() !!}
                                     @endif
                                 </td>

@@ -54,7 +54,7 @@
                                     {!! Form::close() !!}
                                     @else
                                     {!! Form::open(array('route' => ['susdat.destroy', $sus->id], 'method'=>'DELETE')) !!}
-                                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
+                                    {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
                                     {!! Form::close() !!}
                                     @endif
                                 </td>
@@ -74,6 +74,7 @@
       var table = $('.yajra-datatable').DataTable({
           processing: true,
           serverSide: true,
+        //   searchDelay: 500,
           ajax: "/admin/susdat",
           columns: [
               {data: 'id', name: 'id'},
