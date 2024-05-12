@@ -3,22 +3,8 @@
 
 <div class="container mt-5">
     <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
-        <h3 class="text-center mb-5">Sars File Upload</h3>
+        <h3 class="text-center mb-5">SARS-CoV-2 File Upload</h3>
         @csrf
-        {{-- @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif --}}
         <div class="custom-file">
             <input type="file" name="files[]" class="custom-file-input" id="chooseFile" multiple>
             <label class="custom-file-label" for="chooseFile"></label>
@@ -42,11 +28,15 @@
             @csrf
             @foreach($files as $file)
             <tr @if($file->trashed())class="table-danger"@endif>
-                <td>
-                    @if(!isset($file->sars->file_id))
-                    <input type="checkbox" name="files[]" value="{{ $file->id }}" form="form2" multiple>
-                    @endif
-                </td>
+                @if($file->trashed())
+                    <td></td>    
+                @else
+                    <td>
+                        @if(!isset($file->sars->file_id))
+                            <input type="checkbox" name="files[]" value="{{ $file->id }}" form="form2" multiple>
+                        @endif
+                    </td> 
+                @endif
                 <td>{{ $file->name }}</td>
                 <td>
                     @if($file->trashed())
@@ -58,7 +48,7 @@
                     {!! Form::close() !!}
                     @else
                     {!! Form::open(array('route' => ['file-upload.destroy', $file->id], 'method'=>'DELETE')) !!}
-                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
+                    {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the file.")')) !!}
                     {!! Form::close() !!}
                     @endif
                 </td>

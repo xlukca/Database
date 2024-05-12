@@ -17,11 +17,11 @@ return new class extends Migration
             $table->text('data_provider');
             $table->text('contact_person');
             $table->text('address_of_contact');
-            $table->text('email');
+            $table->string('email');
             $table->text('laboratory');
-            $table->text('name_of_country',100);
-            $table->text('name_of_city');
-            $table->text('station_name');
+            $table->string('name_of_country',100)->index();
+            $table->string('name_of_city');
+            $table->string('station_name')->index();
             $table->text('national_code');
             $table->text('relevant_ec_code_wise');
             $table->text('relevant_ec_code_other')->nullable();
@@ -91,7 +91,7 @@ return new class extends Migration
             $table->text('rna3')->nullable();
             $table->text('pos_control_used');
             $table->text('replicates2');
-            $table->text('ct')->nullable();
+            $table->string('ct')->nullable()->index();
             $table->text('gene1')->nullable();
             $table->text('gene2')->nullable();
             $table->text('comment')->nullable();

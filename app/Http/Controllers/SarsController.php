@@ -40,7 +40,7 @@ class SarsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(text $id)
     {
         //
     }
@@ -287,45 +287,88 @@ class SarsController extends Controller
         $sample_from_year = $request->input('sample_from_year');
         $data_provider = $request->input('data_provider');
     
-        // dd($query1);
-    $query = Sars::query();
+        $query = Sars::query();
 
-    if ($name_of_country) {
-        $query->where('name_of_country', $name_of_country);
-    }
+        if ($name_of_country) {
+            $query->whereIn('name_of_country', $name_of_country);
+        }
 
-    if ($sample_matrix) {
-        $query->where('sample_matrix', $sample_matrix);
-    }
+        if ($sample_matrix) {
+            $query->whereIn('sample_matrix', $sample_matrix);
+        }
 
-    if ($station_name) {
-        $query->where('station_name', $station_name);
-    }
+        if ($station_name) {
+            $query->whereIn('station_name', $station_name);
+        }
 
-    if ($sample_from_year) {
-        $query->where('sample_from_year', $sample_from_year);
-    }
+        if ($sample_from_year) {
+            $query->whereIn('sample_from_year', $sample_from_year);
+        }
 
-    if ($data_provider) {
-        $query->where('data_provider', $data_provider);
-    }
+        if ($data_provider) {
+            $query->whereIn('data_provider', $data_provider);
+        }
 
-        $results = $query->orderBy('sample_from_year', 'asc')
-                        ->orderBy('name_of_country', 'asc')
-                        ->orderBy('station_name', 'asc')
-                        ->orderBy('data_provider', 'asc')
-                        ->get();
+        $results = $query->get();
                       
         $countries = SARS::select('name_of_country')->orderBy('name_of_country', 'asc')->distinct()->get();
         $matrixes = SARS::select('sample_matrix')->orderBy('sample_matrix', 'asc')->distinct()->get();
         $providers = SARS::select('data_provider')->orderBy('data_provider', 'asc')->distinct()->get();
         $stations = SARS::select('station_name')->orderBy('station_name', 'asc')->distinct()->get();
-        $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'asc')->distinct()->get();
+        $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'desc')->distinct()->get();
 
         return view('user.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
     }
 
+    public function searchAdmin(Request $request)
+    {
+        $name_of_country = $request->input('name_of_country'); 
+        $sample_matrix = $request->input('sample_matrix'); 
+        $station_name = $request->input('station_name'); 
+        $sample_from_year = $request->input('sample_from_year');
+        $data_provider = $request->input('data_provider');
+    
+        $query = Sars::query();
+
+        if ($name_of_country) {
+            $query->whereIn('name_of_country', $name_of_country);
+        }
+
+        if ($sample_matrix) {
+            $query->whereIn('sample_matrix', $sample_matrix);
+        }
+
+        if ($station_name) {
+            $query->whereIn('station_name', $station_name);
+        }
+
+        if ($sample_from_year) {
+            $query->whereIn('sample_from_year', $sample_from_year);
+        }
+
+        if ($data_provider) {
+            $query->whereIn('data_provider', $data_provider);
+        }
+
+        $results = $query->get();
+                      
+        $countries = SARS::select('name_of_country')->orderBy('name_of_country', 'asc')->distinct()->get();
+        $matrixes = SARS::select('sample_matrix')->orderBy('sample_matrix', 'asc')->distinct()->get();
+        $providers = SARS::select('data_provider')->orderBy('data_provider', 'asc')->distinct()->get();
+        $stations = SARS::select('station_name')->orderBy('station_name', 'asc')->distinct()->get();
+        $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'desc')->distinct()->get();
+
+        return view('admin.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
+    }
+
     public function map()
+    {
+        $sarsData = Sars::all();
+        
+        return view('user.sars.map')->with('sarsData', $sarsData);
+    }
+
+    public function mapAdmin()
     {
         $sarsData = Sars::all();
         

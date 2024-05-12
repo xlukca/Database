@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('change_log_susdats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('susdat_id')->references('id')->on('susdatas');;
+            $table->foreignId('susdat_id')->references('id')->on('susdats');;
             $table->string('item');
             $table->text('old_value')->nullable();
             $table->text('new_value')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users'); // Kto zmenu spravil
-            $table->timestamps(); // Kedy zmenu spravil
+            $table->foreignId('user_id')->references('id')->on('users'); 
+            $table->timestamps();
         });
     }
 

@@ -93,7 +93,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('sars.map') }}">
+                <a class="nav-link" href="{{ route('sarsMapAdmin') }}">
                     <i class="fas fa-fw fa-map"></i>
                     <span>{{ __('general.map') }}</span></a>
             </li>
@@ -105,7 +105,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('searchSars') }}">
+                <a class="nav-link" href="{{ route('searchSarsadmin') }}">
                     <i class="fas fa-search"></i>
                     <span>{{ __('general.search_data') }}</span></a>
             </li>
@@ -116,25 +116,30 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="/admin/susdata">
+                <a class="nav-link" href="/admin/susdat">
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ __('general.table_data') }}</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('susdata.changeLogs') }}">
+                <a class="nav-link" href="{{ route('susdat.changeLogs') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ __('general.change_logs') }}</span></a>
             </li>
 
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('searchSusdata') }}">
-                    <i class="fas fa-search"></i>
-                    <span>{{ __('general.search_data') }}</span></a>
-            </li> --}}
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                API
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('apiAdmin') }}">
+                    <i class="fas fa-search"></i>
+                    <span>SARS and SUBSTANCES</span></a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -321,7 +326,7 @@
 
                         <!-- Language Links -->
 
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600">{{ __('general.language') }}</span>
@@ -331,7 +336,7 @@
                                 <a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a>           
                                 <a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a>                
                             </div>  
-                        </li>
+                        </li> --}}
                         
                         <div class="topbar-divider d-none d-sm-block"></div> 
 
@@ -355,14 +360,14 @@
                                     Profile
                                 </a>                
                         
-                                 <a class="dropdown-item menu-action text-gray-600" href="#">
+                                 {{-- <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-cogs"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item menu-action text-gray-600" href="#">
                                     <i class="fas fa-list"></i>
                                     Activity Log
-                                </a>                 
+                                </a>                  --}}
 
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item menu-action text-gray-600" href="{{ route('logout') }}"

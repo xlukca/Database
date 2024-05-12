@@ -3,7 +3,7 @@
 @error($tag)
 {{ Form::select(
     $tag, 
-    [null => __('general.please_select')] + ($list ??  ['0' => '0']),
+    [null => __('Please Select')] + ($list ??  ['0' => '0']),
     $$space[$tag] ?? null, 
     ['class' => 'form-select is-invalid']
 ) }}
@@ -14,7 +14,7 @@
 @else
 {{ Form::select(
     $tag, 
-    [null => __('general.please_select')] + ($list ??  ['0' => '0']),
+    [null => __('Please Select')] + ($list ??  ['0' => '0']),
     $$space[$tag] ?? null, 
     ['class' => 'form-select mb-3']
 ) }}

@@ -12,7 +12,6 @@
             @csrf
                 <thead>
                     <tr>
-                        {{-- <th><input type="checkbox" id="select-all"></th> --}}
                         <th>ID</th>
                         <th>Sampling Date</th>
                         <th>Gene copy [number/mL of sample]</th>
@@ -22,8 +21,8 @@
                         <th>Population Served</th>
                         <th>No. of people SARS-CoV-2 POSITIVE</th>
                         <th>Country</th>
-                        <th>Action Edit</th>
-                        <th>Action Delete</th>
+                        <th>Action</th>
+                        <th>Action</th>
                         
                         </tr>
                     </thead>
@@ -31,11 +30,6 @@
                         @csrf
                         @foreach ($sarsData as $s)
                             <tr @if($s->trashed())class="table-danger"@endif>
-                                {{-- <td>
-                                    @if(!isset($s->sars->file_id))
-                                    <input type="checkbox" name="files[]" value="{{ $s->id }}" form="form3" multiple>
-                                    @endif
-                                </td> --}}
                                 <td>{{ $s->id }}</td>
                                 <td>{{ $s->sample_from_year }}-{{ $s->sample_from_month }}-{{ $s->sample_from_day }}</td>
                                 <td>{{ $s->gene1 }}</td>
@@ -45,7 +39,7 @@
                                 <td>{{ $s->population_served }}</td>
                                 <td>{{ $s->people_positive }}</td>
                                 <td>{{ $s->name_of_country }}</td>
-                                <td><a class="btn btn-info" href="{{ route('sars.edit', $s->id) }}">Edit</a></td>
+                                <td>@if(!$s->trashed())<a class="btn btn-info" href="{{ route('sars.edit', $s->id) }}">Edit</a>@endif</td>
                                 <td>
                                     @if($s->trashed())
                                     {!! Form::open(array('route' => ['sars.forceDestroy', $s->id], 'method'=>'DELETE')) !!}
@@ -56,7 +50,7 @@
                                     {!! Form::close() !!}
                                     @else
                                     {!! Form::open(array('route' => ['sars.destroy', $s->id], 'method'=>'DELETE')) !!}
-                                    {!! Form::submit('delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the record.")')) !!}
+                                    {!! Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("You are about to delete the record.")')) !!}
                                     {!! Form::close() !!}
                                     @endif
                                 </td>
@@ -65,15 +59,6 @@
                     </tbody>
                 </table>
 </div> 
-
-{{-- <script>
-    document.getElementById('select-all').addEventListener('change', function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        for (var i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = this.checked;
-        }
-    });
-</script> --}}
 
 @endsection
 

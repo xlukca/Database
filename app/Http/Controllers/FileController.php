@@ -163,10 +163,9 @@ class FileController extends Controller
     
     try {
         $file = File::where('id', $id)->first();
-        //dd($file->sars);
         if (isset($file->sars))
-            $file->sars->delete(); // Najskor je potrebne vymazat suvisiace zaznamy v Sars
-        $file->delete(); // Az potom sa moze vymazt zaznam vo File
+            $file->sars->delete(); 
+        $file->delete(); 
         session()->flash('success', 'The file was deleted');
         return redirect()->back();
     } catch (Exception $e) {
@@ -191,7 +190,7 @@ class FileController extends Controller
     {
         try {
             File::withTrashed()->find($id)->restore();
-            session()->flash('success', 'The file restored');
+            session()->flash('success', 'The file was restored');
             return redirect()->back();
         } catch (Exception $e) {
             session()->flash('failure', $e->getMessage());

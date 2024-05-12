@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use MongoDB\Laravel\Eloquent\Model; // MongoDB
 
 class ChangeLogSusdat extends Model
 {
@@ -23,6 +24,6 @@ class ChangeLogSusdat extends Model
     }
 
     public function susdatChangeLog() {
-        return $this->hasOne(Susdata::class, 'id','susdat_id');
+        return $this->hasOne(Susdat::class, 'id','susdat_id');
     }
 }

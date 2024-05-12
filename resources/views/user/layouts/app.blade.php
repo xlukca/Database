@@ -26,34 +26,30 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SARS</a>
+                                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                            {{-- <li class="nav-item"><a class="nav-link" href="#">About</a></li> --}}
+                            {{-- <li class="nav-item"><a class="nav-link" href="#">Contact</a></li> --}}
+                            @guest
+                            @else
+                                <li class="nav-item"><a class="nav-link" href="{{ route('api') }}">API</a></li>
+                            @endguest    
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SARS</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                                     <li><a class="dropdown-item" href="{{ route('searchSars') }}">Search Data</a></li>
+                                @guest
+                                @else
+                                    <li><a class="dropdown-item" href="{{ route('sars.map') }}">Map</a></li>
+                                @endguest
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SUSDATA</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SUSDAT</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    {{-- <li><a class="dropdown-item" href="{{ route('searchSusdata') }}">Search Data</a></li> --}}
-                                    <li><a class="dropdown-item" href="{{ route('userIndexSusdata') }}">Table Data</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('userIndexSusdat') }}">Table Data</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item nav-link">|</li>
-
-                            <!-- Language Links -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('general.language') }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a></li>
-                                    </ul>
-                                </li>
 
                             <!-- Authentication Links -->
                             
@@ -121,13 +117,13 @@
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                     <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
+                    {{-- <div class="col-auto">
                         <a class="link-light small" href="#!">Privacy</a>
                         <span class="text-white mx-1">&middot;</span>
                         <a class="link-light small" href="#!">Terms</a>
                         <span class="text-white mx-1">&middot;</span>
                         <a class="link-light small" href="#!">Contact</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </footer>
@@ -139,21 +135,9 @@
         {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
         <script src=https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js></script>
         <script>
-            /*$(document).ready(function () {
-                $('#dataTable').DataTable();
-            });*/
-            /*let table = new DataTable('#dataTable', {
-                pagingType: 'full_numbers'
-            });*/
             new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
                 });
-
-        //     new DataTable('#dataTable', {
-        //     ajax: 'scripts/server_processing.php',
-        //     processing: true,
-        //     serverSide: true
-        // });
         </script>
         <script src="{{ asset('user/js/scripts.js') }}"></script>
         
