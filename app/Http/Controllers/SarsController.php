@@ -59,88 +59,88 @@ class SarsController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'sample_from_year'                      => 'required|text',
-            'sample_from_month'                     => 'required|text',
-            'sample_from_day'                       => 'required|text',
-            'gene1'                                 => 'nullable|text',
-            'gene2'                                 => 'nullable|text',
-            'ct'                                    => 'nullable|text',
-            'station_name'                          => 'required|text',
-            'population_served'                     => 'required|text',
-            'people_positive'                       => 'required|text',
-            'name_of_country'                       => 'required|text',
-            'type_of_data'                          => 'required|text',
-            'data_provider'                         => 'required|text',
-            'contact_person'                        => 'required|text',
-            'address_of_contact'                    => 'required|text',
-            'email'                                 => 'required|text',
-            'laboratory'                            => 'required|text',
-            'name_of_city'                          => 'required|text',
-            'national_code'                         => 'required|text',
-            'relevant_ec_code_wise'                 => 'required|text',
-            'relevant_ec_code_other'                => 'nullable|text',
-            'other_code'                            => 'nullable|text',
-            'latitude'                              => 'required|text',
-            'latitude_d'                            => 'required|text',
-            'latitude_m'                            => 'required|text',
-            'latitude_s'                            => 'required|text',
-            'latitude_decimal'                      => 'required|text',
-            'longitude'                             => 'required|text',
-            'longitude_d'                           => 'required|text',
-            'longitude_m'                           => 'required|text',
-            'longitude_s'                           => 'required|text',
-            'longitude_decimal'                     => 'required|text',
-            'altitude'                              => 'required|text',
-            'design_capacity'                       => 'required|text',
-            'catchment_size'                        => 'nullable|text',
-            'gdp'                                   => 'required|text',
-            'people_recovered'                      => 'nullable|text',
-            'people_positive_past'                  => 'nullable|text',
-            'people_recovered_past'                 => 'nullable|text',
-            'sample_matrix'                         => 'required|text',
-            'sample_from_hour'                      => 'required|text',
-            'sample_to_hour'                        => 'required|text',
-            'sample_to_day'                         => 'required|text',
-            'sample_to_month'                       => 'required|text',
-            'sample_to_year'                        => 'required|text',
-            'type_of_sample'                        => 'required|text',
-            'type_of_composite_sample'              => 'required|text',
-            'sample_interval'                       => 'nullable|text',
-            'flow_total'                            => 'required|text',
-            'flow_minimum'                          => 'nullable|text',
-            'flow_maximum'                          => 'nullable|text',
-            'temperature'                           => 'nullable|text',
-            'cod'                                   => 'nullable|text',
-            'total_n_nh4_n'                         => 'required|text',
-            'tss'                                   => 'nullable|text',
-            'dry_weather_conditions'                => 'required|text',
-            'last_rain_event'                       => 'nullable|text',
-            'associated_phenotype'                  => 'required|text',
-            'genetic_marker'                        => 'required|text',
-            'date_of_sample_preparation'            => 'required|text',
-            'storage_of_sample'                     => 'required|text',
-            'volume_of_sample'                      => 'required|text',
-            'internal_standard_used1'               => 'required|text',
-            'method_used_for_sample_preparation'    => 'required|text',
-            'date_of_rna_extraction'                => 'required|text',
-            'method_used_for_rna_extraction'        => 'required|text',
-            'internal_standard_used2'               => 'required|text',
-            'rna1'                                  => 'required|text',
-            'rna2'                                  => 'nullable|text',
-            'replicates1'                           => 'required|text',
-            'analytical_method_type'                => 'required|text',
-            'analytical_method_type_other'          => 'nullable|text',
-            'date_of_analysis'                      => 'required|text',
-            'lod1'                                  => 'required|text',
-            'lod2'                                  => 'nullable|text',
-            'loq1'                                  => 'required|text',
-            'loq2'                                  => 'nullable|text',
-            'uncertainty_of_the_quantification'     => 'nullable|text',
-            'efficiency'                            => 'nullable|text',
-            'rna3'                                  => 'nullable|text',
-            'pos_control_used'                      => 'required|text',
-            'replicates2'                           => 'required|text',
-            'comment'                               => 'nullable|text',
+            'sample_from_year'                      => 'required|string',
+            'sample_from_month'                     => 'required|string',
+            'sample_from_day'                       => 'required|string',
+            'gene1'                                 => 'nullable|string',
+            'gene2'                                 => 'nullable|string',
+            'ct'                                    => 'nullable|string',
+            'station_name'                          => 'required|string',
+            'population_served'                     => 'required|string',
+            'people_positive'                       => 'required|string',
+            'name_of_country'                       => 'required|string',
+            'type_of_data'                          => 'required|string',
+            'data_provider'                         => 'required|string',
+            'contact_person'                        => 'required|string',
+            'address_of_contact'                    => 'required|string',
+            'email'                                 => 'required|string',
+            'laboratory'                            => 'required|string',
+            'name_of_city'                          => 'required|string',
+            'national_code'                         => 'required|string',
+            'relevant_ec_code_wise'                 => 'required|string',
+            'relevant_ec_code_other'                => 'nullable|string',
+            'other_code'                            => 'nullable|string',
+            'latitude'                              => 'required|string',
+            'latitude_d'                            => 'required|string',
+            'latitude_m'                            => 'required|string',
+            'latitude_s'                            => 'required|string',
+            'latitude_decimal'                      => 'required|string',
+            'longitude'                             => 'required|string',
+            'longitude_d'                           => 'required|string',
+            'longitude_m'                           => 'required|string',
+            'longitude_s'                           => 'required|string',
+            'longitude_decimal'                     => 'required|string',
+            'altitude'                              => 'required|string',
+            'design_capacity'                       => 'required|string',
+            'catchment_size'                        => 'nullable|string',
+            'gdp'                                   => 'required|string',
+            'people_recovered'                      => 'nullable|string',
+            'people_positive_past'                  => 'nullable|string',
+            'people_recovered_past'                 => 'nullable|string',
+            'sample_matrix'                         => 'required|string',
+            'sample_from_hour'                      => 'required|string',
+            'sample_to_hour'                        => 'required|string',
+            'sample_to_day'                         => 'required|string',
+            'sample_to_month'                       => 'required|string',
+            'sample_to_year'                        => 'required|string',
+            'type_of_sample'                        => 'required|string',
+            'type_of_composite_sample'              => 'required|string',
+            'sample_interval'                       => 'nullable|string',
+            'flow_total'                            => 'required|string',
+            'flow_minimum'                          => 'nullable|string',
+            'flow_maximum'                          => 'nullable|string',
+            'temperature'                           => 'nullable|string',
+            'cod'                                   => 'nullable|string',
+            'total_n_nh4_n'                         => 'required|string',
+            'tss'                                   => 'nullable|string',
+            'dry_weather_conditions'                => 'required|string',
+            'last_rain_event'                       => 'nullable|string',
+            'associated_phenotype'                  => 'required|string',
+            'genetic_marker'                        => 'required|string',
+            'date_of_sample_preparation'            => 'required|string',
+            'storage_of_sample'                     => 'required|string',
+            'volume_of_sample'                      => 'required|string',
+            'internal_standard_used1'               => 'required|string',
+            'method_used_for_sample_preparation'    => 'required|string',
+            'date_of_rna_extraction'                => 'required|string',
+            'method_used_for_rna_extraction'        => 'required|string',
+            'internal_standard_used2'               => 'required|string',
+            'rna1'                                  => 'required|string',
+            'rna2'                                  => 'nullable|string',
+            'replicates1'                           => 'required|string',
+            'analytical_method_type'                => 'required|string',
+            'analytical_method_type_other'          => 'nullable|string',
+            'date_of_analysis'                      => 'required|string',
+            'lod1'                                  => 'required|string',
+            'lod2'                                  => 'nullable|string',
+            'loq1'                                  => 'required|string',
+            'loq2'                                  => 'nullable|string',
+            'uncertainty_of_the_quantification'     => 'nullable|string',
+            'efficiency'                            => 'nullable|string',
+            'rna3'                                  => 'nullable|string',
+            'pos_control_used'                      => 'required|string',
+            'replicates2'                           => 'required|string',
+            'comment'                               => 'nullable|string',
         ];
       
        // dd($request);
@@ -287,28 +287,27 @@ class SarsController extends Controller
         $sample_from_year = $request->input('sample_from_year');
         $data_provider = $request->input('data_provider');
     
-        // dd($query1);
-    $query = Sars::query();
+        $query = Sars::query();
 
-    if ($name_of_country) {
-        $query->whereIn('name_of_country', $name_of_country);
-    }
+        if ($name_of_country) {
+            $query->whereIn('name_of_country', $name_of_country);
+        }
 
-    if ($sample_matrix) {
-        $query->whereIn('sample_matrix', $sample_matrix);
-    }
+        if ($sample_matrix) {
+            $query->whereIn('sample_matrix', $sample_matrix);
+        }
 
-    if ($station_name) {
-        $query->whereIn('station_name', $station_name);
-    }
+        if ($station_name) {
+            $query->whereIn('station_name', $station_name);
+        }
 
-    if ($sample_from_year) {
-        $query->whereIn('sample_from_year', $sample_from_year);
-    }
+        if ($sample_from_year) {
+            $query->whereIn('sample_from_year', $sample_from_year);
+        }
 
-    if ($data_provider) {
-        $query->whereIn('data_provider', $data_provider);
-    }
+        if ($data_provider) {
+            $query->whereIn('data_provider', $data_provider);
+        }
 
         $results = $query->get();
                       
@@ -319,6 +318,47 @@ class SarsController extends Controller
         $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'desc')->distinct()->get();
 
         return view('user.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
+    }
+
+    public function searchAdmin(Request $request)
+    {
+        $name_of_country = $request->input('name_of_country'); 
+        $sample_matrix = $request->input('sample_matrix'); 
+        $station_name = $request->input('station_name'); 
+        $sample_from_year = $request->input('sample_from_year');
+        $data_provider = $request->input('data_provider');
+    
+        $query = Sars::query();
+
+        if ($name_of_country) {
+            $query->whereIn('name_of_country', $name_of_country);
+        }
+
+        if ($sample_matrix) {
+            $query->whereIn('sample_matrix', $sample_matrix);
+        }
+
+        if ($station_name) {
+            $query->whereIn('station_name', $station_name);
+        }
+
+        if ($sample_from_year) {
+            $query->whereIn('sample_from_year', $sample_from_year);
+        }
+
+        if ($data_provider) {
+            $query->whereIn('data_provider', $data_provider);
+        }
+
+        $results = $query->get();
+                      
+        $countries = SARS::select('name_of_country')->orderBy('name_of_country', 'asc')->distinct()->get();
+        $matrixes = SARS::select('sample_matrix')->orderBy('sample_matrix', 'asc')->distinct()->get();
+        $providers = SARS::select('data_provider')->orderBy('data_provider', 'asc')->distinct()->get();
+        $stations = SARS::select('station_name')->orderBy('station_name', 'asc')->distinct()->get();
+        $years = SARS::select('sample_from_year')->orderBy('sample_from_year', 'desc')->distinct()->get();
+
+        return view('admin.sars.searchSars', compact('results', 'countries', 'matrixes', 'providers', 'stations', 'years'));
     }
 
     public function map()

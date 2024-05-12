@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-// use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-// use MongoDB\Laravel\Eloquent\Model as Eloquent;
+// use MongoDB\Laravel\Eloquent\Model as Eloquent; // MongoDB
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

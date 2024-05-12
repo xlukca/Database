@@ -36,7 +36,7 @@ return new class extends Migration
             $table->mediumText('source')->nullable();
             $table->string('pubchem_cid', 40)->nullable();
             $table->string('chemspider_id', 30)->nullable();
-            $table->string('dtxsid', 20)->nullable()->index(); // cudzí kluc má byť pri tejto premennej
+            $table->string('dtxsid', 20)->nullable()->index();
             $table->string('molecular_formula', 100)->nullable();
             $table->string('monoiso_mass', 40)->nullable();
             $table->string('mhplus', 30)->nullable();
@@ -67,7 +67,7 @@ return new class extends Migration
             $table->string('uncertainty', 60)->nullable();
             $table->string('exposurescore_water_kemi', 10)->nullable()->default(NULL); 
             $table->string('hazscore_ecochronic_kemi', 10)->nullable()->default(NULL);
-            $table->string('validationlevel_kemi', 5)->nullable()->default(NULL); // tinyInteger
+            $table->string('validationlevel_kemi', 5)->nullable()->default(NULL); 
             $table->string('prob_of_gc', 10)->nullable();
             $table->string('prob_rplc', 10)->nullable();
             $table->string('pred_chromatography', 10)->nullable();

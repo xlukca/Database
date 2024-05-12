@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('item');
             $table->text('old_value')->nullable();
             $table->text('new_value')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users'); // Kto zmenu spravil
-            $table->timestamps(); // Kedy zmenu spravil
+            $table->foreignId('user_id')->references('id')->on('users'); 
+            $table->timestamps();
         });
     }
 

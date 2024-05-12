@@ -18,7 +18,7 @@ class SusdatSeeder extends Seeder
      */
     public function run(): void
     {
-        $path = base_path() . '/database/seeders/seeds/susdat_new.csv';
+        $path = base_path() . '/database/seeders/seeds/susdat_tests.csv';
         LazyCollection::make(function () use ($path) {
             yield from SimpleExcelReader::create($path)->getRows();
         })->chunk(50)->each(function ($chunk) {
@@ -26,7 +26,7 @@ class SusdatSeeder extends Seeder
         
             foreach ($chunk as $row) {
                 $data[] = [
-                //'id' => $row['sus_id'],
+                // 'id' => $row['sus_id'],
                 'name' => $row['sus_name'],
                 'name_dashboard' => $row['Name Dashboard'],
                 'name_chemspider' => $row['Name ChemSpider'],
@@ -98,19 +98,9 @@ class SusdatSeeder extends Seeder
                 'remark' => $row['sus_remark'],
             ];
          }
-         for($i = 1; $i < 2; $i++) {
+         for($i = 1; $i < 11; $i++) {
             Susdat::insert($data);
         }
-        //    DB::beginTransaction();   //  SQL databases
-
-        //     try {
-        //         Susdat::insert($data);
-        //         DB::commit();
-        //     } catch (\Exception $e) {
-        //         // V prípade chyby rollback
-        //         DB::rollback();
-        //         // Ďalšie spracovanie chyby alebo logovanie
-        //     }
         });
     }
 }

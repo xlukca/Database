@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Cache;
 use Predis\Client;
-// use DataTables;
 use Yajra\DataTables\Facades\DataTables;
 
 use Exception;
@@ -21,8 +20,6 @@ class SusdatController extends Controller
      */
     public function index(Request $request)
     {
-    //     // $susdat = Susdat::withTrashed()->paginate(10);
-
     if ($request->ajax()) {
         $data = Susdat::withTrashed()->select('*');
         return DataTables::of($data)
@@ -171,11 +168,9 @@ class SusdatController extends Controller
             'remark'                                        => 'nullable|string',
         ];
       
-       // dd($request);
         $validated = $request->validate($rules);
         
         $d = Susdat::find($id);
-       // $sus_id->setConnection('mysql_second');
         $d->name                                                = $request->name;
         $d->name_dashboard                                      = $request->name_dashboard;
         $d->name_chemspider                                     = $request->name_chemspider;
@@ -348,59 +343,32 @@ class SusdatController extends Controller
         return view('admin.susdat.changeLogs')->with('changeSusdat', $changeSusdat);
     }
 
-    public function userIndex()
+    public function userIndex(Request $request)
     {
-        // $client = new Client();
-        // $redisdata = $client->keys('*'); 
-        // dd($redisdata);
-        // $susdat = json_decode($redisdata, true);
-        //  dd($susdat);
-        // $susdat = Susdat::paginate(10);
-        // dd($susdat);
-    
-        // return view('user.susdat.index')->with('susdat',  $susdat);
-    // }    redis load data
+        // CACHE DATA
 
-    // CACHE DATA
-    //     $page = request()->query('page', 1); // Získa aktuálnu stránku z requestu
-    //     $cacheKey = 'susdat_page_' . $page;
+        //     $page = request()->query('page', 1); 
+        //     $cacheKey = 'susdat_page_' . $page;
 
-    //     $susdat = Cache::rememberForever($cacheKey, function () use ($page) {
-    //         return Susdat::orderBy('id', 'asc')->paginate(10);
-    //     });
-
-        
-    //     return view('user.susdat.index')->with('susdat',  $susdat);
+        //     $susdat = Cache::rememberForever($cacheKey, function () use ($page) {
+        //         return Susdat::orderBy('id', 'asc')->paginate(10);
+        //     });
+        //     return view('user.susdat.index')->with('susdat',  $susdat);
     // }
         
-        $susdat = Susdat::paginate(10); // order by id(primarny kluc) ascending pomohlo zrychlit nacitavanie zaznamov
-        
-        return view('user.susdat.index')->with('susdat',  $susdat);
-        // return view('user.susdat.index');     // yajraDatatable
+        // Paginate
 
+            // $susdat = Susdat::paginate(10);
+            // return view('user.susdat.index')->with('susdat',  $susdat);
+//    }
+
+        // YajraDataTables
+
+        if ($request->ajax()) {
+            $data = Susdat::select('*');
+            return DataTables::of($data)
+                ->make(true);
+        }
+            return view('user.susdat.index'); 
     }
-
-    // public function userGetIndex(Request $request)
-    // {
-    //     // dd($request->ajax());
-    //     if ($request->ajax()) {
-    //         // $data = Susdat::select('*');
-    //         $data = Susdat::all();
-    //         // $data = DB::select('SELECT * FROM susdats WHERE id < 100000');
-    //         // dd($data);
-    //         return Datatables::of($data)
-    //             ->make(true);
-    //     }
-    // }             //   SQL databases
-
-    //     public function userGetIndex(Request $request)
-    // {
-    //         $data = Susdat::select('*');
-    //         // $data = DB::collection('susdats');
-    //         return DataTables::make($data)->toJson();
-    // }                
-    // MongoDB
-
-
-
 }

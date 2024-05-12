@@ -2,13 +2,13 @@
 @section('content')
 
 <div class="container">
-    <h3 class="mb-5">{{ __('positions.list_of_positions') }}</h3>
-    <p><a href="{{ route('positions.create') }}" class="btn btn-secondary">{{ __('positions.add_new_position') }}</a></p>
+    <h3 class="mb-5">List of positions</h3>
+    <p><a href="{{ route('positions.create') }}" class="btn btn-secondary">Add New Position</a></p>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>{{ __('positions.name') }}</th>
+                <th>Position Name</th>
                 <th></th>
                 <th></th>
             </tr>

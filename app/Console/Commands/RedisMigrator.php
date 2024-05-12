@@ -33,7 +33,7 @@ class RedisMigrator extends Command
 
         $client = new Client();
 
-        // Získajte záznamy z tabuľky po menších blokoch s implicitným usporiadaním podľa primárneho kľúča
+        // Retrieve records from the table in smaller chunks with implicit ordering by the primary key
         DB::table($tableName)->orderBy('id')->chunk(500, function ($records) use ($client) {
             foreach ($records as $record) {
                 $jsonData = json_encode($record);

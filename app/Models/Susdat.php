@@ -11,13 +11,6 @@ class Susdat extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
-    // protected $indexes = [
-    //     'idx_id' => ['id'],
-    //     'idx_cas_rn' => ['cas_rn'],
-    //     'idx_stdinchikey' => ['stdinchikey'],
-    //     'idx_dtxsid' => ['dtxsid'],
-    // ];
   
     protected $fillable = [
         'id', 

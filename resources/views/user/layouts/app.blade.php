@@ -46,22 +46,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SUSDAT</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    {{-- <li><a class="dropdown-item" href="{{ route('searchSusdat') }}">Search Data</a></li> --}}
                                     <li><a class="dropdown-item" href="{{ route('userIndexSusdat') }}">Table Data</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item nav-link">|</li>
-
-                            <!-- Language Links -->
-                                {{-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('general.language') }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ route('language', 'en') }}"><img src="{{ asset('flags/en.png') }}"> EN</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('language', 'sk') }}"><img src="{{ asset('flags/sk.png') }}"> SK</a></li>
-                                    </ul>
-                                </li> --}}
 
                             <!-- Authentication Links -->
                             
@@ -147,21 +135,9 @@
         {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
         <script src=https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js></script>
         <script>
-            /*$(document).ready(function () {
-                $('#dataTable').DataTable();
-            });*/
-            /*let table = new DataTable('#dataTable', {
-                pagingType: 'full_numbers'
-            });*/
             new DataTable('#dataTable', {
                 pagingType: 'full_numbers'
                 });
-
-        //     new DataTable('#dataTable', {
-        //     ajax: 'scripts/server_processing.php',
-        //     processing: true,
-        //     serverSide: true
-        // });
         </script>
         <script src="{{ asset('user/js/scripts.js') }}"></script>
         

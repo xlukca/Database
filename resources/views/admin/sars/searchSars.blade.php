@@ -8,7 +8,7 @@
 
 <div class="headline mt-3 mb-3"><h3>Search criteria</h3></div> 
 
-<form action="{{ route('searchSars') }}" method="GET">
+<form action="{{ route('searchSarsadmin') }}" method="GET">
     
     <div class="row mt-2 mb-4">
         <div class="col-md-2">
@@ -66,41 +66,44 @@
     </div>
 </form>
 
-<table class="table table-bordered">
 
-@if(count($results) > 0)
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Sampling Date</th>
-        <th>Gene copy [number/mL of sample]</th>
-        <th>Gene copy [number/ng of RNA]</th>
-        <th>Ct #</th>
-        <th>Sampling Site/Station</th>
-        <th>Population Served</th>
-        <th>No. of people SARS-CoV-2 POSITIVE</th>
-        <th>Country</th>      
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($results as $result)
-        <tr>
-            <td>{{ $result->id }}</td>
-            <td>{{ $result->sample_from_year }}-{{ $result->sample_from_month }}-{{ $result->sample_from_day }}</td>
-            <td>{{ $result->gene1 }}</td>
-            <td>{{ $result->gene2 }}</td>
-            <td>{{ $result->ct }}</td>
-            <td>{{ $result->station_name }}</td>
-            <td>{{ $result->population_served }}</td>
-            <td>{{ $result->people_positive }}</td>
-            <td>{{ $result->name_of_country }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-@else
-    <ul>No results found</ul>
-@endif
+
+<div class="mx-3 mb-5">
+    @if(count($results) > 0)
+        <table class="table table-bordered" id = "dataTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Sampling Date</th>
+                <th>Gene copy [number/mL of sample]</th>
+                <th>Gene copy [number/ng of RNA]</th>
+                <th>Ct #</th>
+                <th>Sampling Site/Station</th>
+                <th>Population Served</th>
+                <th>No. of people SARS-CoV-2 POSITIVE</th>
+                <th>Country</th>      
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($results as $result)
+                <tr>
+                    <td>{{ $result->id }}</td>
+                    <td>{{ $result->sample_from_year }}-{{ $result->sample_from_month }}-{{ $result->sample_from_day }}</td>
+                    <td>{{ $result->gene1 }}</td>
+                    <td>{{ $result->gene2 }}</td>
+                    <td>{{ $result->ct }}</td>
+                    <td>{{ $result->station_name }}</td>
+                    <td>{{ $result->population_served }}</td>
+                    <td>{{ $result->people_positive }}</td>
+                    <td>{{ $result->name_of_country }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+</div>
+    @else
+        <ul>No results found</ul>
+    @endif
 
 
 @endsection

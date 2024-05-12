@@ -8,8 +8,6 @@ class ChangeLogObserverSusdat
 {
     public function updating(Susdat $model)
     {
-        // Record the change
-
         $oldAttributes = $model->getOriginal();
         $newAttributes = $model->getAttributes();
 

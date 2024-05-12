@@ -7,9 +7,6 @@
         <div class="col-8">
             {{ Form::model($susdat, ['route' => ['susdat.update', $susdat->id], 'method' => 'PUT']) }}
 
-            {{-- {{ Form::label('name', 'Name') }}
-            {{ Form::text('name', $susdat->name, array('class' => 'form-control mb-3')) }} --}}
-
             @include('_templates.form-text', ['field_name' => 'name', 'field_name_text' => 'Name'])
             @include('_templates.form-text', ['field_name' => 'name_dashboard', 'field_name_text' => 'Name dashboard'])
             @include('_templates.form-text', ['field_name' => 'name_chemspider', 'field_name_text' => 'Name chemspider'])

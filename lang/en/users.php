@@ -12,5 +12,6 @@ return [
     'postcode' => 'Postcode',
     'position' => 'Position',
     'is_admin' => 'Is Admin',
+    'position_id' => 'Position',
 
 ];

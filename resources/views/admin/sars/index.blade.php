@@ -12,7 +12,6 @@
             @csrf
                 <thead>
                     <tr>
-                        {{-- <th><input type="checkbox" id="select-all"></th> --}}
                         <th>ID</th>
                         <th>Sampling Date</th>
                         <th>Gene copy [number/mL of sample]</th>
@@ -31,11 +30,6 @@
                         @csrf
                         @foreach ($sarsData as $s)
                             <tr @if($s->trashed())class="table-danger"@endif>
-                                {{-- <td>
-                                    @if(!isset($s->sars->file_id))
-                                    <input type="checkbox" name="files[]" value="{{ $s->id }}" form="form3" multiple>
-                                    @endif
-                                </td> --}}
                                 <td>{{ $s->id }}</td>
                                 <td>{{ $s->sample_from_year }}-{{ $s->sample_from_month }}-{{ $s->sample_from_day }}</td>
                                 <td>{{ $s->gene1 }}</td>
@@ -65,15 +59,6 @@
                     </tbody>
                 </table>
 </div> 
-
-{{-- <script>
-    document.getElementById('select-all').addEventListener('change', function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        for (var i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = this.checked;
-        }
-    });
-</script> --}}
 
 @endsection
 

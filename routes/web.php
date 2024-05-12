@@ -8,7 +8,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SusdatController;
 use App\Http\Controllers\LoginRetentionController;
-// use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,27 +20,31 @@ use App\Http\Controllers\LoginRetentionController;
 |
 */
 
-Route::get('/info', function () {
-    phpinfo();
-});
+// Info PHP
+
+// Route::get('/info', function () {
+//     phpinfo();
+// });
+
+// Home page
 
 Route::get('/', function () { return view('index');});
 
 // User
 
     //SARS
-Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
+    Route::get('user/sars/search', [SarsController::class, 'search'])->name('searchSars');
 
     //SUSDAT
-// Route::get('user/susdat/search', [SusdatController::class, 'search'])->name('searchSusdat');
-Route::get('user/susdat/index', [SusdatController::class, 'userIndex'])->name('userIndexSusdat');
-Route::get('user/susdat/list', [SusdatController::class, 'userGetIndex'])->name('listSusdat');
+    Route::get('user/susdat/index', [SusdatController::class, 'userIndex'])->name('userIndexSusdat');
 
 // Admin
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
+    // Home page
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::middleware(['user_type'])->group(function () {  
 
     // Positions
@@ -60,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/admin/sars/file-upload/force/{id}', 'forceDestroy')->name('file-upload.forceDestroy');
         Route::post('/admin/sars/file-upload/restore/{id}', 'restore')->name('file-upload.restore');
     });
+    Route::get('admin/sars/search', [SarsController::class, 'searchAdmin'])->name('searchSarsadmin');
     Route::get('/admin/sars/map', [SarsController::class, 'mapAdmin'])->name('sarsMapAdmin');
     Route::resource('admin/sars', SarsController::class);
     Route::delete('/admin/sars/force/{id}', [SarsController::class, 'forceDestroy'])->name('sars.forceDestroy');
@@ -83,6 +87,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('admin/retentions/index', [LoginRetentionController::class, 'index'])->name('retentions.index');
         Route::get('admin/retentions/show/{id}', [LoginRetentionController::class, 'show'])->name('retentions.show');
     });
+
     // SARS MAP    
     Route::get('/user/sars/map', [SarsController::class, 'map'])->name('sars.map');
 

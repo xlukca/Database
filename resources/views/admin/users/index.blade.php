@@ -36,7 +36,7 @@
             <td>{{ $d->postcode }}</td>
             <td>{{ $d->position->name ?? 'SoftDeletes' }}</td>
             <td>{{ $d->is_admin }}</td>
-            <td>@if(!$d->trashed())<a class="btn btn-info" href="{{ route('users.edit', $d->id) }}">{{ __('general.edit') }}</a>@endif</td>
+            <td>@if(!$d->trashed())<a class="btn btn-info" href="{{ route('users.edit', $d->id) }}">Edit</a>@endif</td>
             <td>
                 @if(!$d->trashed())
                 {!! Form::open(array('route' => ['users.destroy', $d->id], 'method'=>'DELETE')) !!}

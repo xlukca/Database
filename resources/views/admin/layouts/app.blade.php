@@ -105,7 +105,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('searchSars') }}">
+                <a class="nav-link" href="{{ route('searchSarsadmin') }}">
                     <i class="fas fa-search"></i>
                     <span>{{ __('general.search_data') }}</span></a>
             </li>
@@ -126,12 +126,6 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>{{ __('general.change_logs') }}</span></a>
             </li>
-
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('searchSusdat') }}">
-                    <i class="fas fa-search"></i>
-                    <span>{{ __('general.search_data') }}</span></a>
-            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
