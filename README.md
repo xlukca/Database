@@ -27,7 +27,7 @@ The database records were stored in external Excel files, so we created forms fo
 
 <p align="center"><img src="public/readme/file_upload.png"></p>
 
-## Database - Table data
+## Table data
 
 The database records are processed into a clear table. The JavaScript library YajraDataTables was applied. It includes built-in functions for pagination, sorting, and filtering table data. Data is loaded from the server in small chunks, improving performance and reducing server load. The admin can permanently delete data, perform a soft delete, or restore data that has been soft deleted.
 
@@ -41,9 +41,13 @@ We used the freely available JavaScript library Leaflet to display records on th
 
 ## REST API
 
+We have created a user guide for using the REST API for the website users. For security reasons, we do not allow POST, PUT, and DELETE operations via the REST API. We use the GET operation to retrieve records from the database based on the URL. Users can choose between two output formats: the first is JSON and the second possible output is XML. The Postman application was used to efficiently display and test REST API requests.
+
 <p align="center"><img src="public/readme/rest_api_susdat.png"></p>
 
 ## Change logs
+
+We created change logs. They are used to track modifications in records. The administrator can determine which attribute was modified, who made the change, and when it was made. They can also see the old and new values of the attribute. Change logs provide us with secure control over modifications and optimization of attributes.
 
 <p align="center"><img src="public/readme/change_log.png"></p>
 
